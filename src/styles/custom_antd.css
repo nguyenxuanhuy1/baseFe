@@ -1,0 +1,27 @@
+.ant-layout-sider-children {
+  background-color: #fff;
+}
+
+.ant-layout-sider {
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 7px !important;
+}
+
+:where(
+    .css-dev-only-do-not-override-rg0px5
+  ).ant-menu-light.ant-menu-root.ant-menu-inline {
+  border-inline-end: none !important;
+}
+
+.ant-layout-sider-trigger {
+  background-color: #fff !important;
+  color: #000 !important;
+}
+
+.ant-menu-submenu-selected > .ant-menu-submenu-title,
+.ant-menu-item-selected {
+  color: #387338 !important;
+}
+
+.ant-menu-item-selected {
+  background-color: #d8fed1 !important;
+}
