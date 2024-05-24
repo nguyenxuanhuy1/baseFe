@@ -4,9 +4,6 @@ import BaseUrl from "constants/baseUrl";
 
 const PrivateRoute = (props: { children: any }) => {
   const auth = useAuth();
-
-  console.log({ auth });
-
   //! Render
   if (auth.isLogged) {
     return props.children;

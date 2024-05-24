@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 
-const HomePage = () => {
+const PageUser = () => {
   const registerOrganization = (body: any) => {
     axios
       .get(`$adasd{}`)
@@ -16,7 +16,7 @@ const HomePage = () => {
       });
   };
 
-  return <div>homepage here</div>;
+  return <div>page user</div>;
 };
 
-export default HomePage;
+export default PageUser;

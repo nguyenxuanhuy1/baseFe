@@ -4,9 +4,11 @@ import React, { Fragment, lazy } from "react";
 
 // Bash importHere
 const DefaultLayout = lazy(() => import("layouts/DefaultLayout"));
+const DefaultLayoutUser = lazy(() => import("layouts/DefaultLayoutUser"));
 const Login = lazy(() => import("pages/Login"));
 const Homepage = lazy(() => import("pages/Homepage"));
 const Settings = lazy(() => import("pages/Settings"));
+const PageUser = lazy(() => import("pagesUser/Homepage"));
 export interface IRoute {
   name: string;
   key: string;
@@ -40,6 +42,14 @@ const routes: IRoute[] = [
     path: BaseUrl.Login,
     layout: Fragment,
     component: Login,
+    routeChild: [],
+  },
+  {
+    name: "pageUser",
+    key: "pageUser",
+    path: BaseUrl.Pageuser,
+    layout: DefaultLayoutUser,
+    component: PageUser,
     routeChild: [],
   },
   {
