@@ -17,6 +17,7 @@ import { useAuth } from "providers/AuthenticationProvider";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import routes, { IRoute } from "routers";
+import LocalStorage from "utils/LocalStorage";
 
 const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
   //! state
@@ -24,7 +25,7 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
   const { SubMenu } = Menu;
 
   const auth = useAuth();
-
+  const user = LocalStorage.get("user");
   const [collapsed, setCollapsed] = useState(false);
 
   //! function
@@ -76,9 +77,7 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
         trigger={renderTrigger}
       >
         <div className="h-[64px] flex justify-center items-center bg-white">
-          {!collapsed && (
-            <CustomTypography.Text strong title="VNeiD-Sync-Client" />
-          )}
+          {!collapsed && <CustomTypography.Text strong title="Huy" />}
         </div>
         <Divider className="m-0" />
         <Menu theme="light" mode="inline">
@@ -89,13 +88,10 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
         <Header className="p-4 bg-white flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Image width={50} height={50} preview={false} src={LOGO_BCA} />
-            <CustomTypography.Text
-              strong
-              title="TRUNG TÂM DỮ LIỆU QUỐC GIA VỀ DÂN CƯ"
-            />
+            <CustomTypography.Text strong title="TRUNG TÂM" />
           </div>
           <div className="flex items-center gap-2">
-            <CustomTypography.Text title="User" />
+            <CustomTypography.Text title={user?.username || "User"} />
             <Dropdown
               placement="bottomRight"
               menu={{ items }}

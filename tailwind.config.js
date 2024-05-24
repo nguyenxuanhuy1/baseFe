@@ -43,6 +43,7 @@ module.exports = {
       pink: colors.pink,
       rose: colors.rose,
       red100: "#D71920",
+      blueheader:"0A59CC",
       black100: "#3E3333",
       green100: "#34C759",
       blue100: "#0076FF",
@@ -51,6 +52,7 @@ module.exports = {
       grey300: "#EBEAEA",
       grey200: "#CECBCB",
       yellow100: "#FECC0A",
+      blueHeader: '#2579F2',
     }),
     columns: {
       auto: "auto",
