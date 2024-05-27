@@ -1,6 +1,6 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, lazy, useEffect } from "react";
 import useMenu from "hooks/menu/menu";
-import ShowMenu from "./menu/goimenu";
+const ShowMenu = lazy(() => import("./menu/ViewMenu"));
 
 export const SyncDataContext = createContext<any>({
   listSyncData: [],
