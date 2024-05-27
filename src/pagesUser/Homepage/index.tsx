@@ -1,22 +1,26 @@
-import React from "react";
-import axios from "axios";
+import React, { createContext, useEffect, useState } from "react";
+import useMenu from "hooks/menu/menu";
+import ShowMenu from "./menu/goimenu";
 
-const PageUser = () => {
-  const registerOrganization = (body: any) => {
-    axios
-      .get(`$adasd{}`)
-      .then((response) => {
-        if (response.status === 200) {
-          console.log("Registration successful");
-        }
-      })
-      .catch((err) => {
-        // Xử lý lỗi
-        console.log("Error:", err?.response?.data?.message);
-      });
-  };
+export const SyncDataContext = createContext<any>({
+  listSyncData: [],
+  setSearchForm: () => null,
+});
 
-  return <div>page user</div>;
+const Menu = () => {
+  const { data: menu, refresh } = useMenu({});
+  useEffect(() => {
+    refresh();
+  }, []);
+  return (
+    <SyncDataContext.Provider
+      value={{
+        menu,
+      }}
+    >
+      <ShowMenu />
+    </SyncDataContext.Provider>
+  );
 };
 
-export default PageUser;
+export default Menu;
