@@ -18,7 +18,9 @@ const Menu = () => {
         menu,
       }}
     >
-      <ShowMenu />
+      <div className="content">
+        <ShowMenu />
+      </div>
     </SyncDataContext.Provider>
   );
 };

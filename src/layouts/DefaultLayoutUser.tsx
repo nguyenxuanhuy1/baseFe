@@ -10,6 +10,7 @@ import {
   PhoneOutlined,
   ShoppingCartOutlined,
   StrikethroughOutlined,
+  UnorderedListOutlined,
   UserOutlined,
 } from "@ant-design/icons";
 import { Avatar, Layout, MenuProps, Image, Button } from "antd";
@@ -42,9 +43,9 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <Layout className="h-screen">
       <Header className="p-0 bg-blueHeader flex flex-col items-center justify-between text-white h-[auto]">
-        <div className="w-4/5">
-          <div className="flex items-center gap-2 w-full justify-between bg-[#0A59CC] h-[44px]">
-            <div className="flex items-center gap-2">
+        <div className="w-full  flex justify-center bg-[#0A59CC] h-[42px]">
+          <div className="w-4/5  flex justify-between  h-[42px]">
+            <div className="flex items-center gap-1 hover:underline">
               <ArrowLeftOutlined />
               <ArrowRightOutlined />
               <CustomTypography.Text
@@ -80,7 +81,8 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
               </div>
             </div>
           </div>
-
+        </div>
+        <div className="w-4/5">
           <div className="flex items-center gap-2 w-full justify-between">
             <div className="flex items-center gap-2">
               <Image width={50} height={50} preview={false} src={LOGO_BCA} />
@@ -153,6 +155,18 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
                 title="Hình thức thành toán"
                 strong
                 className="text-white cursor-pointer"
+              />
+            </div>
+          </div>
+        </div>
+        <div className="w-full flex justify-center bg-[#fff] h-[42px]">
+          <div className="w-4/5 text-black flex items-center gap-1 hover:underline ">
+            <div className="flex items-center gap-2 ">
+              <UnorderedListOutlined />
+              <CustomTypography.Text
+                title="Danh mục sẩn phẩm"
+                strong
+                className="text-white cursor-pointer text-black"
               />
             </div>
           </div>
