@@ -1,15 +1,12 @@
 import {
   ArrowLeftOutlined,
   ArrowRightOutlined,
-  CopyOutlined,
   CreditCardFilled,
   EnvironmentFilled,
   EyeFilled,
   FireFilled,
   PercentageOutlined,
-  PhoneOutlined,
   ShoppingCartOutlined,
-  StrikethroughOutlined,
   UnorderedListOutlined,
   UserOutlined,
 } from "@ant-design/icons";
@@ -21,7 +18,21 @@ import LocalStorage from "utils/LocalStorage";
 import LOGO_BCA from "assets/icons/logo_BCA.svg";
 import Search from "antd/es/input/Search";
 import { Footer } from "antd/es/layout/layout";
+import { createContext, useEffect } from "react";
+import useTopheader from "hooks/header/topHeader";
+
+export const TopHeaderDataContext = createContext<any>({
+  ListTopHeaderData: [],
+  setSearchForm: () => null,
+});
 const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
+
+  //top header
+  const { data: topHeader, refresh } = useTopheader({});
+  useEffect(() => {
+    refresh();
+  }, []);
+  //
   //! state
   const { Header, Content } = Layout;
   const auth = useAuth();
@@ -55,30 +66,21 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
               />
             </div>
             <div className="flex items-center gap-5 hover:underline">
-              <div>
-                <StrikethroughOutlined />
-                <CustomTypography.Text
-                  strong
-                  title="ưu đãi"
-                  className="text-white"
-                />
-              </div>
-              <div>
-                <PhoneOutlined />
-                <CustomTypography.Text
-                  strong
-                  title="thông tin liên hệ"
-                  className="text-white"
-                />
-              </div>
-              <div>
-                <CopyOutlined />
-                <CustomTypography.Text
-                  strong
-                  title="hướng dẫn"
-                  className="text-white"
-                />
-              </div>
+              {topHeader.map((item, index) => (
+                <div key={index} className="flex items-center gap-2">
+                  <img
+                    loading="lazy"
+                    src={`https://divineshop.vn${item.icon}`}
+                    style={{ maxHeight: "18px", maxWidth: "21px" }}
+                    alt={item.text}
+                  />
+                  <CustomTypography.Text
+                    strong
+                    title={item.text}
+                    className="text-white"
+                  />
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -166,18 +168,18 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
               <CustomTypography.Text
                 title="Danh mục sẩn phẩm"
                 strong
-                className="text-white cursor-pointer text-black"
+                className="cursor-pointer text-black"
               />
             </div>
           </div>
         </div>
       </Header>
-      <Content className="p-0 bg-[#F3F4F6] flex flex-col items-center justify-between h-[auto] mt-4">
+      <Content className="p-0 bg-[#eeefef] flex flex-col items-center justify-between h-[auto] mt-4">
         <div className="w-4/5">{children}</div>
       </Content>
-      <Footer className="bg-[#000D21]">
+      {/* <Footer className="bg-[#000D21]">
         <div>Footer</div>
-      </Footer>
+      </Footer> */}
     </Layout>
   );
 };
