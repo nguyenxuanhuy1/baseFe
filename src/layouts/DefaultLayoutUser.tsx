@@ -3,25 +3,24 @@ import {
   ArrowRightOutlined,
   CopyOutlined,
   CreditCardFilled,
-  CreditCardOutlined,
   EnvironmentFilled,
-  EnvironmentOutlined,
   EyeFilled,
-  EyeOutlined,
   FireFilled,
   PercentageOutlined,
   PhoneOutlined,
   ShoppingCartOutlined,
   StrikethroughOutlined,
+  UnorderedListOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { Avatar, Dropdown, Layout, MenuProps, Image, Button } from "antd";
+import { Avatar, Layout, MenuProps, Image, Button } from "antd";
 import { CommonIcons } from "components/CommonIcons";
 import { CustomTypography } from "components/CustomTypography";
 import { useAuth } from "providers/AuthenticationProvider";
 import LocalStorage from "utils/LocalStorage";
 import LOGO_BCA from "assets/icons/logo_BCA.svg";
 import Search from "antd/es/input/Search";
+import { Footer } from "antd/es/layout/layout";
 const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
   //! state
   const { Header, Content } = Layout;
@@ -43,10 +42,10 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <Layout className="h-screen">
-      <Layout>
-        <Header className="p-0  bg-blueHeader flex flex-col items-center justify-between text-white h-[auto]">
-          <div className="flex items-center gap-2 w-full justify-between bg-[#0A59CC]">
-            <div className="flex items-center gap-2">
+      <Header className="p-0 bg-blueHeader flex flex-col items-center justify-between text-white h-[auto]">
+        <div className="w-full  flex justify-center bg-[#0A59CC] h-[42px]">
+          <div className="w-4/5  flex justify-between  h-[42px]">
+            <div className="flex items-center gap-1 hover:underline">
               <ArrowLeftOutlined />
               <ArrowRightOutlined />
               <CustomTypography.Text
@@ -55,33 +54,36 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
                 className="text-white"
               />
             </div>
-            <div className="flex items-center gap-2  hover:underline">
-              <StrikethroughOutlined />
-              <CustomTypography.Text
-                strong
-                title="ưu đãi"
-                className="text-white"
-              />
-              <>
+            <div className="flex items-center gap-5 hover:underline">
+              <div>
+                <StrikethroughOutlined />
+                <CustomTypography.Text
+                  strong
+                  title="ưu đãi"
+                  className="text-white"
+                />
+              </div>
+              <div>
                 <PhoneOutlined />
                 <CustomTypography.Text
                   strong
                   title="thông tin liên hệ"
                   className="text-white"
                 />
-              </>
-              <>
+              </div>
+              <div>
                 <CopyOutlined />
                 <CustomTypography.Text
                   strong
                   title="hướng dẫn"
                   className="text-white"
                 />
-              </>
+              </div>
             </div>
           </div>
-
-          <div className="flex items-center gap-2 w-full justify-between mt-4">
+        </div>
+        <div className="w-4/5">
+          <div className="flex items-center gap-2 w-full justify-between">
             <div className="flex items-center gap-2">
               <Image width={50} height={50} preview={false} src={LOGO_BCA} />
               <CustomTypography.Text
@@ -119,7 +121,7 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
               <CustomTypography.Text
                 title="Sản phẩm bạn vừa xem"
                 strong
-                className="text-white"
+                className="text-white cursor-pointer"
               />
             </div>
             <div className="flex items-center gap-2">
@@ -127,7 +129,7 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
               <CustomTypography.Text
                 title="Sản phẩm bạn mua nhiều"
                 strong
-                className="text-white"
+                className="text-white cursor-pointer"
               />
             </div>
 
@@ -136,7 +138,7 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
               <CustomTypography.Text
                 title="Sản phẩm khuyến mại"
                 strong
-                className="text-white"
+                className="text-white cursor-pointer"
               />
             </div>
             <div className="flex items-center gap-2">
@@ -144,7 +146,7 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
               <CustomTypography.Text
                 title="Đại lý giao dịch"
                 strong
-                className="text-white"
+                className="text-white cursor-pointer"
               />
             </div>
             <div className="flex items-center gap-2">
@@ -152,15 +154,30 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
               <CustomTypography.Text
                 title="Hình thức thành toán"
                 strong
-                className="text-white"
+                className="text-white cursor-pointer"
               />
             </div>
           </div>
-        </Header>
-        <Content className="p- min-h-[280px] bg-[#fff] rounded-[8px]">
-          {children}
-        </Content>
-      </Layout>
+        </div>
+        <div className="w-full flex justify-center bg-[#fff] h-[42px]">
+          <div className="w-4/5 text-black flex items-center gap-1 hover:underline ">
+            <div className="flex items-center gap-2 ">
+              <UnorderedListOutlined />
+              <CustomTypography.Text
+                title="Danh mục sẩn phẩm"
+                strong
+                className="text-white cursor-pointer text-black"
+              />
+            </div>
+          </div>
+        </div>
+      </Header>
+      <Content className="p-0 bg-[#F3F4F6] flex flex-col items-center justify-between h-[auto] mt-4">
+        <div className="w-4/5">{children}</div>
+      </Content>
+      <Footer className="bg-[#000D21]">
+        <div>Footer</div>
+      </Footer>
     </Layout>
   );
 };
