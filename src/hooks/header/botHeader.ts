@@ -1,29 +1,29 @@
 import { useEffect, useState } from "react";
-import { Menu } from "constants/api";
+import { Header } from "constants/api";
 import httpMethod from "services/httpMethod";
 import { showError } from "helpers/toast";
 // import { AppContext } from "App";
 
-const useMenu = (props: any) => {
+const useBotHeader = (props: any) => {
     //! state
     const [data, setData] = useState<any[]>([]);
-    const getSearchDepartment = async () => {
+    const getBotHeader = async () => {
         try {
             const response = await httpMethod.get(
-                `${Menu.MENU}`,
+                `${Header.BOT}`,
             );
             if (response.status === 200) {
-                setData(response.data.list);
+                setData(response.data.data.homeTopMenu.partnership);
             }
         } catch (error: any) {
-            showError('Có lỗi xảy ra, vui lòng thử lại sau');
+            showError('call api botheader có vấn để rồi');
         }
     };
-    const refresh = () => {
-        getSearchDepartment();
+    const refreshBot = () => {
+        getBotHeader();
     };
     //! render
-    return { refresh, data };
+    return { refreshBot, data };
 };
 
-export default useMenu;
+export default useBotHeader;
