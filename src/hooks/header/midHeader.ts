@@ -1,29 +1,28 @@
 import { useEffect, useState } from "react";
-import { Menu } from "constants/api";
+import { Header, Menu } from "constants/api";
 import httpMethod from "services/httpMethod";
 import { showError } from "helpers/toast";
-// import { AppContext } from "App";
 
-const useMenu = (props: any) => {
+const useMidHeader = (props: any) => {
     //! state
     const [data, setData] = useState<any[]>([]);
-    const getSearchDepartment = async () => {
+    const getMidheader = async () => {
         try {
             const response = await httpMethod.get(
-                `${Menu.MENU}`,
+                `${Header.MID}`,
             );
             if (response.status === 200) {
-                setData(response.data.list);
+                setData(response.data.data.homeTopMenu.shortcuts);
             }
         } catch (error: any) {
-            showError('Có lỗi xảy ra, vui lòng thử lại sau');
+            showError('Lấy getMidheader lỗi');
         }
     };
-    const refresh = () => {
-        getSearchDepartment();
+    const refreshMid = () => {
+        getMidheader();
     };
     //! render
-    return { refresh, data };
+    return { refreshMid, data };
 };
 
-export default useMenu;
+export default useMidHeader;
