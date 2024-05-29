@@ -14,7 +14,7 @@ const useTopheader = (props: any) => {
                 setData(response.data.data.homeTopMenu.contact);
             }
         } catch (error: any) {
-            showError('Api đâng chết');
+            showError('Lấy Top header lỗi');
         }
     };
     const refresh = () => {

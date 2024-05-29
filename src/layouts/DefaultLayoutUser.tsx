@@ -20,19 +20,29 @@ import Search from "antd/es/input/Search";
 import { Footer } from "antd/es/layout/layout";
 import { createContext, useEffect } from "react";
 import useTopheader from "hooks/header/topHeader";
+import useMidHeader from "hooks/header/midHeader";
 
 export const TopHeaderDataContext = createContext<any>({
   ListTopHeaderData: [],
-  setSearchForm: () => null,
+});
+export const MidHeaderDataContext = createContext<any>({
+  ListMidHeaderData: [],
 });
 const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
-
   //top header
   const { data: topHeader, refresh } = useTopheader({});
   useEffect(() => {
     refresh();
   }, []);
   //
+  //mid header
+  const { data: midHeader, refreshMid } = useMidHeader({});
+  useEffect(() => {
+    refreshMid();
+  }, []);
+  //
+  console.log("midHeader", midHeader);
+
   //! state
   const { Header, Content } = Layout;
   const auth = useAuth();
@@ -71,13 +81,14 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
                   <img
                     loading="lazy"
                     src={`https://divineshop.vn${item.icon}`}
-                    style={{ maxHeight: "18px", maxWidth: "21px" }}
+                    className="max-h-[20px] max-w-[21px] filter-icon-white"
                     alt={item.text}
                   />
+                  {/* <div className="text-white w-auto">{item.text}</div> */}
                   <CustomTypography.Text
                     strong
                     title={item.text}
-                    className="text-white"
+                    className="text-white w-[170px]"
                   />
                 </div>
               ))}
@@ -118,47 +129,21 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
             </>
           </div>
           <div className="flex items-center gap-2 w-full justify-between pb-3">
-            <div className="flex items-center gap-2">
-              <EyeFilled />
-              <CustomTypography.Text
-                title="Sản phẩm bạn vừa xem"
-                strong
-                className="text-white cursor-pointer"
-              />
-            </div>
-            <div className="flex items-center gap-2">
-              <FireFilled />
-              <CustomTypography.Text
-                title="Sản phẩm bạn mua nhiều"
-                strong
-                className="text-white cursor-pointer"
-              />
-            </div>
-
-            <div className="flex items-center gap-2">
-              <PercentageOutlined />
-              <CustomTypography.Text
-                title="Sản phẩm khuyến mại"
-                strong
-                className="text-white cursor-pointer"
-              />
-            </div>
-            <div className="flex items-center gap-2">
-              <EnvironmentFilled />
-              <CustomTypography.Text
-                title="Đại lý giao dịch"
-                strong
-                className="text-white cursor-pointer"
-              />
-            </div>
-            <div className="flex items-center gap-2">
-              <CreditCardFilled />
-              <CustomTypography.Text
-                title="Hình thức thành toán"
-                strong
-                className="text-white cursor-pointer"
-              />
-            </div>
+            {midHeader.map((item, index) => (
+              <div key={index} className="flex items-center gap-2">
+                <img
+                  loading="lazy"
+                  src={`https://divineshop.vn${item.icon}`}
+                  className="max-h-[20px] max-w-[21px] filter-icon-white"
+                  alt={item.text}
+                />
+                <CustomTypography.Text
+                  title={item.text}
+                  strong
+                  className="text-white cursor-pointer w-[200px]"
+                />
+              </div>
+            ))}
           </div>
         </div>
         <div className="w-full flex justify-center bg-[#fff] h-[42px]">
