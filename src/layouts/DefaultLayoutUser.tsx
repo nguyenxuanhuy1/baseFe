@@ -21,11 +21,15 @@ import { Footer } from "antd/es/layout/layout";
 import { createContext, useEffect } from "react";
 import useTopheader from "hooks/header/topHeader";
 import useMidHeader from "hooks/header/midHeader";
+import useBotHeader from "hooks/header/botHeader";
 
 export const TopHeaderDataContext = createContext<any>({
   ListTopHeaderData: [],
 });
 export const MidHeaderDataContext = createContext<any>({
+  ListMidHeaderData: [],
+});
+export const BotHeaderDataContext = createContext<any>({
   ListMidHeaderData: [],
 });
 const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
@@ -39,6 +43,10 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
   const { data: midHeader, refreshMid } = useMidHeader({});
   useEffect(() => {
     refreshMid();
+  }, []);
+  const { data: botHeader, refreshBot } = useBotHeader({});
+  useEffect(() => {
+    refreshBot();
   }, []);
   //
   console.log("midHeader", midHeader);
@@ -146,20 +154,39 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
             ))}
           </div>
         </div>
-        <div className="w-full flex justify-center bg-[#fff] h-[42px]">
-          <div className="w-4/5 text-black flex items-center gap-1 hover:underline ">
+
+        <div className="w-full  flex justify-center  bg-[#fff] h-auto">
+          <div className="w-4/5  flex justify-between  h-[42px]">
             <div className="flex items-center gap-2 ">
-              <UnorderedListOutlined />
+              <UnorderedListOutlined className="text-black" />
               <CustomTypography.Text
                 title="Danh mục sẩn phẩm"
                 strong
-                className="cursor-pointer text-black"
+                className="cursor-pointer"
               />
+            </div>
+            <div className="flex items-center gap-5 hover:underline">
+              {botHeader.map((item, index) => (
+                <div key={index} className="flex items-center gap-2">
+                  <img
+                    loading="lazy"
+                    src={`https://divineshop.vn${item.icon}`}
+                    className="max-h-[35px] max-w-[35px]"
+                    alt={item.text}
+                  />
+                  {/* <div className="text-white w-auto">{item.text}</div> */}
+                  <CustomTypography.Text
+                    strong
+                    title={item.text}
+                    className="w-[170px]"
+                  />
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </Header>
-      <Content className="p-0 bg-[#eeefef] flex flex-col items-center justify-between h-[auto] mt-4">
+      <Content className="p-0 bg-[#e0e2e2] flex flex-col items-center justify-between h-[auto] mt-4">
         <div className="w-4/5">{children}</div>
       </Content>
       {/* <Footer className="bg-[#000D21]">
