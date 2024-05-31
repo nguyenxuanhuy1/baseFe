@@ -4,7 +4,7 @@ import httpMethod from "services/httpMethod";
 import { showError } from "helpers/toast";
 // import { AppContext } from "App";
 
-const useBotHeader = (props: any) => {
+const useBotHeader = () => {
     //! state
     const [data, setData] = useState<any[]>([]);
     const getBotHeader = async () => {
@@ -19,11 +19,11 @@ const useBotHeader = (props: any) => {
             showError('call api botheader có vấn để rồi');
         }
     };
-    const refreshBot = () => {
+    useEffect(() => {
         getBotHeader();
-    };
+    }, []);
     //! render
-    return { refreshBot, data };
+    return { data };
 };
 
 export default useBotHeader;

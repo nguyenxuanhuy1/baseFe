@@ -34,23 +34,11 @@ export const BotHeaderDataContext = createContext<any>({
 });
 const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
   //top header
-  const { data: topHeader, refresh } = useTopheader({});
-  useEffect(() => {
-    refresh();
-  }, []);
-  //
+  const { data: topHeader } = useTopheader();
   //mid header
-  const { data: midHeader, refreshMid } = useMidHeader({});
-  useEffect(() => {
-    refreshMid();
-  }, []);
-  const { data: botHeader, refreshBot } = useBotHeader({});
-  useEffect(() => {
-    refreshBot();
-  }, []);
-  //
-  console.log("midHeader", midHeader);
-
+  const { data: midHeader } = useMidHeader();
+  //bot header
+  const { data: botHeader } = useBotHeader();
   //! state
   const { Header, Content } = Layout;
   const auth = useAuth();
@@ -85,7 +73,7 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
             </div>
             <div className="flex items-center gap-5 hover:underline">
               {topHeader.map((item, index) => (
-                <div key={index} className="flex items-center gap-2">
+                <div key={index} className="flex flex-row items-center gap-2">
                   <img
                     loading="lazy"
                     src={`https://divineshop.vn${item.icon}`}
@@ -104,7 +92,7 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
           </div>
         </div>
         <div className="w-4/5">
-          <div className="flex items-center gap-2 w-full justify-between">
+          <div className="flex items-center gap-2 w-full justify-between pb-2 pt-1">
             <div className="flex items-center gap-2">
               <Image width={50} height={50} preview={false} src={LOGO_BCA} />
               <CustomTypography.Text
@@ -136,57 +124,60 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
               </Button>
             </>
           </div>
-          <div className="flex items-center gap-2 w-full justify-between pb-3">
+          <div className="flex items-center justify-between">
             {midHeader.map((item, index) => (
-              <div key={index} className="flex items-center gap-2">
+              <div
+                className="flex flex-row gap-2 items-center"
+                style={{ cursor: "pointer" }}
+              >
                 <img
+                  className="filter-icon-white"
+                  style={{
+                    maxWidth: "100%",
+                    width: "1.5rem",
+                    height: "1.25rem",
+                  }}
                   loading="lazy"
                   src={`https://divineshop.vn${item.icon}`}
-                  className="max-h-[20px] max-w-[21px] filter-icon-white"
                   alt={item.text}
                 />
-                <CustomTypography.Text
-                  title={item.text}
-                  strong
-                  className="text-white cursor-pointer w-[200px]"
-                />
+                <p>{item.text}</p>
               </div>
             ))}
           </div>
         </div>
 
         <div className="w-full  flex justify-center  bg-[#fff] h-auto">
-          <div className="w-4/5  flex justify-between  h-[42px]">
+          <div
+            className="w-4/5  flex items-center justify-between  h-[42px]"
+            style={{ color: "black" }}
+          >
             <div className="flex items-center gap-2 ">
-              <UnorderedListOutlined className="text-black" />
+              <UnorderedListOutlined />
               <CustomTypography.Text
                 title="Danh mục sẩn phẩm"
                 strong
                 className="cursor-pointer"
               />
             </div>
-            <div className="flex items-center gap-5 hover:underline">
+            <div className="flex items-center justify-between">
               {botHeader.map((item, index) => (
-                <div key={index} className="flex items-center gap-2">
+                <div key={index} className="flex flex-row gap-2 items-center">
                   <img
                     loading="lazy"
                     src={`https://divineshop.vn${item.icon}`}
-                    className="max-h-[35px] max-w-[35px]"
+                    className="max-h-[35px] max-w-[35px] ml-5"
                     alt={item.text}
                   />
                   {/* <div className="text-white w-auto">{item.text}</div> */}
-                  <CustomTypography.Text
-                    strong
-                    title={item.text}
-                    className="w-[170px]"
-                  />
+                  <p className="">{item.text}</p>
                 </div>
               ))}
             </div>
           </div>
         </div>
       </Header>
-      <Content className="p-0 bg-[#e0e2e2] flex flex-col items-center justify-between h-[auto] mt-4">
+      <Content className="p-0 bg-[#e0e2e2] flex flex-col items-center justify-between h-[auto] pt-4">
         <div className="w-4/5">{children}</div>
       </Content>
       {/* <Footer className="bg-[#000D21]">

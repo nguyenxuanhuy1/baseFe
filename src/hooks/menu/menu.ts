@@ -4,10 +4,10 @@ import httpMethod from "services/httpMethod";
 import { showError } from "helpers/toast";
 // import { AppContext } from "App";
 
-const useMenu = (props: any) => {
+const useMenu = () => {
   //! state
   const [data, setData] = useState<any[]>([]);
-  const getSearchDepartment = async () => {
+  const getMenu = async () => {
     try {
       const response = await httpMethod.get(
         `${Menu.MENU}`,
@@ -19,11 +19,11 @@ const useMenu = (props: any) => {
       showError('có vấn đề rồi');
     }
   };
-  const refresh = () => {
-    getSearchDepartment();
-  };
+  useEffect(() => {
+    getMenu();
+}, []);
   //! render
-  return { refresh, data };
+  return { data };
 };
 
 export default useMenu;

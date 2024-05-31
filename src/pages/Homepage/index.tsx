@@ -7,13 +7,9 @@ const HomePage = () => {
       .get(`$adasd{}`)
       .then((response) => {
         if (response.status === 200) {
-          console.log("Registration successful");
         }
       })
-      .catch((err) => {
-        // Xử lý lỗi
-        console.log("Error:", err?.response?.data?.message);
-      });
+      .catch((err) => {});
   };
 
   return <div>homepage here</div>;

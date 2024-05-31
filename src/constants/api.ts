@@ -7,3 +7,6 @@ export const Header = {
   MID: `https://divineshop.vn/page-data/sq/d/2247331527.json`,
   BOT: `https://divineshop.vn/page-data/sq/d/401991559.json`,
 };
+export const Slide = {
+SLIDE:`https://divineshop.vn/api/home/slide`
+}
