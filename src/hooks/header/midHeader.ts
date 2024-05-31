@@ -3,7 +3,7 @@ import { Header, Menu } from "constants/api";
 import httpMethod from "services/httpMethod";
 import { showError } from "helpers/toast";
 
-const useMidHeader = (props: any) => {
+const useMidHeader = () => {
     //! state
     const [data, setData] = useState<any[]>([]);
     const getMidheader = async () => {
@@ -18,11 +18,11 @@ const useMidHeader = (props: any) => {
             showError('Lấy getMidheader lỗi');
         }
     };
-    const refreshMid = () => {
+    useEffect(() => {
         getMidheader();
-    };
+    }, []);
     //! render
-    return { refreshMid, data };
+    return { data };
 };
 
 export default useMidHeader;

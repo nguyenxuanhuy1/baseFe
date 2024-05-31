@@ -1,27 +1,28 @@
 import { useEffect, useState } from "react";
-import { Header } from "constants/api";
+import { Slide } from "constants/api";
 import httpMethod from "services/httpMethod";
 import { showError } from "helpers/toast";
 
-const useTopheader = () => {
+const useSlide = () => {
+    //! state
     const [data, setData] = useState<any[]>([]);
-    const getTopheader = async () => {
+    const getSlide = async () => {
         try {
             const response = await httpMethod.get(
-                `${Header.TOP}`,
+                `${Slide.SLIDE}`,
             );
             if (response.status === 200) {
-                setData(response.data.data.homeTopMenu.contact);
+                setData(response.data.list);
             }
         } catch (error: any) {
-            showError('Lấy Top header lỗi');
+            showError('Gọi api Slide lỗi rồi');
         }
     };
     useEffect(() => {
-        getTopheader();
+        getSlide();
     }, []);
     //! render
-    return {  data };
+    return { data };
 };
 
-export default useTopheader;
+export default useSlide;

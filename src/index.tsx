@@ -9,12 +9,15 @@ import "react-toastify/dist/ReactToastify.css";
 import AuthenticationProvider from "providers/AuthenticationProvider";
 import { ConfigProvider } from "antd";
 import { CustomizeTheme } from "theme";
+import React from "react";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <AuthenticationProvider>
-    <ConfigProvider theme={CustomizeTheme}>
-      <App />
-      <ToastContainer theme="light" />
-    </ConfigProvider>
-  </AuthenticationProvider>
+  <React.StrictMode>
+    <AuthenticationProvider>
+      <ConfigProvider theme={CustomizeTheme}>
+        <App />
+        <ToastContainer theme="light" />
+      </ConfigProvider>
+    </AuthenticationProvider>
+  </React.StrictMode>
 );
