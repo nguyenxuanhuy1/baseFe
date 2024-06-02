@@ -5,8 +5,6 @@ import useSlide from "hooks/slide/slide";
 const ShowMenu = lazy(() => import("./menu/ViewMenu"));
 
 export const SyncDataContext = createContext<any>({
-  // listSyncData: [],
-  // setSearchForm: () => null,
 });
 
 const Menu = () => {
@@ -20,9 +18,12 @@ const Menu = () => {
         slide,
       }}
     >
-      <div className="content">
-        <ShowMenu />
-        <SlideComponent />
+      <div className="flex w-full h-auto">
+        <div className="max-w-1/5"><ShowMenu /></div>
+        <div className="h-full w-9/20"><SlideComponent /></div>
+        <div className="w-2/5">
+          <div className="w h-40 bg-blue-500">
+          </div></div>
       </div>
     </SyncDataContext.Provider>
   );
