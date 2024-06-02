@@ -92,7 +92,7 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
           </div>
         </div>
         <div className="w-4/5">
-          <div className="flex items-center gap-2 w-full justify-between pb-2 pt-1">
+          <div className="flex items-center gap-2 w-full justify-between pt-1">
             <div className="flex items-center gap-2">
               <Image width={50} height={50} preview={false} src={LOGO_BCA} />
               <CustomTypography.Text
@@ -177,7 +177,7 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
           </div>
         </div>
       </Header>
-      <Content className="p-0 bg-[#e0e2e2] flex flex-col items-center justify-between h-[auto] pt-4">
+      <Content className="p-0 bg-[#c8d0d0] flex flex-col items-center justify-between pt-4 h-auto">
         <div className="w-4/5">{children}</div>
       </Content>
       {/* <Footer className="bg-[#000D21]">
