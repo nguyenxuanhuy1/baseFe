@@ -60,8 +60,8 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <Layout className="h-screen">
       <Header className="p-0 bg-blueHeader flex flex-col items-center justify-between text-white h-[auto]">
-        <div className="w-full  flex justify-center bg-[#0A59CC] h-[42px]">
-          <div className="w-4/5  flex justify-between  h-[42px]">
+        <div className="w-full justify-center bg-[#0A59CC] h-[42px] hidden lg:flex">
+          <div className="w-full xl:w-4/5  flex justify-between  h-[42px] mr-3 ml-3">
             <div className="flex items-center gap-1 hover:underline">
               <ArrowLeftOutlined />
               <ArrowRightOutlined />
@@ -91,9 +91,9 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
             </div>
           </div>
         </div>
-        <div className="w-4/5">
-          <div className="flex items-center gap-2 w-full justify-between pt-1">
-            <div className="flex items-center gap-2">
+        <div className="w-full xl:w-4/5">
+          <div className="flex items-center gap-2 w-full justify-between pt-1 mr-3 ml-3">
+            <div className="items-center gap-2 hidden sm:flex">
               <Image width={50} height={50} preview={false} src={LOGO_BCA} />
               <CustomTypography.Text
                 title="ABC Gì gì đó"
@@ -101,12 +101,15 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
                 className="text-white"
               />
             </div>
+            <div className="flex items-center gap-2 sm:hidden">
+              <UnorderedListOutlined />
+            </div>
             <Search
               placeholder="tìm kiếm"
               allowClear
               style={{ width: "300px" }}
             />
-            <div>
+            <div className="hidden md:block">
               <Avatar size="large" icon={<UserOutlined />} />
               <CustomTypography.Text
                 strong
@@ -124,7 +127,7 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
               </Button>
             </>
           </div>
-          <div className="flex items-center justify-between">
+          <div className="hidden lg:flex items-center justify-between">
             {midHeader.map((item, index) => (
               <div
                 className="flex flex-row gap-2 items-center"
@@ -147,9 +150,9 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
           </div>
         </div>
 
-        <div className="w-full  flex justify-center  bg-[#fff] h-auto">
+        <div className="w-full hidden lg:flex justify-center  bg-[#fff] h-auto">
           <div
-            className="w-4/5  flex items-center justify-between  h-[42px]"
+            className="w-full xl:w-4/5  flex items-center justify-between  h-[42px]"
             style={{ color: "black" }}
           >
             <div className="flex items-center gap-2 ">
@@ -160,7 +163,7 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
                 className="cursor-pointer"
               />
             </div>
-            <div className="flex items-center justify-between">
+            <div className="hidden lg:flex items-center justify-between">
               {botHeader.map((item, index) => (
                 <div key={index} className="flex flex-row gap-2 items-center">
                   <img
@@ -169,16 +172,15 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
                     className="max-h-[35px] max-w-[35px] ml-5"
                     alt={item.text}
                   />
-                  {/* <div className="text-white w-auto">{item.text}</div> */}
-                  <p className="">{item.text}</p>
+                  <p className="hidden lg:flex">{item.text}</p>
                 </div>
               ))}
             </div>
           </div>
         </div>
       </Header>
-      <Content className="p-0 bg-[#c8d0d0] flex flex-col items-center justify-between pt-4 h-auto">
-        <div className="w-4/5">{children}</div>
+      <Content className="bg-[#f0f0f0] flex flex-col items-center justify-between pt-4 h-auto">
+        <div className="w-full xl:w-4/5">{children}</div>
       </Content>
       {/* <Footer className="bg-[#000D21]">
         <div>Footer</div>

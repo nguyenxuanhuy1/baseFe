@@ -5,7 +5,7 @@ const ShowMenu = () => {
   const { menu } = useContext(SyncDataContext);
 
   return (
-    <div className="w-[232px] bg-[#fff] rounded-[3px]">
+    <div className="w-full bg-[#fff] rounded-[3px] h-auto lg:min-h-[312px]">
       {menu.map((menuItem: any, index: number) => (
         <a
           key={index}
@@ -18,7 +18,9 @@ const ShowMenu = () => {
             style={{ maxHeight: "18px", maxWidth: "21px" }}
             alt={menuItem.text}
           />
-          <span style={{ marginLeft: "5px" }}>{menuItem.text}</span>{" "}
+          <span style={{ marginLeft: "5px", whiteSpace: "nowrap" }}>
+            {menuItem.text}
+          </span>{" "}
         </a>
       ))}
     </div>

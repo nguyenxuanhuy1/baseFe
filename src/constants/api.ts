@@ -10,3 +10,6 @@ export const Header = {
 export const Slide = {
 SLIDE:`https://divineshop.vn/api/home/slide`
 }
+export const Banners = {
+  BANNER:`https://divineshop.vn/api/home/banners`
+}
