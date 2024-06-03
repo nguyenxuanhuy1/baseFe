@@ -24,10 +24,10 @@ const Menu = () => {
         <div className="w-full lg:w-4/21 hidden lg:block">
           <ShowMenu />
         </div>
-        <div className="h-full w-full lg:w-27/50 mx-6">
+        <div className="h-full w-full lg:w-53/100 mx-6">
           <SlideComponent />
         </div>
-        <div className="w-6/25 hidden lg:block">
+        <div className="w-1/4 hidden lg:block">
           <ShowBanner />
         </div>
       </div>
