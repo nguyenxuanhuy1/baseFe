@@ -179,9 +179,7 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
           </div>
         </div>
       </Header>
-      <Content className="bg-[#f0f0f0] flex flex-col items-center justify-between pt-4 h-auto">
-        <div className="w-full xl:w-4/5">{children}</div>
-      </Content>
+      <Content className="bg-[#f0f0f0] pt-4 h-auto ">{children}</Content>
       {/* <Footer className="bg-[#000D21]">
         <div>Footer</div>
       </Footer> */}
