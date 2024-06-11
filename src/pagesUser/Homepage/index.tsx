@@ -22,7 +22,7 @@ const Menu = () => {
       }}
     >
       <div className="flex w-full justify-center flex-wrap">
-        <div className="flex flex-wrap w-full xl:max-w-[77%]">
+        <div className="flex flex-wrap w-full xl:max-w-[80%]">
           <div className="hidden lg:block cssMenu w-[19%]">
             <ShowMenu />
           </div>
@@ -36,7 +36,7 @@ const Menu = () => {
                   <img
                     loading="lazy"
                     src={`https://divineshop.vn${item.image}`}
-                    className="h-auto max-h-[143px] w-auto lg:max-w-[310px] mb-6"
+                    className="h-auto max-h-[143px] w-auto lg:max-w-[285px] mb-6  rounded-[6px]"
                     alt={item.text}
                   />
                 </div>

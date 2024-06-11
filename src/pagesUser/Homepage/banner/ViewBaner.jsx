@@ -5,14 +5,14 @@ const ShowBanner = () => {
   const { banner } = useContext(SyncDataContext);
 
   return (
-    <div className="flex">
-      <div className="lg:w-1/2 flex flex-row gap-6">
+    <div className="w-full">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {banner.slice(2, 6).map((item, index) => (
-          <div key={index}>
+          <div key={index} className="flex justify-center">
             <img
               loading="lazy"
               src={`https://divineshop.vn${item.image}`}
-              className="h-auto max-h-[145px] w-auto lg:max-w-[310px]"
+              className="h-auto max-h-[145px] w-full max-w-[288px] lg:max-w-[310px] rounded-[6px]"
               alt={item.text}
             />
           </div>
@@ -21,4 +21,5 @@ const ShowBanner = () => {
     </div>
   );
 };
+
 export default ShowBanner;

@@ -1,11 +1,6 @@
 import {
-  ArrowLeftOutlined,
-  ArrowRightOutlined,
-  CreditCardFilled,
-  EnvironmentFilled,
-  EyeFilled,
-  FireFilled,
-  PercentageOutlined,
+  LeftOutlined,
+  RightOutlined,
   ShoppingCartOutlined,
   UnorderedListOutlined,
   UserOutlined,
@@ -63,8 +58,8 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
         <div className="w-full justify-center bg-[#0A59CC] h-[42px] hidden lg:flex">
           <div className="w-full xl:w-4/5  flex justify-between  h-[42px] mr-3 ml-3">
             <div className="flex items-center gap-1 hover:underline">
-              <ArrowLeftOutlined />
-              <ArrowRightOutlined />
+              <LeftOutlined />
+              <RightOutlined />
               <CustomTypography.Text
                 strong
                 title="Giải trí cùng các sản phẩm mới"
