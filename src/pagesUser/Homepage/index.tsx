@@ -3,8 +3,9 @@ import useMenu from "hooks/menu/menu";
 import SlideComponent from "./slide/ViewSlide";
 import useSlide from "hooks/slide/slide";
 import useBanner from "hooks/banners/banner";
-import ShowBanner from "./banner/ViewBaner";
+
 const ShowMenu = lazy(() => import("./menu/ViewMenu"));
+const ShowBanner = lazy(() => import("./banner/ViewBaner"));
 
 export const SyncDataContext = createContext<any>({});
 
@@ -20,13 +21,13 @@ const Menu = () => {
         banner,
       }}
     >
-      <div className="flex w-full justify-center flex-row">
-        <div className="flex" style={{ maxWidth: "80%", background: "black" }}>
-          <div className="w-full  hidden lg:block" style={{ minWidth: "19%" }}>
+      <div className="flex w-full justify-center flex-wrap">
+        <div className="flex flex-wrap w-full xl:max-w-[77%]">
+          <div className="hidden lg:block cssMenu w-[19%]">
             <ShowMenu />
           </div>
-          <div className="h-full w-full flex-row flex">
-            <div className="h-full w-full lg:w-53/100 mx-6">
+          <div className="flex flex-wrap flex-row w-full pr-[47px] lg:pr-0 lg:w-[80%]">
+            <div className="h-full w-full lg:w-[68%] mx-6  lg:max-h-[486px]">
               <SlideComponent />
             </div>
             <div className="w-full lg:w-1/4 hidden lg:flex flex-col">
@@ -41,6 +42,9 @@ const Menu = () => {
                 </div>
               ))}
             </div>
+          </div>
+          <div className="flex w-full justify-center flex-wrap">
+            <ShowBanner />
           </div>
         </div>
       </div>

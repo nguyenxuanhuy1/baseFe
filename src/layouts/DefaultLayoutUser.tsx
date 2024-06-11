@@ -67,7 +67,7 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
               <ArrowRightOutlined />
               <CustomTypography.Text
                 strong
-                title="Giải trí cực mạnh"
+                title="Giải trí cùng các sản phẩm mới"
                 className="text-white"
               />
             </div>
@@ -92,7 +92,7 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
           </div>
         </div>
         <div className="w-full xl:w-4/5">
-          <div className="flex items-center gap-2 w-full justify-between pt-1 mr-3 ml-3">
+          <div className="flex items-center gap-2 w-full justify-between pt-1">
             <div className="items-center gap-2 hidden sm:flex">
               <Image width={50} height={50} preview={false} src={LOGO_BCA} />
               <CustomTypography.Text
@@ -179,7 +179,7 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
           </div>
         </div>
       </Header>
-      <Content className="bg-[#f0f0f0] pt-4 h-auto ">{children}</Content>
+      <Content className="bg-[#f0f0f0] pt-4 h-[100%]">{children}</Content>
       {/* <Footer className="bg-[#000D21]">
         <div>Footer</div>
       </Footer> */}
