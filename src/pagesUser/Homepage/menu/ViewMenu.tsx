@@ -5,7 +5,7 @@ const ShowMenu = () => {
   const { menu } = useContext(SyncDataContext);
 
   return (
-    <div className="w-full bg-[#fff] rounded-[3px] h-auto lg:min-h-[312px]">
+    <div className="w-full bg-[#fff] rounded-[3px] h-max-[192px] lg:min-h-[312px]">
       {menu.map((menuItem: any, index: number) => (
         <a
           key={index}
