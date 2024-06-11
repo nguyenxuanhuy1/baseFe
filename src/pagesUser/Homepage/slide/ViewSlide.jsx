@@ -6,7 +6,7 @@ const SlideComponent = () => {
   const { slide } = useContext(SyncDataContext);
   return (
     <div>
-      <div style={{ with: "100%", height: "100%" }} className="relative">
+      <div className="relative w-full h-full">
         <Carousel
           className="custom-carousel"
           pauseOnHover={true}
@@ -18,7 +18,7 @@ const SlideComponent = () => {
               <img
                 loading="lazy"
                 src={`https://divineshop.vn${item.image}`}
-                className="h-auto max-h-[510px] lg:max-h-[312px]"
+                className="h-auto max-h-[510px] lg:max-h-[312px] rounded-[6px]"
                 style={{ minWidth: "100%" }}
               />
             </div>
