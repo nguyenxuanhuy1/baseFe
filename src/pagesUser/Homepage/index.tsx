@@ -39,7 +39,7 @@ const Menu = () => {
                   <img
                     loading="lazy"
                     src={`https://divineshop.vn${item.image}`}
-                    className="h-auto max-h-[143px] w-auto lg:max-w-[285px] mb-6  rounded-[6px]"
+                    className="h-auto max-h-[143px] w-auto lg:min-w-[286px] mb-6  rounded-[6px]"
                     alt={item.text}
                   />
                 </div>

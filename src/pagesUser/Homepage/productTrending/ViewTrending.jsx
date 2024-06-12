@@ -9,14 +9,14 @@ const ShowTrending = () => {
   };
   return (
     <div className="w-full">
-      <div>
+      <div className="px-6 lg:px-0">
         <div className="flex justify-between">
           <h4>Sản phẩm nổi bật</h4>
           <a href="">Khám phá</a>
         </div>
         <div className="mb-4">Danh sách theo sản phẩm có thể bạn sẽ thích</div>
       </div>
-      <div className="gap-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 px-6 lg:px-0">
         {trending.map((item, index) => (
           <div key={index}>
             <img
@@ -39,6 +39,9 @@ const ShowTrending = () => {
             </div>
           </div>
         ))}
+      </div>
+      <div className="jflex justify-center">
+        <div className="text-center text-xl text-blue-500">Xem thêm</div>
       </div>
     </div>
   );
