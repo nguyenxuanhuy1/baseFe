@@ -174,7 +174,7 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
           </div>
         </div>
       </Header>
-      <Content className="bg-[#f0f0f0] pt-4 h-[100%]">{children}</Content>
+      <Content className="bg-[#f0f0f0] pt-4 h-full">{children}</Content>
       {/* <Footer className="bg-[#000D21]">
         <div>Footer</div>
       </Footer> */}
