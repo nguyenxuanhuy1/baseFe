@@ -6,7 +6,7 @@ const ShowBanner = () => {
 
   return (
     <div className="w-full">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 px-6 lg:px-0">
         {banner.slice(2, 6).map((item, index) => (
           <div key={index} className="flex justify-center">
             <img

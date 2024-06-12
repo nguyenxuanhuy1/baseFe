@@ -97,12 +97,12 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
               />
             </div>
             <div className="flex items-center gap-2 sm:hidden">
-              <UnorderedListOutlined />
+              <UnorderedListOutlined className="text-2xl pl-[24px]" />
             </div>
             <Search
               placeholder="tìm kiếm"
               allowClear
-              style={{ width: "300px" }}
+              className="w-[420px]"
             />
             <div className="hidden md:block">
               <Avatar size="large" icon={<UserOutlined />} />
@@ -151,7 +151,7 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
             style={{ color: "black" }}
           >
             <div className="flex items-center gap-2 ">
-              <UnorderedListOutlined />
+              <UnorderedListOutlined className="text-2xl" />
               <CustomTypography.Text
                 title="Danh mục sẩn phẩm"
                 strong

@@ -18,8 +18,7 @@ const SlideComponent = () => {
               <img
                 loading="lazy"
                 src={`https://divineshop.vn${item.image}`}
-                className="h-auto max-h-[510px] lg:max-h-[312px] rounded-[6px]"
-                style={{ minWidth: "100%" }}
+                className="h-auto max-h-[474px] lg:max-h-[312px] rounded-[6px] min-w-[100%]"
               />
             </div>
           ))}

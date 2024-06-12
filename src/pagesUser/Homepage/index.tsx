@@ -27,7 +27,7 @@ const Menu = () => {
             <ShowMenu />
           </div>
           <div className="flex flex-wrap flex-row w-full pr-[47px] lg:pr-0 lg:w-[80%]">
-            <div className="h-full w-full lg:w-[68%] mx-6  lg:max-h-[486px]">
+            <div className="h-full w-full lg:w-[67%] mx-6  lg:max-h-[486px]">
               <SlideComponent />
             </div>
             <div className="w-full lg:w-1/4 hidden lg:flex flex-col">
@@ -36,7 +36,7 @@ const Menu = () => {
                   <img
                     loading="lazy"
                     src={`https://divineshop.vn${item.image}`}
-                    className="h-auto max-h-[143px] w-auto lg:max-w-[285px] mb-6  rounded-[6px]"
+                    className="h-auto max-h-[143px] w-auto lg:min-w-[286px] mb-6  rounded-[6px]"
                     alt={item.text}
                   />
                 </div>
