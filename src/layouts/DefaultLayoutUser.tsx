@@ -104,7 +104,7 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
               allowClear
               className="w-[420px]"
             />
-            <div className="hidden md:block">
+            <div className="hidden lg:block">
               <Avatar size="large" icon={<UserOutlined />} />
               <CustomTypography.Text
                 strong

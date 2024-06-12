@@ -8,6 +8,7 @@ const SlideComponent = () => {
     <div>
       <div className="relative w-full h-full">
         <Carousel
+          autoplay
           className="custom-carousel"
           pauseOnHover={true}
           draggable
