@@ -5,29 +5,29 @@ import { showError } from "helpers/toast";
 import { AppContext } from "App";
 // import { AppContext } from "App";
 
-const useBanner = () => {
+const useTrending = () => {
   //! state
   const [data, setData] = useState<any[]>([]);
-  const { setLoading } = useContext(AppContext);
+  //   const { setLoading } = useContext(AppContext);
 
-  const getBanner = async () => {
-    setLoading(true);
+  const getTrending = async () => {
+    // setLoading(true);
     try {
-      const response = await httpMethod.get(`${Body.BANNER}`);
+      const response = await httpMethod.get(`${Body.FEATURED}`);
       if (response.status === 200) {
         setData(response.data.list);
       }
     } catch (error: any) {
-      showError("call api banner có vấn đề rồi");
+      showError("call api featured có vấn đề rồi");
     } finally {
-      setLoading(false);
+      //   setLoading(false);
     }
   };
   useEffect(() => {
-    getBanner();
+    getTrending();
   }, []);
 
   return { data };
 };
 
-export default useBanner;
+export default useTrending;
