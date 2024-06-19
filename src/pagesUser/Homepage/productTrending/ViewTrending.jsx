@@ -2,11 +2,12 @@ import React, { useContext } from "react";
 import { SyncDataContext } from "..";
 
 const ShowTrending = () => {
-  const { trending } = useContext(SyncDataContext);
+  const { trending, loadMore } = useContext(SyncDataContext);
   const calculateDiscountPercentage = (originalPrice, price) => {
     if (originalPrice === 0) return 0;
     return Math.round(((originalPrice - price) / originalPrice) * 100);
   };
+
   return (
     <div className="w-full">
       <div className="px-6 lg:px-0">
@@ -40,8 +41,13 @@ const ShowTrending = () => {
           </div>
         ))}
       </div>
-      <div className="jflex justify-center">
-        <div className="text-center text-xl text-blue-500">Xem thêm</div>
+      <div className="flex justify-center mt-4">
+        <button
+          className="text-center text-xl text-blue-500"
+          onClick={loadMore}
+        >
+          Xem thêm
+        </button>
       </div>
     </div>
   );

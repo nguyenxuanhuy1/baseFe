@@ -14,7 +14,7 @@ const Menu = () => {
   const { data: menu } = useMenu();
   const { data: slide } = useSlide();
   const { data: banner } = useBanner();
-  const { data: trending } = useTrending();
+  const { data: trending, loadMore } = useTrending();
   return (
     <SyncDataContext.Provider
       value={{
@@ -22,6 +22,7 @@ const Menu = () => {
         slide,
         banner,
         trending,
+        loadMore,
       }}
     >
       <div className="flex w-full justify-center flex-wrap">

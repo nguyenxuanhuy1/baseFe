@@ -75,12 +75,9 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
                     className="max-h-[20px] max-w-[21px] filter-icon-white"
                     alt={item.text}
                   />
-                  {/* <div className="text-white w-auto">{item.text}</div> */}
-                  <CustomTypography.Text
-                    strong
-                    title={item.text}
-                    className="text-white w-[170px]"
-                  />
+                  <div className="text-white w-auto">
+                    <p className="w-auto min-w-[140px]">{item.text}</p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -91,7 +88,7 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
             <div className="items-center gap-2 hidden sm:flex">
               <Image width={50} height={50} preview={false} src={LOGO_BCA} />
               <CustomTypography.Text
-                title="ABC Gì gì đó"
+                title="TADA SH"
                 strong
                 className="text-white"
               />
@@ -99,11 +96,7 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
             <div className="flex items-center gap-2 sm:hidden">
               <UnorderedListOutlined className="text-2xl pl-[24px]" />
             </div>
-            <Search
-              placeholder="tìm kiếm"
-              allowClear
-              className="w-[420px]"
-            />
+            <Search placeholder="tìm kiếm" allowClear className="w-[420px]" />
             <div className="hidden lg:block">
               <Avatar size="large" icon={<UserOutlined />} />
               <CustomTypography.Text
@@ -174,7 +167,12 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
           </div>
         </div>
       </Header>
-      <Content className="bg-[#f0f0f0] pt-4 h-full">{children}</Content>
+      <Content
+        className="bg-[#e4e4e4] pt-4"
+        style={{ maxHeight: "calc(100vh-57px)", overflow: "auto" }}
+      >
+        {children}
+      </Content>
       {/* <Footer className="bg-[#000D21]">
         <div>Footer</div>
       </Footer> */}
