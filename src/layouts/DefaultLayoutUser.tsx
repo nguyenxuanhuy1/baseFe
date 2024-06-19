@@ -56,7 +56,7 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
     <Layout className="h-screen">
       <Header className="p-0 bg-blueHeader flex flex-col items-center justify-between text-white h-[auto]">
         <div className="w-full justify-center bg-[#0A59CC] h-[42px] hidden lg:flex">
-          <div className="w-full xl:w-4/5  flex justify-between  h-[42px] mr-3 ml-3">
+          <div className="w-full xl:w-[1200px]  flex justify-between  h-[42px] mr-3 ml-3">
             <div className="flex items-center gap-1 hover:underline">
               <LeftOutlined />
               <RightOutlined />
@@ -83,7 +83,7 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
             </div>
           </div>
         </div>
-        <div className="w-full xl:w-4/5">
+        <div className="w-full xl:w-[1200px]">
           <div className="flex items-center gap-2 w-full justify-between pt-1">
             <div className="items-center gap-2 hidden sm:flex">
               <Image width={50} height={50} preview={false} src={LOGO_BCA} />
@@ -140,7 +140,7 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
 
         <div className="w-full hidden lg:flex justify-center  bg-[#fff] h-auto">
           <div
-            className="w-full xl:w-4/5  flex items-center justify-between  h-[42px]"
+            className="w-full xl:w-[1200px]  flex items-center justify-between  h-[42px]"
             style={{ color: "black" }}
           >
             <div className="flex items-center gap-2 ">
@@ -169,7 +169,7 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
       </Header>
       <Content
         className="bg-[#e4e4e4] pt-4"
-        style={{ maxHeight: "calc(100vh-57px)", overflow: "auto" }}
+        // style={{ maxHeight: "calc(100vh-57px)", overflow: "auto" }}
       >
         {children}
       </Content>

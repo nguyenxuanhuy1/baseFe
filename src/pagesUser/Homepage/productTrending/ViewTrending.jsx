@@ -34,7 +34,7 @@ const ShowTrending = () => {
               <div className="font-semibold px-2 line-through opacity-50">
                 {item.originalPrice.toLocaleString()}
               </div>
-              <div className="text-white font-semibold bg-red-500 rounded-[20%]">
+              <div className="text-white font-semibold bg-red-500 rounded-[10%]">
                 -{calculateDiscountPercentage(item.originalPrice, item.price)}%
               </div>
             </div>
