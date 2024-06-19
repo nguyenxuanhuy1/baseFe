@@ -2,11 +2,12 @@ import React, { useContext } from "react";
 import { SyncDataContext } from "..";
 
 const ShowTrending = () => {
-  const { trending } = useContext(SyncDataContext);
+  const { trending, loadMore } = useContext(SyncDataContext);
   const calculateDiscountPercentage = (originalPrice, price) => {
     if (originalPrice === 0) return 0;
     return Math.round(((originalPrice - price) / originalPrice) * 100);
   };
+
   return (
     <div className="w-full">
       <div className="px-6 lg:px-0">
@@ -33,15 +34,20 @@ const ShowTrending = () => {
               <div className="font-semibold px-2 line-through opacity-50">
                 {item.originalPrice.toLocaleString()}
               </div>
-              <div className="text-white font-semibold bg-red-500 rounded-[20%]">
+              <div className="text-white font-semibold bg-red-500 rounded-[10%]">
                 -{calculateDiscountPercentage(item.originalPrice, item.price)}%
               </div>
             </div>
           </div>
         ))}
       </div>
-      <div className="jflex justify-center">
-        <div className="text-center text-xl text-blue-500">Xem thêm</div>
+      <div className="flex justify-center mt-4">
+        <button
+          className="text-center text-xl text-blue-500"
+          onClick={loadMore}
+        >
+          Xem thêm
+        </button>
       </div>
     </div>
   );

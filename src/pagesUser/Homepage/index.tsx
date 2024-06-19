@@ -14,7 +14,7 @@ const Menu = () => {
   const { data: menu } = useMenu();
   const { data: slide } = useSlide();
   const { data: banner } = useBanner();
-  const { data: trending } = useTrending();
+  const { data: trending, loadMore } = useTrending();
   return (
     <SyncDataContext.Provider
       value={{
@@ -22,15 +22,16 @@ const Menu = () => {
         slide,
         banner,
         trending,
+        loadMore,
       }}
     >
       <div className="flex w-full justify-center flex-wrap">
-        <div className="flex flex-wrap w-full xl:max-w-[80%]">
+        <div className="flex flex-wrap w-full xl:max-w-[1200px]">
           <div className="hidden lg:block cssMenu w-[19%]">
             <ShowMenu />
           </div>
           <div className="flex flex-wrap flex-row w-full pr-[47px] lg:pr-0 lg:w-[80%]">
-            <div className="h-full w-full lg:w-[67%] mx-6  lg:max-h-[486px]">
+            <div className="h-full w-full lg:w-[67%] mx-6 lg:max-h-[486px]">
               <SlideComponent />
             </div>
             <div className="w-full lg:w-1/4 hidden lg:flex flex-col">
@@ -39,7 +40,7 @@ const Menu = () => {
                   <img
                     loading="lazy"
                     src={`https://divineshop.vn${item.image}`}
-                    className="h-auto max-h-[143px] w-auto lg:min-w-[286px] mb-6  rounded-[6px]"
+                    className="h-auto max-h-[143px] w-auto lg:min-w-[290px] mb-6  rounded-[6px]"
                     alt={item.text}
                   />
                 </div>
