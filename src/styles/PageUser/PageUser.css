@@ -6,3 +6,13 @@
   /* min-width: 232px; */
   max-height: 192px;
 }
+
+.background-div {
+  width: 100%;
+  /* hoặc chiều cao bạn muốn */
+  background-image: url('../../../public/BGRIMAGE.png');
+  background-size: cover;
+  /* Để ảnh phủ toàn bộ div */
+  background-position: center;
+  /* Để ảnh căn giữa */
+}

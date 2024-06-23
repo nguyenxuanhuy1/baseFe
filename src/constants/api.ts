@@ -9,8 +9,14 @@ export const Body = {
   MENU: `https://divineshop.vn/api/header/menu`,
   SLIDE: `https://divineshop.vn/api/home/slide`,
   BANNER: `https://divineshop.vn/api/home/banners`,
+
   TRENDING: `https://divineshop.vn/api/product/list?slug=trending`,
+  TRENDING1: `https://divineshop.vn/api/product/listpage=2?slug=trending`,
+  TRENDING2: `https://divineshop.vn/api/product/list?page=3sslug=trending`,
+
   FEATURED: `https://divineshop.vn/api/product/list?slug=featured`,
-  FEATURED2: `https://divineshop.vn/api/product/list?page=2&slug=featured`,
-  FEATURED3: `https://divineshop.vn/api/product/list?page=3&slug=featured`,
+  FEATURED1: `https://divineshop.vn/api/product/list?page=2&slug=featured`,
+  FEATURED2: `https://divineshop.vn/api/product/list?page=3&slug=featured`,
+
+
 };
