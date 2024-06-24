@@ -3,6 +3,7 @@ import { SyncDataContext } from "..";
 
 const ShowTrending = () => {
   const { trending, loadMore } = useContext(SyncDataContext);
+
   const calculateDiscountPercentage = (originalPrice, price) => {
     if (originalPrice === 0) return 0;
     return Math.round(((originalPrice - price) / originalPrice) * 100);
@@ -19,11 +20,11 @@ const ShowTrending = () => {
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6 px-6 lg:px-0">
         {trending.map((item, index) => (
-          <div key={index}>
+          <div key={index} className="product-item">
             <img
               loading="lazy"
               src={`https://divineshop.vn${item.image}`}
-              className="h-auto max-h-[145px] w-full max-w-[288px] lg:max-w-[310px] rounded-[6px]"
+              className="product-image"
               alt={item.text}
             />
             <p>{item.name}</p>
@@ -34,7 +35,7 @@ const ShowTrending = () => {
               <div className="font-semibold px-2 line-through opacity-50">
                 {item.originalPrice.toLocaleString()}
               </div>
-              <div className="text-white font-semibold bg-red-500 rounded-[10%]">
+              <div className="discount-badge">
                 -{calculateDiscountPercentage(item.originalPrice, item.price)}%
               </div>
             </div>
@@ -42,10 +43,7 @@ const ShowTrending = () => {
         ))}
       </div>
       <div className="flex justify-center mt-4">
-        <button
-          className="text-center text-xl text-blue-500"
-          onClick={loadMore}
-        >
+        <button className="load-more-button" onClick={loadMore}>
           Xem thêm
         </button>
       </div>

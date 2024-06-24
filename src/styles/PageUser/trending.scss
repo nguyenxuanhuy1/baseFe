@@ -1,0 +1,112 @@
+// Biến
+$primary-color: #fa7474;
+
+// Mixin
+@mixin border-radius($radius) {
+  border-radius: $radius;
+}
+
+.w-full {
+  .px-6 {
+    padding: 0 24px; 
+    @include border-radius(6px);
+  }
+
+  .lg\:px-0 {
+    padding: 0; 
+  }
+
+  .flex {
+    display: flex;
+
+    .justify-between {
+      justify-content: space-between; 
+    }
+  }
+
+  .mb-4 {
+    margin-bottom: 1rem; 
+  }
+
+  .grid {
+    display: grid;
+
+    .grid-cols-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr)); 
+      @media (min-width: 768px) {
+        .md\:grid-cols-4 {
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+      }
+    }
+
+    .gap-6 {
+      gap: 1.5rem;
+    }
+  }
+
+  .product-item {
+    img.product-image {
+      height: auto;
+      max-height: 145px;
+      width: 100%;
+      max-width: 288px;
+      @media (min-width: 1024px) {
+        max-width: 310px;
+      }
+      border-radius: 6px;
+    }
+
+    .flex {
+      .font-semibold {
+        font-weight: 600; 
+      }
+
+      .px-2 {
+        padding-right: 0.5rem;
+      }
+
+      .line-through {
+        text-decoration: line-through; 
+        opacity: 0.5;
+      }
+
+      .text-white {
+        color: white; 
+
+        .bg-red-500 {
+          background-color: #e3342f; 
+          border-radius: 10%; 
+        }
+      }
+    }
+
+    .discount-badge {
+      font-weight: 600;
+      background-color: $primary-color;
+      border-radius: 10%; 
+    }
+  }
+
+  .justify-center {
+    justify-content: center; 
+  }
+
+  .text-center {
+    text-align: center; 
+
+    .text-xl {
+      font-size: 1.25rem; 
+
+      .text-blue-500 {
+        color: #3490dc; 
+      }
+    }
+  }
+
+  .load-more-button {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #3490dc;
+  }
+}

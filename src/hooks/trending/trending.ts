@@ -9,6 +9,7 @@ const useTrending = () => {
   const [data, setData] = useState<any[]>([]);
   const [currentPage, setCurrentPage] = useState(0);
   const { setLoading } = useContext(AppContext);
+  console.log("data", data);
 
   const APIs = [`${Body.FEATURED}`, `${Body.FEATURED2}`, `${Body.FEATURED3}`];
 
@@ -16,17 +17,19 @@ const useTrending = () => {
     setLoading(true);
     try {
       const response = await httpMethod.get(url);
-      if (response.status === 200) {
-        setData((prevData) => [...prevData, ...response.data.list]);
-      }
+      setData((prevData) => {
+        const newData = [...prevData, ...response.data.list];
+        return newData.filter(
+          (item, index, self) =>
+            index === self.findIndex((t) => t.id === item.id)
+        );
+      });
     } catch (error: any) {
-      showError("call api featured có vấn đề rồi");
+      showError("call api featured thất bại");
     } finally {
       setLoading(false);
     }
   };
-  console.log("data", data);
-
   const loadMore = () => {
     if (currentPage < APIs.length - 1) {
       setCurrentPage((prevPage) => prevPage + 1);
