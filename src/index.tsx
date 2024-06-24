@@ -2,7 +2,7 @@ import App from "App";
 import ReactDOM from "react-dom/client";
 
 import "./index.css";
-import "./styles/styles.css";
+import "./styles/styles.scss";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

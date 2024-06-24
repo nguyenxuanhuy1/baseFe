@@ -1,0 +1,118 @@
+@import 'mixins';
+@import 'variable';
+
+.filter-icon-white {
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+}
+.background-div {
+  width: 100%;
+  height: 600px;
+  background-image: url('../../../public/BGRIMAGE.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: top;
+}
+.w-full {
+  .px-6 {
+    padding: 0 24px; 
+    @include border-radius(6px);
+  }
+
+  .lg\:px-0 {
+    padding: 0; 
+  }
+
+  .flex {
+    display: flex;
+
+    .justify-between {
+      justify-content: space-between; 
+    }
+  }
+
+  .mb-4 {
+    margin-bottom: 1rem; 
+  }
+
+  .grid {
+    display: grid;
+
+    .grid-cols-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr)); 
+      @media (min-width: 768px) {
+        .md\:grid-cols-4 {
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+      }
+    }
+
+    .gap-6 {
+      gap: 1.5rem;
+    }
+  }
+
+  .product-item {
+    img.product-image {
+      height: auto;
+      max-height: 145px;
+      width: 100%;
+      max-width: 288px;
+      @media (min-width: 1024px) {
+        max-width: 310px;
+      }
+      border-radius: 6px;
+    }
+
+    .flex {
+      .font-semibold {
+        font-weight: 600; 
+      }
+
+      .px-2 {
+        padding-right: 0.5rem;
+      }
+
+      .line-through {
+        text-decoration: line-through; 
+        opacity: 0.5;
+      }
+
+      .text-white {
+        color: white; 
+
+        .bg-red-500 {
+          background-color: #e3342f; 
+          border-radius: 10%; 
+        }
+      }
+    }
+
+    .discount-badge {
+      font-weight: 600;
+      background-color: $primary-color;
+      border-radius: 10%; 
+    }
+  }
+
+  .justify-center {
+    justify-content: center; 
+  }
+  .load-more{
+    text-align: center;
+    color: #3490dc;
+  }
+  .btn-discover{
+    background-color: #2579F2;
+    border-radius: 5px;
+    width: 94px;
+    text-align: center;
+    color: #eeeded;
+    height: 27px;
+    font-size: 0.9rem;
+    &:hover {
+      width: 95px;
+      font-size: 1rem;
+      color: #fff;
+    }
+  }
+}

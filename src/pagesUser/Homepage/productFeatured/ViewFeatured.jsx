@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { SyncDataContext } from "..";
 
 const ShowFeatured = () => {
-  const { featured, loadMore } = useContext(SyncDataContext);
+  const { featured, loadMorefeatured } = useContext(SyncDataContext);
   const calculateDiscountPercentage = (originalPrice, price) => {
     if (originalPrice === 0) return 0;
     return Math.round(((originalPrice - price) / originalPrice) * 100);
@@ -13,7 +13,9 @@ const ShowFeatured = () => {
       <div className="px-6 lg:px-0">
         <div className="flex justify-between">
           <h4>Sản phẩm nổi bật</h4>
-          <a href="">Khám phá</a>
+          <a href="" className="btn-discover">
+            Khám phá
+          </a>
         </div>
         <div className="mb-4">Danh sách theo sản phẩm có thể bạn sẽ thích</div>
       </div>
@@ -41,10 +43,10 @@ const ShowFeatured = () => {
           </div>
         ))}
       </div>
-      <div className="flex justify-center mt-4">
+      <div className="flex justify-center load-more">
         <button
-          className="text-center text-xl text-blue-500"
-          onClick={loadMore}
+          className="text-center  text-blue-500"
+          onClick={loadMorefeatured}
         >
           Xem thêm
         </button>

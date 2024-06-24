@@ -1,29 +1,36 @@
 import React, { useContext } from "react";
 import { SyncDataContext } from "..";
-
+import { RiseOutlined } from "@ant-design/icons";
 const ShowTrending = () => {
-  const { trending, loadMore } = useContext(SyncDataContext);
-  console.log('trending', trending);
+  const { trending, loadMoreTrending } = useContext(SyncDataContext);
+  console.log("trending", trending);
   const calculateDiscountPercentage = (originalPrice, price) => {
     if (originalPrice === 0) return 0;
     return Math.round(((originalPrice - price) / originalPrice) * 100);
   };
 
   return (
-    <div className="w-full background-div text-white pt-[44px]">
+    <div className="w-full text-white pt-[150px]">
       <div className="px-6 lg:px-0">
         <div className="flex justify-between">
-          <h4>Sản phẩm nổi bật</h4>
-          <a href="">Khám phá</a>
+          <div className="flex items-center">
+            <div>
+              <RiseOutlined style={{ color: "red", fontSize: "22px" }} />
+            </div>
+            <div>Sản phẩm bán chạy nhất</div>
+          </div>
+          <a href="" className="btn-discover">
+            Khám phá
+          </a>
         </div>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6 px-6 lg:px-0">
         {trending.map((item, index) => (
-          <div key={index}>
+          <div key={index} className="product-item">
             <img
               loading="lazy"
               src={`https://divineshop.vn${item.image}`}
-              className="h-auto max-h-[145px] w-full max-w-[288px] lg:max-w-[310px] rounded-[6px]"
+              className="product-image"
               alt={item.text}
             />
             <p>{item.name}</p>
@@ -34,20 +41,15 @@ const ShowTrending = () => {
               <div className="font-semibold px-2 line-through opacity-50">
                 {item.originalPrice.toLocaleString()}
               </div>
-              <div className=" font-semibold bg-red-500 rounded-[10%]">
+              <div className="font-semibold bg-red-500 rounded-[10%]">
                 -{calculateDiscountPercentage(item.originalPrice, item.price)}%
               </div>
             </div>
           </div>
         ))}
       </div>
-      <div className="flex justify-center mt-4">
-        <button
-          className="text-center text-xl text-blue-500"
-          onClick={loadMore}
-        >
-          Xem thêm
-        </button>
+      <div className="flex justify-center font-semibold">
+        <button onClick={loadMoreTrending}>Xem thêm</button>
       </div>
     </div>
   );

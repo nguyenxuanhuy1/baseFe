@@ -9,7 +9,9 @@ import useTrending from "hooks/trending/trending";
 const ShowMenu = lazy(() => import("./menu/ViewMenu"));
 const ShowBanner = lazy(() => import("./banner/ViewBaner"));
 const ShowFeatured = lazy(() => import("./productFeatured/ViewFeatured"));
-const ShowTrending = lazy(() => import("pagesUser/Homepage/productTrending/ViewTrending"));
+const ShowTrending = lazy(
+  () => import("pagesUser/Homepage/productTrending/ViewTrending")
+);
 
 export const SyncDataContext = createContext<any>({});
 
@@ -59,7 +61,9 @@ const Menu = () => {
           <div className="flex w-full justify-center flex-wrap mt-6">
             <ShowFeatured />
           </div>
-          <div className="flex w-full justify-center flex-wrap mt-6">
+        </div>
+        <div className="flex w-full justify-center background-div flex-wrap mt-6 bg-[#000d21]">
+          <div className="xl:max-w-[1200px]">
             <ShowTrending />
           </div>
         </div>
