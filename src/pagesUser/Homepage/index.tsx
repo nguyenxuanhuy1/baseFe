@@ -62,7 +62,7 @@ const Menu = () => {
             <ShowFeatured />
           </div>
         </div>
-        <div className="flex w-full justify-center background-div flex-wrap mt-6 bg-[#000d21]">
+        <div className="flex w-full justify-center background-div flex-wrap mt-6 bg-[#000d21] h-auto">
           <div className="xl:max-w-[1200px]">
             <ShowTrending />
           </div>

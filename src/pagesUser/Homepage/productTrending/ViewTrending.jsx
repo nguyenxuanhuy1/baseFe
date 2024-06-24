@@ -10,14 +10,14 @@ const ShowTrending = () => {
   };
 
   return (
-    <div className="w-full text-white pt-[150px]">
+    <div className="w-full text-white layout-trending">
       <div className="px-6 lg:px-0">
         <div className="flex justify-between">
-          <div className="flex items-center">
-            <div>
-              <RiseOutlined style={{ color: "red", fontSize: "22px" }} />
+          <div className="i-trending">
+            <div className="icRise" >
+              <RiseOutlined />
             </div>
-            <div>Sản phẩm bán chạy nhất</div>
+            <div className="t-trend">#Sản phẩm bán chạy nhất</div>
           </div>
           <a href="" className="btn-discover">
             Khám phá
