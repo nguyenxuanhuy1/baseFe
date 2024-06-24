@@ -12,16 +12,16 @@ const ShowFeatured = () => {
     <div className="w-full">
       <div className="px-6 lg:px-0">
         <div className="flex justify-between">
-          <h4>Sản phẩm nổi bật</h4>
+          <div className="tFeature">Sản phẩm nổi bật</div>
           <a href="" className="btn-discover">
             Khám phá
           </a>
         </div>
-        <div className="mb-4">Danh sách theo sản phẩm có thể bạn sẽ thích</div>
+        <div className="mb-4">Danh sách những sản phẩm theo xu hướng mà có thể bạn sẽ thích</div>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6 px-6 lg:px-0">
         {featured.map((item, index) => (
-          <div key={index}>
+          <a key={index}>
             <img
               loading="lazy"
               src={`https://divineshop.vn${item.image}`}
@@ -40,7 +40,7 @@ const ShowFeatured = () => {
                 -{calculateDiscountPercentage(item.originalPrice, item.price)}%
               </div>
             </div>
-          </div>
+          </a>
         ))}
       </div>
       <div className="flex justify-center load-more">
