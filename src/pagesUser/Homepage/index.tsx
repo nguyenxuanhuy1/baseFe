@@ -3,18 +3,24 @@ import useMenu from "hooks/menu/menu";
 import SlideComponent from "./slide/ViewSlide";
 import useSlide from "hooks/slide/slide";
 import useBanner from "hooks/banners/banner";
+import useFeatured from "hooks/featured/featured";
 import useTrending from "hooks/trending/trending";
 
 const ShowMenu = lazy(() => import("./menu/ViewMenu"));
 const ShowBanner = lazy(() => import("./banner/ViewBaner"));
-const ShowTrending = lazy(() => import("./productTrending/ViewTrending"));
+const ShowFeatured = lazy(() => import("./productFeatured/ViewFeatured"));
+const ShowTrending = lazy(
+  () => import("pagesUser/Homepage/productTrending/ViewTrending")
+);
+
 export const SyncDataContext = createContext<any>({});
 
 const Menu = () => {
   const { data: menu } = useMenu();
   const { data: slide } = useSlide();
   const { data: banner } = useBanner();
-  const { data: trending, loadMore } = useTrending();
+  const { data: featured, loadMorefeatured } = useFeatured();
+  const { data: trending, loadMoreTrending } = useTrending();
   return (
     <SyncDataContext.Provider
       value={{
@@ -22,7 +28,9 @@ const Menu = () => {
         slide,
         banner,
         trending,
-        loadMore,
+        loadMoreTrending,
+        featured,
+        loadMorefeatured,
       }}
     >
       <div className="flex w-full justify-center flex-wrap">
@@ -51,6 +59,11 @@ const Menu = () => {
             <ShowBanner />
           </div>
           <div className="flex w-full justify-center flex-wrap mt-6">
+            <ShowFeatured />
+          </div>
+        </div>
+        <div className="flex w-full justify-center background-div flex-wrap mt-6 bg-[#000d21]">
+          <div className="xl:max-w-[1200px]">
             <ShowTrending />
           </div>
         </div>

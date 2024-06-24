@@ -13,7 +13,7 @@ import LocalStorage from "utils/LocalStorage";
 import LOGO_BCA from "assets/icons/logo_BCA.svg";
 import Search from "antd/es/input/Search";
 import { Footer } from "antd/es/layout/layout";
-import { createContext, useEffect } from "react";
+import { createContext } from "react";
 import useTopheader from "hooks/header/topHeader";
 import useMidHeader from "hooks/header/midHeader";
 import useBotHeader from "hooks/header/botHeader";
@@ -168,7 +168,7 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
         </div>
       </Header>
       <Content
-        className="bg-[#e4e4e4] pt-4"
+        className="bg-[#fff] pt-4"
         // style={{ maxHeight: "calc(100vh-57px)", overflow: "auto" }}
       >
         {children}

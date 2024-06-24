@@ -4,23 +4,22 @@ import httpMethod from "services/httpMethod";
 import { showError } from "helpers/toast";
 import { AppContext } from "App";
 
-const useTrending = () => {
+const useFeatured = () => {
   //! state
   const [data, setData] = useState<any[]>([]);
   const [currentPage, setCurrentPage] = useState(0);
   const { setLoading } = useContext(AppContext);
 
-  const APIs = [`${Body.TRENDING}`, `${Body.TRENDING1}`, `${Body.TRENDING2}`];
+  const APIs = [`${Body.FEATURED}`, `${Body.FEATURED1}`, `${Body.FEATURED2}`];
 
-  const getTrending = async (url: string) => {
+  const getFeatured = async (url: string) => {
     setLoading(true);
     try {
       const response = await httpMethod.get(url);
       if (response.status === 200) {
         setData((prevData) => {
-          const newData = response.data.list.filter(
-            (item: any) =>
-              !prevData.some((prevItem: any) => prevItem.id === item.id)
+          const newData = response.data.list.filter((item: any) =>
+            !prevData.some((prevItem: any) => prevItem.id === item.id)
           );
           return [...prevData, ...newData];
         });
@@ -32,14 +31,14 @@ const useTrending = () => {
     }
   };
 
-  const loadMoreTrending = () => {
+  const loadMorefeatured = () => {
     setCurrentPage((prevPage) => (prevPage + 1) % APIs.length);
   };
   useEffect(() => {
-    getTrending(APIs[currentPage]);
+    getFeatured(APIs[currentPage]);
   }, [currentPage]);
 
-  return { data, loadMoreTrending };
+  return { data, loadMorefeatured };
 };
 
-export default useTrending;
+export default useFeatured;
