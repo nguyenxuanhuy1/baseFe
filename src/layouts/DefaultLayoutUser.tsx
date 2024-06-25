@@ -13,10 +13,11 @@ import LocalStorage from "utils/LocalStorage";
 import LOGO_BCA from "assets/icons/logo_BCA.svg";
 import Search from "antd/es/input/Search";
 import { Footer } from "antd/es/layout/layout";
-import { createContext } from "react";
+import { createContext, useState } from "react";
 import useTopheader from "hooks/header/topHeader";
 import useMidHeader from "hooks/header/midHeader";
 import useBotHeader from "hooks/header/botHeader";
+import Login from "./Login";
 
 export const TopHeaderDataContext = createContext<any>({
   ListTopHeaderData: [],
@@ -35,6 +36,9 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
   //bot header
   const { data: botHeader } = useBotHeader();
   //! state
+  const [openModal, setOpenModal] = useState<boolean>(false);
+  console.log(openModal, "o ben mo do");
+
   const { Header, Content } = Layout;
   const auth = useAuth();
   const user = LocalStorage.get("user");
@@ -51,7 +55,9 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
       onClick: () => auth.logout(),
     },
   ];
-
+  const closeModal = () => {
+    setOpenModal(false);
+  };
   return (
     <Layout className="h-screen">
       <Header className="p-0 bg-blueHeader flex flex-col items-center justify-between text-white h-[auto]">
@@ -93,17 +99,24 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
                 className="text-white"
               />
             </div>
-            <div className="flex items-center gap-2 sm:hidden">
+            <div className="menu-sm">
               <UnorderedListOutlined className="text-2xl pl-[24px]" />
             </div>
-            <Search placeholder="tìm kiếm" allowClear className="w-[420px]" />
-            <div className="hidden lg:block">
+            <Search
+              placeholder="tìm kiếm"
+              allowClear
+              className="input-search"
+            />
+            <div className="hidden lg:block" onClick={() => setOpenModal(true)}>
               <Avatar size="large" icon={<UserOutlined />} />
               <CustomTypography.Text
                 strong
                 title=" Đăng nhập / Đăng kí"
                 className="text-white"
               />
+              {openModal && (
+                <Login open={openModal} onCancel={() => setOpenModal(false)} />
+              )}
             </div>
             <>
               <Button
@@ -115,7 +128,7 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
               </Button>
             </>
           </div>
-          <div className="hidden lg:flex items-center justify-between">
+          <div className="hidden lg:flex items-center justify-between h-[45px]">
             {midHeader.map((item, index) => (
               <div
                 className="flex flex-row gap-2 items-center"
@@ -140,7 +153,7 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
 
         <div className="w-full hidden lg:flex justify-center  bg-[#fff] h-auto">
           <div
-            className="w-full xl:w-[1200px]  flex items-center justify-between  h-[42px]"
+            className="w-full xl:w-[1200px]  flex items-center justify-between h-[42px]"
             style={{ color: "black" }}
           >
             <div className="flex items-center gap-2 ">
