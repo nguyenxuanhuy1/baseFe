@@ -12,16 +12,36 @@
   background-repeat: no-repeat;
   background-position: top;
 }
+// page user default
+.menu-sm{
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  @media (min-width: 640px) {
+    display: none;
+  }
+}
+.input-search{
+  width: 400px;
+}
+
+// 
 
 .w-full {
+  a{
+    color: inherit;
+    p:hover{
+      text-decoration: underline;
+    }
+  }
   .px-6 {
     padding: 0 24px;
     @include border-radius(6px);
   }
 
   .tFeature {
-    font-size: large;
-
+    font-size: x-large;
+    font-weight: 600;
   }
 
   .lg\:px-0 {
@@ -155,5 +175,19 @@
 
   .layout-trending {
     padding-top: 11rem;
+    padding-bottom: 3rem;
+    color: #fff;
+  }
+  .l-more{
+    display: flex;
+    justify-content: center;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    font-size:medium;
+  }
+  .btn-more{
+    &:hover{
+      color: #3490dc;
+    }
   }
 }

@@ -17,7 +17,9 @@ const ShowFeatured = () => {
             Khám phá
           </a>
         </div>
-        <div className="mb-4">Danh sách những sản phẩm theo xu hướng mà có thể bạn sẽ thích</div>
+        <div className="mb-4">
+          Danh sách những sản phẩm theo xu hướng mà có thể bạn sẽ thích
+        </div>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6 px-6 lg:px-0">
         {featured.map((item, index) => (
@@ -43,11 +45,8 @@ const ShowFeatured = () => {
           </a>
         ))}
       </div>
-      <div className="flex justify-center load-more">
-        <button
-          className="text-center  text-blue-500"
-          onClick={loadMorefeatured}
-        >
+      <div className="l-more">
+        <button onClick={loadMorefeatured} className="btn-more">
           Xem thêm
         </button>
       </div>
