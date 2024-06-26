@@ -5,22 +5,16 @@ const ShowMenu = () => {
   const { menu } = useContext(SyncDataContext);
 
   return (
-    <div className="w-full bg-[#d8d6d6] rounded-[6px] h-max-[192px] lg:min-h-[312px]">
+    <div className="show-menu">
       {menu.map((menuItem: any, index: number) => (
-        <a
-          key={index}
-          href={menuItem.link}
-          className="flex items-center text-center no-underline pt-1 pb-1 pl-8 hover:bg-gray-200"
-        >
+        <a key={index} href={menuItem.link} className="item-image">
           <img
+            className="ic-img-menu"
             loading="lazy"
             src={`https://divineshop.vn${menuItem.icon}`}
-            style={{ maxHeight: "18px", maxWidth: "21px" }}
             alt={menuItem.text}
           />
-          <span style={{ marginLeft: "5px", whiteSpace: "nowrap" }}>
-            {menuItem.text}
-          </span>{" "}
+          <span className="sp-menu">{menuItem.text}</span>
         </a>
       ))}
     </div>

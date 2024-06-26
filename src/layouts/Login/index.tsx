@@ -9,13 +9,13 @@ const Login = (props: IProps) => {
 
   return (
     <Modal
-      open={!!open}
+      open={open}
       onCancel={onCancel}
       footer={false}
       width={"68%"}
       //   title="Đăng nhập / đăng kí"
     >
-      đây là form đăng nhập
+      Đăng nhập/ đăng kí
     </Modal>
   );
 };
