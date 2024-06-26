@@ -33,7 +33,7 @@ const ShowTrending = () => {
               alt={item.text}
             />
             <p>{item.name}</p>
-            <div className="flex my-2 ">
+            <div className="flex flex-wrap my-2 ">
               <div className="font-semibold">
                 {item.price.toLocaleString()}đ
               </div>

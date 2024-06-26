@@ -48,22 +48,22 @@ const Menu = () => {
                   <img
                     loading="lazy"
                     src={`https://divineshop.vn${item.image}`}
-                    className="h-auto max-h-[143px] w-auto lg:min-w-[290px] mb-6  rounded-[6px]"
+                    className="h-auto max-h-[143px] w-auto lg:min-w-[281px] mb-6  rounded-[6px]"
                     alt={item.text}
                   />
                 </div>
               ))}
             </div>
           </div>
-          <div className="flex w-full justify-center flex-wrap">
+          <div className="flex w-full mx-6 xl:mx-0 justify-center flex-wrap">
             <ShowBanner />
           </div>
-          <div className="flex w-full justify-center flex-wrap mt-6">
+          <div className="flex w-full mx-6 xl:mx-0  justify-center flex-wrap mt-6">
             <ShowFeatured />
           </div>
         </div>
         <div className="flex w-full justify-center background-div flex-wrap mt-6 bg-[#000d21] h-auto">
-          <div className="xl:max-w-[1200px]">
+          <div className="mx-6 xl:mx-0 xl:max-w-[1200px]">
             <ShowTrending />
           </div>
         </div>

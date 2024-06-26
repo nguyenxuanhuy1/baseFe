@@ -37,8 +37,6 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
   const { data: botHeader } = useBotHeader();
   //! state
   const [openModal, setOpenModal] = useState<boolean>(false);
-  console.log(openModal, "o ben mo do");
-
   const { Header, Content } = Layout;
   const auth = useAuth();
   const user = LocalStorage.get("user");
@@ -55,9 +53,6 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
       onClick: () => auth.logout(),
     },
   ];
-  const closeModal = () => {
-    setOpenModal(false);
-  };
   return (
     <Layout className="h-screen">
       <Header className="p-0 bg-blueHeader flex flex-col items-center justify-between text-white h-[auto]">
@@ -107,12 +102,17 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
               allowClear
               className="input-search"
             />
-            <div className="hidden lg:block" onClick={() => setOpenModal(true)}>
-              <Avatar size="large" icon={<UserOutlined />} />
+            <div className="hidden md:block">
+              <Avatar
+                size="large"
+                icon={<UserOutlined />}
+                onClick={() => setOpenModal(true)}
+              />
               <CustomTypography.Text
                 strong
-                title=" Đăng nhập / Đăng kí"
-                className="text-white"
+                title="Đăng nhập / Đăng kí"
+                className="text-white "
+                onClick={() => setOpenModal(true)}
               />
               {openModal && (
                 <Login open={openModal} onCancel={() => setOpenModal(false)} />
@@ -181,8 +181,8 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
         </div>
       </Header>
       <Content
-        className="bg-[#fff] pt-4"
-        // style={{ maxHeight: "calc(100vh-57px)", overflow: "auto" }}
+        className="bg-[#ebeaea] pt-4"
+        // style={{ maxHeight: "calc(100vh)", overflow: "auto" }}
       >
         {children}
       </Content>

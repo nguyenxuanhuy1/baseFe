@@ -9,7 +9,7 @@ const ShowFeatured = () => {
   };
 
   return (
-    <div className="w-full">
+    <div className="container-featured">
       <div className="px-6 lg:px-0">
         <div className="flex justify-between">
           <div className="tFeature">Sản phẩm nổi bật</div>
@@ -31,16 +31,25 @@ const ShowFeatured = () => {
               alt={item.text}
             />
             <p>{item.name}</p>
-            <div className="flex my-2">
+            <div className="flex flex-wrap my-2">
               <div className="font-semibold">
                 {item.price.toLocaleString()}đ
               </div>
-              <div className="font-semibold px-2 line-through opacity-50">
-                {item.originalPrice.toLocaleString()}
-              </div>
-              <div className="text-white font-semibold bg-red-500 rounded-[10%]">
-                -{calculateDiscountPercentage(item.originalPrice, item.price)}%
-              </div>
+              {item.originalPrice !== item.price && (
+                <>
+                  <div className="font-semibold px-2 line-through opacity-50">
+                    {item.originalPrice.toLocaleString()}đ
+                  </div>
+                  <div className="font-semibold bg-red-500 rounded-[10%]">
+                    -
+                    {calculateDiscountPercentage(
+                      item.originalPrice,
+                      item.price
+                    )}
+                    %
+                  </div>
+                </>
+              )}
             </div>
           </a>
         ))}
