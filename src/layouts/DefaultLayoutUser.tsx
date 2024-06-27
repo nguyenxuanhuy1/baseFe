@@ -182,7 +182,11 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
       </Header>
       <Content
         className="bg-[#ebeaea] pt-4"
-        // style={{ maxHeight: "calc(100vh)", overflow: "auto" }}
+        style={{
+          // maxHeight: "calc(100vh)",
+          // overflow: "auto",
+          fontFamily: "sans-serif",
+        }}
       >
         {children}
       </Content>
