@@ -9,7 +9,7 @@ const ShowFeatured = () => {
   };
 
   return (
-    <div className="container-featured">
+    <div className="container-item">
       <div className="px-6 lg:px-0">
         <div className="flex justify-between">
           <div className="tFeature">Sản phẩm nổi bật</div>
@@ -21,26 +21,25 @@ const ShowFeatured = () => {
           Danh sách những sản phẩm theo xu hướng mà có thể bạn sẽ thích
         </div>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 px-6 lg:px-0">
+      {/* <div className="grid grid-cols-2 md:grid-cols-4 gap-6 px-6 lg:px-0"> */}
+      <div className="grid">
         {featured.map((item, index) => (
           <a key={index}>
             <img
               loading="lazy"
               src={`https://divineshop.vn${item.image}`}
-              className="h-auto max-h-[145px] w-full max-w-[288px] lg:max-w-[310px] rounded-[6px]"
+              className="it-image"
               alt={item.text}
             />
             <p>{item.name}</p>
-            <div className="flex flex-wrap my-2">
-              <div className="font-semibold">
-                {item.price.toLocaleString()}đ
-              </div>
+            <div className="show-price">
+              <div className="price">{item.price.toLocaleString()}đ</div>
               {item.originalPrice !== item.price && (
                 <>
-                  <div className="font-semibold px-2 line-through opacity-50">
+                  <div className="origin-price">
                     {item.originalPrice.toLocaleString()}đ
                   </div>
-                  <div className="font-semibold bg-red-500 rounded-[10%]">
+                  <div className="discountpercen">
                     -
                     {calculateDiscountPercentage(
                       item.originalPrice,

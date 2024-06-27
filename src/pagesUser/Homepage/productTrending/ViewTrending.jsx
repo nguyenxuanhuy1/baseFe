@@ -9,7 +9,7 @@ const ShowTrending = () => {
   };
 
   return (
-    <div className="layout-trending">
+    <div className="layout-trending container-item">
       <div className="px-6 lg:px-0">
         <div className="flex justify-between">
           <div className="i-trending">
@@ -23,26 +23,24 @@ const ShowTrending = () => {
           </a>
         </div>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 px-6 lg:px-0">
+      <div className="grid">
         {trending.map((item, index) => (
           <a key={index} className="product-item">
             <img
               loading="lazy"
               src={`https://divineshop.vn${item.image}`}
-              className="product-image"
+              className="it-image"
               alt={item.text}
             />
             <p>{item.name}</p>
-            <div className="flex flex-wrap my-2 ">
-              <div className="font-semibold">
-                {item.price.toLocaleString()}đ
-              </div>
+            <div className="show-price">
+              <div className="price">{item.price.toLocaleString()}đ</div>
               {item.originalPrice !== item.price && (
                 <>
-                  <div className="font-semibold px-2 line-through opacity-50">
+                  <div className="origin-price">
                     {item.originalPrice.toLocaleString()}đ
                   </div>
-                  <div className="font-semibold bg-red-500 rounded-[10%]">
+                  <div className="discountpercen">
                     -
                     {calculateDiscountPercentage(
                       item.originalPrice,
