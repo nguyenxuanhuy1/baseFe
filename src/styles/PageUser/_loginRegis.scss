@@ -1,0 +1,47 @@
+.loginRegister {
+  display: flex;
+  .item-left {
+    .btn-loginRes {
+      display: flex;
+      font-size: 1.5rem;
+      font-weight: 300;
+      .pointer {
+        cursor: pointer;
+        margin-right: 0.3rem;
+        &:hover {
+          text-decoration: underline;
+          color: inherit;
+        }
+      }
+
+      .bold {
+        font-weight: 400;
+      }
+
+      .hidden {
+        opacity: 0.5;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+      }
+    }
+  }
+  .forget-pass {
+    color: inherit;
+    margin-top: 0.8rem;
+    margin-bottom: 0.8rem;
+    // color: #2e7ef3;
+    font-size: 0.9rem;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  .item-right {
+    margin-left: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @media (max-width: $breakpoint-sm) {
+      display: none;
+    }
+  }
+}

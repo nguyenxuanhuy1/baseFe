@@ -6,20 +6,19 @@ import { useAuth } from "providers/AuthenticationProvider";
 import { Navigate } from "react-router-dom";
 import BaseUrl from "constants/baseUrl";
 import Input from "components/CustomField/InputField";
-import Button from "components/CustomButton";
 import { ButtonHTMLTypes } from "interfaces/common";
-// import aaa from "../../../public/Authen.png";
+import { useState } from "react";
+import { validationLoginSchema } from "./validation";
+import Button from "components/CustomButton";
 interface IProps {
   open: boolean;
   onCancel: () => void;
 }
-const validationLoginSchema = Yup.object().shape({
-  username: Yup.string().required("Username is required field!"),
-  password: Yup.string().required("Password is required field!"),
-});
+
 const Login = (props: IProps) => {
   const { open, onCancel } = props;
   const auth = useAuth();
+  const [loginAndRegis, setLoginAndRegis] = useState(false);
   const { login } = useAuth();
   if (auth.isLogged) {
     return <Navigate to={BaseUrl.Pageuser} />;
@@ -44,35 +43,81 @@ const Login = (props: IProps) => {
         {({ isSubmitting }) => {
           return (
             <Form>
-              <div className="flex">
-                <div className="left">
-                  <div style={{ marginBottom: 2 }}>
-                    Sign in with your username and password (xhuy/xhuy)
+              <div className="loginRegister">
+                <div className="item-left">
+                  <div className="btn-loginRes">
+                    <a
+                      onClick={() => {
+                        setLoginAndRegis(false);
+                      }}
+                      className={`pointer ${!loginAndRegis ? "bold" : ""}`}
+                    >
+                      Đăng nhập
+                    </a>
+                    <a
+                      className={`pointer ${loginAndRegis ? "bold" : ""}`}
+                      onClick={() => {
+                        setLoginAndRegis(true);
+                      }}
+                    >
+                      Đăng kí
+                    </a>
+                    <div></div>
                   </div>
-                  <div style={{ marginBottom: 2 }}>
-                    Đăng nhập để theo dõi đơn hàng, lưu danh sách sản phẩm yêu
-                    thích và nhận nhiều ưu đãi hấp dẫn
-                  </div>
-
-                  <div>
-                    <FastField
-                      component={Input}
-                      name="username"
-                      label="Username"
-                      fullWidth
-                    />
-                    <FastField
-                      component={Input}
-                      name="password"
-                      label="Password"
-                      type="password"
-                      fullWidth
-                    />
-                  </div>
-
-                  <Button htmlType={ButtonHTMLTypes.Submit} title="Sign in" />
+                  {loginAndRegis === false ? (
+                    <>
+                      <div style={{ marginBottom: 2 }}>
+                        Đăng nhập để theo dõi đơn hàng, lưu danh sách sản phẩm
+                        yêu thích và nhận nhiều ưu đãi hấp dẫn
+                      </div>
+                      <div>
+                        <FastField
+                          style={{
+                            height: "40px",
+                            width: "100%",
+                          }}
+                          component={Input}
+                          name="username"
+                          label="Tài khoản"
+                          placeholder="Tài khoản"
+                          fullWidth
+                        />
+                        <FastField
+                          style={{
+                            height: "40px",
+                            width: "100%",
+                          }}
+                          component={Input}
+                          name="password"
+                          placeholder="Password"
+                          type="password"
+                          label="Mật khẩu"
+                        />
+                      </div>
+                      <div className="forget-pass">
+                        <a>Bạn đã não cá vàng?</a>
+                      </div>
+                      <Button
+                        htmlType={ButtonHTMLTypes.Submit}
+                        title="Đăng nhập"
+                        style={{
+                          width: "100%",
+                          height: "40px",
+                          backgroundColor: "#2579F2",
+                          color: "#fff",
+                        }}
+                      />
+                    </>
+                  ) : (
+                    <>
+                      <div>
+                        Đăng ký để theo dõi đơn hàng, lưu danh sách sản phẩm yêu
+                        thích và nhận nhiều ưu đãi hấp dẫn
+                      </div>
+                    </>
+                  )}
                 </div>
-                <div className="right">
+                <div className="item-right">
                   <img
                     src="https://cdn.divineshop.vn/static/368e705d45bfc8742aa9d20dbcf4c78c.svg"
                     alt="lỗi img login"
