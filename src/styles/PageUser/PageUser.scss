@@ -2,7 +2,7 @@
 @import "variable";
 @import "./item.scss";
 @import "showmenu";
-
+@import "_loginRegis";
 .filter-icon-white {
   filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%)
     contrast(100%);
