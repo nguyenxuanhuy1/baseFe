@@ -5,7 +5,16 @@ import {
   UnorderedListOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { Avatar, Layout, MenuProps, Image, Button } from "antd";
+import {
+  Avatar,
+  Layout,
+  MenuProps,
+  Image,
+  Button,
+  Divider,
+  Menu,
+  Popover,
+} from "antd";
 import { CommonIcons } from "components/CommonIcons";
 import { CustomTypography } from "components/CustomTypography";
 import { useAuth } from "providers/AuthenticationProvider";
@@ -18,6 +27,9 @@ import useTopheader from "hooks/header/topHeader";
 import useMidHeader from "hooks/header/midHeader";
 import useBotHeader from "hooks/header/botHeader";
 import Login from "./Login";
+import Sider from "antd/es/layout/Sider";
+import routes from "routers";
+import ShowMenu from "pagesUser/Homepage/menu/ViewMenu";
 
 export const TopHeaderDataContext = createContext<any>({
   ListTopHeaderData: [],
@@ -40,7 +52,6 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
   const { Header, Content } = Layout;
   const auth = useAuth();
   const user = LocalStorage.get("user");
-
   const items: MenuProps["items"] = [
     {
       key: "1",
@@ -53,6 +64,18 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
       onClick: () => auth.logout(),
     },
   ];
+  const [open, setOpen] = useState(false);
+  const content = (
+    <div>
+      <p>Đăng nhập/đăng kí</p>
+      <p>
+        <ShowMenu />
+      </p>
+    </div>
+  );
+  const handleOpenChange = (newOpen: boolean) => {
+    setOpen(newOpen);
+  };
   return (
     <Layout className="h-screen">
       <Header className="p-0 bg-blueHeader flex flex-col items-center justify-between text-white h-[auto]">
@@ -94,9 +117,15 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
                 className="text-white"
               />
             </div>
-            <div className="menu-sm">
+            <Popover
+              trigger="click"
+              open={open}
+              onOpenChange={handleOpenChange}
+              content={content}
+              arrow={false}
+            >
               <UnorderedListOutlined className="text-2xl pl-[24px]" />
-            </div>
+            </Popover>
             <Search
               placeholder="tìm kiếm"
               allowClear
