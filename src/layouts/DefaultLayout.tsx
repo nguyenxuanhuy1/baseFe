@@ -87,8 +87,8 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
       <Layout>
         <Header className="p-4 bg-white flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Image width={50} height={50} preview={false} src={LOGO_BCA} />
-            <CustomTypography.Text strong title="TRUNG TÂM" />
+            <Image width={50} height={50} preview={false} />
+            <CustomTypography.Text strong title="Admin quản lý" />
           </div>
           <div className="flex items-center gap-2">
             <CustomTypography.Text title={user?.username || "User"} />

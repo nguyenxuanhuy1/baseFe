@@ -5,11 +5,10 @@ import {
   UnorderedListOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { Avatar, Layout, MenuProps, Image, Button } from "antd";
+import { Avatar, Layout, MenuProps, Image, Button, Popover } from "antd";
 import { CommonIcons } from "components/CommonIcons";
 import { CustomTypography } from "components/CustomTypography";
 import { useAuth } from "providers/AuthenticationProvider";
-import LocalStorage from "utils/LocalStorage";
 import LOGO_BCA from "assets/icons/logo_BCA.svg";
 import Search from "antd/es/input/Search";
 import { Footer } from "antd/es/layout/layout";
@@ -17,7 +16,8 @@ import { createContext, useState } from "react";
 import useTopheader from "hooks/header/topHeader";
 import useMidHeader from "hooks/header/midHeader";
 import useBotHeader from "hooks/header/botHeader";
-import Login from "./Login";
+import Login from "./Login/components/FormLogin";
+import useLogin from "hooks/Login/login";
 
 export const TopHeaderDataContext = createContext<any>({
   ListTopHeaderData: [],
@@ -39,7 +39,7 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
   const [openModal, setOpenModal] = useState<boolean>(false);
   const { Header, Content } = Layout;
   const auth = useAuth();
-  const user = LocalStorage.get("user");
+  // const { user, isAuthenticated } = useLogin();
 
   const items: MenuProps["items"] = [
     {
@@ -53,6 +53,16 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
       onClick: () => auth.logout(),
     },
   ];
+  const [open, setOpen] = useState(false);
+  const content = (
+    <div>
+      <p>Đăng nhập/đăng kí</p>
+      <p></p>
+    </div>
+  );
+  const handleOpenChange = (newOpen: boolean) => {
+    setOpen(newOpen);
+  };
   return (
     <Layout className="h-screen">
       <Header className="p-0 bg-blueHeader flex flex-col items-center justify-between text-white h-[auto]">
@@ -94,30 +104,53 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
                 className="text-white"
               />
             </div>
-            <div className="menu-sm">
+            <Popover
+              className="menu-sm"
+              trigger="click"
+              open={open}
+              onOpenChange={handleOpenChange}
+              content={content}
+              arrow={false}
+            >
               <UnorderedListOutlined className="text-2xl pl-[24px]" />
-            </div>
+            </Popover>
             <Search
               placeholder="tìm kiếm"
               allowClear
               className="input-search"
             />
-            <div className="hidden md:block">
-              <Avatar
-                size="large"
-                icon={<UserOutlined />}
-                onClick={() => setOpenModal(true)}
-              />
-              <CustomTypography.Text
-                strong
-                title="Đăng nhập / Đăng kí"
-                className="text-white "
-                onClick={() => setOpenModal(true)}
-              />
-              {openModal && (
-                <Login open={openModal} onCancel={() => setOpenModal(false)} />
+            {/* <div className="hidden md:block">
+              {isAuthenticated ? (
+                <div>
+                  <Avatar size="large" icon={<UserOutlined />} />
+                  <CustomTypography.Text
+                    strong
+                    // title={user.username}
+                    className="text-white"
+                  />
+                </div>
+              ) : (
+                <div>
+                  <Avatar
+                    size="large"
+                    icon={<UserOutlined />}
+                    onClick={() => setOpenModal(true)}
+                  />
+                  <CustomTypography.Text
+                    strong
+                    title="Đăng nhập / Đăng kí"
+                    className="text-white"
+                    onClick={() => setOpenModal(true)}
+                  />
+                  {openModal && (
+                    <Login
+                      open={openModal}
+                      onCancel={() => setOpenModal(false)}
+                    />
+                  )}
+                </div>
               )}
-            </div>
+            </div> */}
             <>
               <Button
                 type="primary"
