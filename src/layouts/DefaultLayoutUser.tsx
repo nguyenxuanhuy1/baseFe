@@ -5,20 +5,10 @@ import {
   UnorderedListOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import {
-  Avatar,
-  Layout,
-  MenuProps,
-  Image,
-  Button,
-  Divider,
-  Menu,
-  Popover,
-} from "antd";
+import { Avatar, Layout, MenuProps, Image, Button, Popover } from "antd";
 import { CommonIcons } from "components/CommonIcons";
 import { CustomTypography } from "components/CustomTypography";
 import { useAuth } from "providers/AuthenticationProvider";
-import LocalStorage from "utils/LocalStorage";
 import LOGO_BCA from "assets/icons/logo_BCA.svg";
 import Search from "antd/es/input/Search";
 import { Footer } from "antd/es/layout/layout";
@@ -26,10 +16,8 @@ import { createContext, useState } from "react";
 import useTopheader from "hooks/header/topHeader";
 import useMidHeader from "hooks/header/midHeader";
 import useBotHeader from "hooks/header/botHeader";
-import Login from "./Login";
-import Sider from "antd/es/layout/Sider";
-import routes from "routers";
-import ShowMenu from "pagesUser/Homepage/menu/ViewMenu";
+import Login from "./Login/components/FormLogin";
+import useLogin from "hooks/Login/login";
 
 export const TopHeaderDataContext = createContext<any>({
   ListTopHeaderData: [],
@@ -51,7 +39,8 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
   const [openModal, setOpenModal] = useState<boolean>(false);
   const { Header, Content } = Layout;
   const auth = useAuth();
-  const user = LocalStorage.get("user");
+  // const { user, isAuthenticated } = useLogin();
+
   const items: MenuProps["items"] = [
     {
       key: "1",
@@ -68,9 +57,7 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
   const content = (
     <div>
       <p>Đăng nhập/đăng kí</p>
-      <p>
-        <ShowMenu />
-      </p>
+      <p></p>
     </div>
   );
   const handleOpenChange = (newOpen: boolean) => {
@@ -118,6 +105,7 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
               />
             </div>
             <Popover
+              className="menu-sm"
               trigger="click"
               open={open}
               onOpenChange={handleOpenChange}
@@ -131,22 +119,38 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
               allowClear
               className="input-search"
             />
-            <div className="hidden md:block">
-              <Avatar
-                size="large"
-                icon={<UserOutlined />}
-                onClick={() => setOpenModal(true)}
-              />
-              <CustomTypography.Text
-                strong
-                title="Đăng nhập / Đăng kí"
-                className="text-white "
-                onClick={() => setOpenModal(true)}
-              />
-              {openModal && (
-                <Login open={openModal} onCancel={() => setOpenModal(false)} />
+            {/* <div className="hidden md:block">
+              {isAuthenticated ? (
+                <div>
+                  <Avatar size="large" icon={<UserOutlined />} />
+                  <CustomTypography.Text
+                    strong
+                    // title={user.username}
+                    className="text-white"
+                  />
+                </div>
+              ) : (
+                <div>
+                  <Avatar
+                    size="large"
+                    icon={<UserOutlined />}
+                    onClick={() => setOpenModal(true)}
+                  />
+                  <CustomTypography.Text
+                    strong
+                    title="Đăng nhập / Đăng kí"
+                    className="text-white"
+                    onClick={() => setOpenModal(true)}
+                  />
+                  {openModal && (
+                    <Login
+                      open={openModal}
+                      onCancel={() => setOpenModal(false)}
+                    />
+                  )}
+                </div>
               )}
-            </div>
+            </div> */}
             <>
               <Button
                 type="primary"

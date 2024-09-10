@@ -27,8 +27,8 @@ const AuthenticationContext = createContext<AuthenticationContextI>({
   loading: false,
   isLogged: false,
   user: {} as any,
-  login: () => { },
-  logout: () => { },
+  login: () => {},
+  logout: () => {},
 });
 
 export const useAuth = () => useContext(AuthenticationContext);
