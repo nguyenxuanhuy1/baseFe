@@ -1,0 +1,25 @@
+.modal-confirm .ant-modal-header {
+  text-align: center;
+}
+
+.modal-confirm-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin: 10px 0;
+  text-align: center;
+}
+
+.item-area {
+  padding: 5px;
+  cursor: pointer;
+}
+
+.item-area-target {
+  padding: 5px;
+  background: #f7971e;
+  color: #fff;
+  border-radius: 6px;
+}

@@ -4,6 +4,8 @@ import {
   AppstoreOutlined,
   SettingOutlined,
   LogoutOutlined,
+  BarChartOutlined,
+  ProductOutlined,
 } from "@ant-design/icons";
 
 export const CommonIcons = {
@@ -12,4 +14,6 @@ export const CommonIcons = {
   AppstoreOutlined,
   SettingOutlined,
   LogoutOutlined,
+  BarChartOutlined,
+  ProductOutlined,
 };

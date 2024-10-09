@@ -16,7 +16,7 @@ import { createContext, useState } from "react";
 import useTopheader from "hooks/header/topHeader";
 import useMidHeader from "hooks/header/midHeader";
 import useBotHeader from "hooks/header/botHeader";
-import Login from "./Login/components/FormLogin";
+import Login from "./Login/FormLogin";
 import useLogin from "hooks/Login/login";
 
 export const TopHeaderDataContext = createContext<any>({
@@ -119,38 +119,27 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
               allowClear
               className="input-search"
             />
-            {/* <div className="hidden md:block">
-              {isAuthenticated ? (
-                <div>
-                  <Avatar size="large" icon={<UserOutlined />} />
-                  <CustomTypography.Text
-                    strong
-                    // title={user.username}
-                    className="text-white"
+            <div className="hidden md:block">
+              <div>
+                <Avatar
+                  size="large"
+                  icon={<UserOutlined />}
+                  onClick={() => setOpenModal(true)}
+                />
+                <CustomTypography.Text
+                  strong
+                  title="Đăng nhập / Đăng kí"
+                  className="text-white"
+                  onClick={() => setOpenModal(true)}
+                />
+                {openModal && (
+                  <Login
+                    open={openModal}
+                    onCancel={() => setOpenModal(false)}
                   />
-                </div>
-              ) : (
-                <div>
-                  <Avatar
-                    size="large"
-                    icon={<UserOutlined />}
-                    onClick={() => setOpenModal(true)}
-                  />
-                  <CustomTypography.Text
-                    strong
-                    title="Đăng nhập / Đăng kí"
-                    className="text-white"
-                    onClick={() => setOpenModal(true)}
-                  />
-                  {openModal && (
-                    <Login
-                      open={openModal}
-                      onCancel={() => setOpenModal(false)}
-                    />
-                  )}
-                </div>
-              )}
-            </div> */}
+                )}
+              </div>
+            </div>
             <>
               <Button
                 type="primary"

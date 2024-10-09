@@ -1,18 +1,18 @@
-import Login from "pages/Login";
-import { createContext, useState } from "react";
+import React, { createContext, useState } from "react";
 
-export const FileContext = createContext<any>({
-  isAuthenticated: false,
-});
-const QuanLyLogin = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+// Định nghĩa FileContext
+export const FileContext = createContext<any>(null);
+
+const FileProvider = ({ children }: { children: React.ReactNode }) => {
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false); // Trạng thái xác thực
+  const [user, setUser] = useState<any>(null);
   return (
-    <>
-      <FileContext.Provider value={{ isAuthenticated }}>
-        <>
-          <Login />
-        </>
-      </FileContext.Provider>
-    </>
+    <FileContext.Provider
+      value={{ isAuthenticated, setIsAuthenticated, user, setUser }}
+    >
+      {children}
+    </FileContext.Provider>
   );
 };
+
+export default FileProvider;

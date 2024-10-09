@@ -1,6 +1,6 @@
 const BaseUrl = {
   // ImportBaseURL
-  Pageuser:"/",
+  Pageuser: "/",
   Homepage: "/homepage",
   Todos: "/todos",
   Login: "/login",
@@ -10,8 +10,9 @@ const BaseUrl = {
   CreateApp: "/create-app",
   Users: "/users",
   Settings: "/settings",
-  SettingsAcc: "/settings/account",
+
   AppConnect: "/app-connect",
+  ManageProduct: "/quan-ly-san-pham",
 };
 
 export default BaseUrl;

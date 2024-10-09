@@ -8,9 +8,9 @@ import BaseUrl from "constants/baseUrl";
 import Input from "components/CustomField/InputField";
 import { ButtonHTMLTypes } from "interfaces/common";
 import { useState } from "react";
-import { validationLoginSchema } from "../helper/validation";
+import { validationLoginSchema } from "./helper/validation";
 import Button from "components/CustomButton";
-import { valueLogin } from "../helper/inittialValue";
+import { valueLogin } from "./helper/inittialValue";
 import useLogin from "hooks/Login/login";
 interface IProps {
   open: boolean;
@@ -21,8 +21,8 @@ const Login = (props: IProps) => {
   const { open, onCancel } = props;
   const auth = useAuth();
   const [loginAndRegis, setLoginAndRegis] = useState(false);
-  // const { login } = useAuth();
-  // const { isAuthenticated, logIn } = useLogin();
+  const { login } = useAuth();
+  const { logIn, loading } = useLogin();
   // if (isAuthenticated) {
   //   return <Navigate to={BaseUrl.Pageuser} />;
   // }
@@ -34,7 +34,7 @@ const Login = (props: IProps) => {
         onSubmit={async (values) => {
           try {
             const { username, password } = values;
-            // await logIn(username, password);
+            await logIn(username, password);
           } catch (error) {
             showError("Đăng nhập thất bại");
           }

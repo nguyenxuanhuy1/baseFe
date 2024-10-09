@@ -7,8 +7,8 @@ const DefaultLayout = lazy(() => import("layouts/DefaultLayout"));
 const DefaultLayoutUser = lazy(() => import("layouts/DefaultLayoutUser"));
 const Login = lazy(() => import("pages/Login"));
 const Homepage = lazy(() => import("pages/Homepage"));
-const Settings = lazy(() => import("pages/Settings"));
 const PageUser = lazy(() => import("pagesUser/Homepage"));
+const QuanLySanPham = lazy(() => import("pages/AdminProduct"));
 export interface IRoute {
   name: string;
   key: string;
@@ -59,33 +59,25 @@ const routes: IRoute[] = [
     layout: DefaultLayout,
     isPrivateRoute: true,
     component: Homepage,
-    icon: <CommonIcons.AppstoreOutlined />,
+    icon: <CommonIcons.BarChartOutlined />,
     routeChild: [],
   },
+
   {
-    name: "Settings",
-    key: "settings",
-    path: BaseUrl.Settings,
+    name: "Quản lý",
+    key: "manage",
+    path: BaseUrl.Homepage,
     layout: DefaultLayout,
     isPrivateRoute: true,
     component: null,
-    icon: <CommonIcons.SettingOutlined />,
+    icon: <CommonIcons.ProductOutlined />,
     routeChild: [
       {
-        name: "Settings Account",
-        key: "accsettings",
-        path: BaseUrl.SettingsAcc,
+        name: "Quản lý sản phẩm",
+        key: "manageProduct",
+        path: BaseUrl.ManageProduct,
         layout: DefaultLayout,
-        component: Settings,
-        isPrivateRoute: true,
-        routeChild: [],
-      },
-      {
-        name: "Settings System",
-        key: "syssettings",
-        path: BaseUrl.SettingsAcc,
-        layout: DefaultLayout,
-        component: Settings,
+        component: QuanLySanPham,
         isPrivateRoute: true,
         routeChild: [],
       },
