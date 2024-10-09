@@ -1,17 +1,13 @@
 import { useState } from "react";
 import { showError, showSuccess } from "helpers/toast";
 import httpMethod from "services/httpMethod";
-interface IProps {
-  username: string;
-  password: string;
-  setIsAuthenticated: (e: any) => void;
-}
-const useLogin = (props: IProps) => {
+
+const useLogin = () => {
   //! State
   const [loading, setLoading] = useState(false);
-  const [user, setUser] = useState(null);
-  const { username, password, setIsAuthenticated } = props;
-  const logIn = async () => {
+  const [user, setUser] = useState<any>(null);
+
+  const logIn = async (username: string, password: string) => {
     setLoading(true);
     try {
       const response = await httpMethod.post(
@@ -21,11 +17,11 @@ const useLogin = (props: IProps) => {
       );
 
       if (response.status === 201) {
-        setIsAuthenticated(true);
+        // setIsAuthenticated(true);
         setUser(response.data.user);
         showSuccess(response.data.message || "Đăng nhập thành công!");
       } else {
-        setIsAuthenticated(false);
+        // setIsAuthenticated(false);
       }
     } catch (err: any) {
       if (err.response && err.response.data && err.response.data.message) {
