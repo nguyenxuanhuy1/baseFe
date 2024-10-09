@@ -9,7 +9,7 @@ import {
   MenuProps,
   Row,
 } from "antd";
-import LOGO_BCA from "assets/icons/logo_BCA.svg";
+import img_logo from "assets/img_logo.svg";
 import { CommonIcons } from "components/CommonIcons";
 import { CustomTypography } from "components/CustomTypography";
 import { isEmpty } from "lodash";
@@ -87,7 +87,7 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
       <Layout>
         <Header className="p-4 bg-white flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Image width={50} height={50} preview={false} />
+            <Image width={50} height={50} preview={false} src={img_logo}/>
             <CustomTypography.Text strong title="Admin quản lý" />
           </div>
           <div className="flex items-center gap-2">
