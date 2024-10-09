@@ -1,4 +1,4 @@
-import { Modal } from "antd";
+import { Image, Modal } from "antd";
 import { FastField, Form, Formik } from "formik";
 import * as Yup from "yup";
 import { showError } from "helpers/toast";
@@ -12,6 +12,7 @@ import { validationLoginSchema } from "./helper/validation";
 import Button from "components/CustomButton";
 import { valueLogin } from "./helper/inittialValue";
 import useLogin from "hooks/Login/login";
+import img_login from "assets/img_login.svg";
 interface IProps {
   open: boolean;
   onCancel: () => void;
@@ -122,6 +123,7 @@ const Login = (props: IProps) => {
                     src="https://cdn.divineshop.vn/static/368e705d45bfc8742aa9d20dbcf4c78c.svg"
                     alt="lỗi img login"
                   ></img>
+                  {/* <Image src={img_login}/> */}
                 </div>
               </div>
             </Form>

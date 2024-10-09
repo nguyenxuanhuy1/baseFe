@@ -9,7 +9,6 @@ import { Avatar, Layout, MenuProps, Image, Button, Popover } from "antd";
 import { CommonIcons } from "components/CommonIcons";
 import { CustomTypography } from "components/CustomTypography";
 import { useAuth } from "providers/AuthenticationProvider";
-import LOGO_BCA from "assets/icons/logo_BCA.svg";
 import Search from "antd/es/input/Search";
 import { Footer } from "antd/es/layout/layout";
 import { createContext, useState } from "react";
@@ -17,7 +16,7 @@ import useTopheader from "hooks/header/topHeader";
 import useMidHeader from "hooks/header/midHeader";
 import useBotHeader from "hooks/header/botHeader";
 import Login from "./Login/FormLogin";
-import useLogin from "hooks/Login/login";
+import img_logo from "assets/img_logo.svg";
 
 export const TopHeaderDataContext = createContext<any>({
   ListTopHeaderData: [],
@@ -97,7 +96,7 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
         <div className="w-full xl:w-[1200px]">
           <div className="flex items-center gap-2 w-full justify-between pt-1">
             <div className="items-center gap-2 hidden sm:flex">
-              <Image width={50} height={50} preview={false} src={LOGO_BCA} />
+              <Image width={50} height={50} preview={false} src="https://free.vector6.com/wp-content/uploads/2021/03/freepng1793-rong-than-rong-thieng-con-rong-tach-nen-png-163.png" />
               <CustomTypography.Text
                 title="TADA SH"
                 strong
