@@ -14,6 +14,7 @@ const useBanner = () => {
     setLoading(true);
     try {
       const response = await httpMethod.get(`${Body.BANNER}`);
+      // const response = await httpMethod.get(`http://localhost:3001/banners`);
       if (response.status === 200) {
         setData(response.data.list);
       }

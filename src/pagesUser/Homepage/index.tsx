@@ -2,7 +2,7 @@ import React, { createContext, lazy } from "react";
 import useMenu from "hooks/menu/menu";
 import SlideComponent from "./slide/ViewSlide";
 import useSlide from "hooks/slide/slide";
-import useBanner from "hooks/banners/banner";
+import useBanner from "hooks/banners/useGetBanner";
 import useFeatured from "hooks/featured/featured";
 import useTrending from "hooks/trending/trending";
 

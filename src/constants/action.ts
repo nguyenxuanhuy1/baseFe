@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 const useActions = () => {
   const [actions, setActions] = useState<{
@@ -15,3 +15,8 @@ const useActions = () => {
 };
 
 export default useActions;
+export interface dictActions {
+  create: boolean;
+  update: boolean;
+  delete: boolean;
+}
