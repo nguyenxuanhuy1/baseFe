@@ -13,6 +13,7 @@ const BaseUrl = {
 
   AppConnect: "/app-connect",
   ManageProduct: "/quan-ly-san-pham",
+  manageBanner: "/quan-ly-banner",
 };
 
 export default BaseUrl;

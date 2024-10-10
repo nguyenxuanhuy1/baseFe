@@ -1,3 +1,4 @@
+import { DoubleLeftOutlined } from "@ant-design/icons";
 import {
   Avatar,
   Col,
@@ -16,7 +17,8 @@ import { isEmpty } from "lodash";
 import { useAuth } from "providers/AuthenticationProvider";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import routes, { IRoute } from "routers";
+import routes from "routers";
+import { IRoute } from "routers/interface.router";
 import LocalStorage from "utils/LocalStorage";
 
 const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
@@ -76,8 +78,15 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
         width={270}
         trigger={renderTrigger}
       >
-        <div className="h-[64px] flex justify-center items-center bg-white">
-          {!collapsed && <CustomTypography.Text strong title="Huy" />}
+        <div className="h-[64px] flex justify-center items-center bg-[#2579F2]">
+          <DoubleLeftOutlined style={{ fontSize: "30px" }} />
+          {!collapsed && (
+            <CustomTypography.Text
+              strong
+              title="Trở về DoardBoard"
+              className="text-white"
+            />
+          )}
         </div>
         <Divider className="m-0" />
         <Menu theme="light" mode="inline">
@@ -85,13 +94,26 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
         </Menu>
       </Sider>
       <Layout>
-        <Header className="p-4 bg-white flex items-center justify-between">
+        <Header className="p-4 bg-[#2579F2] flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Image width={50} height={50} preview={false} src={img_logo}/>
-            <CustomTypography.Text strong title="Admin quản lý" />
+            <Image
+              width={50}
+              height={50}
+              preview={false}
+              src={img_logo}
+              className="color-white"
+            />
+            <CustomTypography.Text
+              strong
+              title="Admin quản lý"
+              className="text-white"
+            />
           </div>
           <div className="flex items-center gap-2">
-            <CustomTypography.Text title={user?.username || "User"} />
+            <CustomTypography.Text
+              title={user?.username || "User"}
+              className="text-white"
+            />
             <Dropdown
               placement="bottomRight"
               menu={{ items }}

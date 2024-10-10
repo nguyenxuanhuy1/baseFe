@@ -1,6 +1,7 @@
 import { CommonIcons } from "components/CommonIcons";
 import BaseUrl from "constants/baseUrl";
 import React, { Fragment, lazy } from "react";
+import { IRoute } from "./interface.router";
 
 // Bash importHere
 const DefaultLayout = lazy(() => import("layouts/DefaultLayout"));
@@ -9,31 +10,7 @@ const Login = lazy(() => import("pages/Login"));
 const Homepage = lazy(() => import("pages/Homepage"));
 const PageUser = lazy(() => import("pagesUser/Homepage"));
 const QuanLySanPham = lazy(() => import("pages/AdminProduct"));
-export interface IRoute {
-  name: string;
-  key: string;
-  path: string;
-  isPrivateRoute?: boolean;
-  layout:
-    | React.LazyExoticComponent<React.MemoExoticComponent<any>>
-    | React.ExoticComponent<any>
-    | typeof React.Component;
-  component: typeof React.Component | React.FC | null;
-  icon?: React.ReactNode;
-  routeChild: {
-    name: string;
-    path: string;
-    layout:
-      | React.LazyExoticComponent<React.MemoExoticComponent<any>>
-      | React.ExoticComponent<any>
-      | typeof React.Component;
-    component: typeof React.Component | React.FC;
-    isPrivateRoute?: boolean;
-    key: string;
-    routeChild: any;
-    icon?: React.ReactNode;
-  }[];
-}
+const QuanLyBanner = lazy(() => import("pages/AdminBanner"));
 
 const routes: IRoute[] = [
   {
@@ -78,6 +55,15 @@ const routes: IRoute[] = [
         path: BaseUrl.ManageProduct,
         layout: DefaultLayout,
         component: QuanLySanPham,
+        isPrivateRoute: true,
+        routeChild: [],
+      },
+      {
+        name: "Quản lý banner",
+        key: "manageBanner",
+        path: BaseUrl.manageBanner,
+        layout: DefaultLayout,
+        component: QuanLyBanner,
         isPrivateRoute: true,
         routeChild: [],
       },
