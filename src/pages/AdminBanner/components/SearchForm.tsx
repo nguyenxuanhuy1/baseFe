@@ -6,16 +6,21 @@ import Input from "components/CustomField/InputField";
 import { ButtonCreate, ButtonDelete, ButtonSearch } from "components/Button";
 import { SearchOutlined } from "@ant-design/icons";
 import { ButtonHTMLTypes } from "interfaces/common";
+import { initialValueSearchForm } from "../helper/inittialValue";
 
 function SearchForm() {
-  const {} = useContext(FileContext);
+  const { setSearchForm, setItemTarget, setActions, setIsClick, actions } =
+    useContext(FileContext);
   return (
     <Fragment>
       <Formik
-        initialValues={{ searchTerm: "" }}
         onSubmit={(values) => {
-          console.log(values);
+          setIsClick(true);
+          setSearchForm({
+            ...values,
+          });
         }}
+        initialValues={initialValueSearchForm}
       >
         {(propFormik: FormikProps<any>) => {
           const { values, setFieldValue } = propFormik;
@@ -25,18 +30,9 @@ function SearchForm() {
                 <Col span={12}>
                   <Field
                     component={Input}
-                    label="Loại sản phẩm"
-                    name="code"
-                    placeholder="Mã dịch vụ"
-                    showSearch
-                  />
-                </Col>
-                <Col span={12}>
-                  <Field
-                    component={Input}
-                    label="Giá sản phẩm"
-                    name="price"
-                    placeholder="Mã dịch vụ"
+                    label="Sản phẩm"
+                    name="slug"
+                    placeholder="Nhập slug"
                     showSearch
                   />
                 </Col>
@@ -53,11 +49,16 @@ function SearchForm() {
                   <ButtonDelete
                     title="Huỷ tìm kiếm"
                     htmlType={ButtonHTMLTypes.Reset}
+                    onClick={() => setSearchForm(initialValueSearchForm)}
+                    disable={actions["create"]}
                   />
                 </div>
                 <ButtonCreate
                   onClick={() => {
-                    console.log("da click");
+                    setItemTarget(null);
+                    setActions((prev: any) => {
+                      return { ...prev, create: true };
+                    });
                   }}
                 />
               </Row>

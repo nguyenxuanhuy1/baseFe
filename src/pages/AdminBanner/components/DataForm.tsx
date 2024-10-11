@@ -1,4 +1,4 @@
-import { useCallback, useContext, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { FileContext } from "..";
 import { Button, Col, Row, Upload } from "antd";
 import { Field, Form, Formik } from "formik";
@@ -9,24 +9,35 @@ import {
   UploadOutlined,
 } from "@ant-design/icons";
 import { Accept, useDropzone } from "react-dropzone";
+import { ButtonCreate, ButtonDelete } from "components/Button";
+import { ButtonHTMLTypes } from "interfaces/common";
+import { initialValuesDataForm } from "../helper/inittialValue";
+import useCreateBanner from "hooks/banners/useCreatebanner";
 
 function DataForm() {
-  const { actions } = useContext(FileContext);
+  const {
+    actions,
+    setActions,
+    setItemTarget,
+    refreshData,
+    itemTarget,
+    formikRef,
+  } = useContext(FileContext);
   const isDisabled = actions["create"] || actions["update"] ? false : true;
 
   const [fileImage, setFileImage] = useState<any | null>(null);
-  const [saveFile, setSaveFile] = useState<any | null>(null);
+
+  const { createBanner } = useCreateBanner();
+
   const onDrop = useCallback(async (acceptedFiles: File[]) => {
     if (!acceptedFiles) {
       return;
     }
-    if (acceptedFiles[0] && acceptedFiles[0].size > 50 * 1024) {
+    if (acceptedFiles[0] && acceptedFiles[0].size > 50 * 50 * 1024) {
       alert("Ảnh tải lên dung lượng  đã quá 50KB");
       return;
     }
-
     const file = acceptedFiles[0];
-    setSaveFile(file);
     const reader = new FileReader();
     if (file) {
       reader.readAsDataURL(file);
@@ -43,28 +54,61 @@ function DataForm() {
     accept,
     onDrop,
   });
+
+  // useEffect
+  useEffect(() => {
+    formikRef.current?.handleReset();
+  }, [actions["create"]]);
+
+  useEffect(() => {
+    if (itemTarget) {
+      formikRef.current?.setValues({
+        ...itemTarget,
+        fileImage: itemTarget?.image,
+      });
+    }
+  }, [itemTarget, !actions["update"]]);
+
+  useEffect(() => {
+    if (actions["delete"]) formikRef.current?.handleReset();
+  }, [actions["delete"]]);
+  // end useEffect
+
   return (
     <Formik
-      initialValues={{ searchTerm: "" }}
       onSubmit={(values) => {
-        console.log(values);
+        if (actions["create"]) {
+          createBanner(
+            {
+              ...values,
+            },
+            refreshData,
+            setActions,
+            setItemTarget,
+            fileImage
+          );
+          setFileImage(null);
+        }
+        formikRef.current.resetForm({ values: initialValuesDataForm });
       }}
+      initialValues={initialValuesDataForm}
+      innerRef={formikRef}
     >
       <Form>
         <Row>
           <Col span={24}>
             <Field
               component={Input}
-              label="RedirectUrl"
-              name="redirectUrl"
-              placeholder="Nhập redirectUrl"
-              //   disabled={actions["create"] || actions["update"] ? false : true}
+              label="Loại sản phẩm"
+              name="slug"
+              placeholder="Nhập loại"
+              disabled={actions["create"] || actions["update"] ? false : true}
               isRequired
             />
           </Col>
 
           <Col span={24}>
-            <div className="flex">
+            <div className="flex mt-3">
               <div>Logo</div>
               &nbsp;
               <div style={{ color: "red" }}>*</div>
@@ -144,6 +188,21 @@ function DataForm() {
             </div>
           </Col>
         </Row>
+        {(actions["create"] || actions["update"]) && (
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <ButtonCreate title="Lưu" htmlType={ButtonHTMLTypes.Submit} />
+            <ButtonDelete
+              title="Huỷ"
+              htmlType={ButtonHTMLTypes.Submit}
+              onClick={() =>
+                setActions((prev: any) => {
+                  setFileImage(null);
+                  return { ...prev, create: false, update: false };
+                })
+              }
+            />
+          </div>
+        )}
       </Form>
     </Formik>
   );

@@ -93,8 +93,14 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
           {renderMenu(routes)}
         </Menu>
       </Sider>
-      <Layout>
-        <Header className="p-4 bg-[#2579F2] flex items-center justify-between">
+      <Layout style={{ maxHeight: "calc(100vh-17px)", overflow: "auto" }}>
+        <Header
+          className={
+            collapsed
+              ? "p-4 bg-[#2579F2] flex items-center justify-between border-b-2 border-yellowBCA fixed h-[64px] w-[calc(100vw-80px)] z-50 overflow-hidden"
+              : "p-4 bg-[#2579F2] flex items-center justify-between border-b-2 border-yellowBCA fixed h-[64px] w-[calc(100vw-270px)] z-50 overflow-hidden"
+          }
+        >
           <div className="flex items-center gap-2">
             <Image
               width={50}
@@ -124,9 +130,7 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
             </Dropdown>
           </div>
         </Header>
-        <Content className="m-4 p-6 min-h-[280px] bg-[#fff] rounded-[8px]">
-          {children}
-        </Content>
+        <Content className="main-default-layout">{children}</Content>
       </Layout>
     </Layout>
   );

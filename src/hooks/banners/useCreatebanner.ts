@@ -11,14 +11,23 @@ const useCreateBanner = () => {
     searchForm: any,
     refreshData: () => void,
     setActions: React.Dispatch<React.SetStateAction<dictActions>>,
-    setItemTarget: React.Dispatch<any>
+    setItemTarget: React.Dispatch<any>,
+    fileImage: any
   ) => {
     setLoading(true);
 
     try {
+      const formData = new FormData();
+      formData.append("file", fileImage); // Thêm file vào FormData
+      formData.append("slug", searchForm.slug);
       const response = await httpMethod.post(
         `http://localhost:3001/banners`,
-        searchForm
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
       );
       if (response.status === 201) {
         if (response.data) {
@@ -32,7 +41,7 @@ const useCreateBanner = () => {
       }
     } catch (error: any) {
       if (error.response && error.response.status === 400) {
-        showError(error.response?.data?.message);
+        showError(error.response?.data?.message[0]);
       } else {
         showError("Có lỗi xảy ra, vui lòng thử lại sau");
       }
