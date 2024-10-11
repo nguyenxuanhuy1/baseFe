@@ -55,11 +55,7 @@ function SearchForm() {
                     htmlType={ButtonHTMLTypes.Reset}
                   />
                 </div>
-                <ButtonCreate
-                  onClick={() => {
-                    console.log("da click");
-                  }}
-                />
+                <ButtonCreate onClick={() => {}} />
               </Row>
             </Form>
           );

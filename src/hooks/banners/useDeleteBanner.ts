@@ -17,9 +17,12 @@ const useDeleteBanner = () => {
     if (id) {
       setLoading(true);
       try {
-        const response = await httpMethod.post(``, {});
+        const response = await httpMethod.post(
+          `http://localhost:3001/banners/delete/${id}`,
+          {}
+        );
         if (response.status === 200) {
-          showSuccess("Xóa thành công!");
+          showSuccess(response?.data?.message || "Xóa thành công!");
           refreshData();
           setActions((prev: any) => {
             return { ...prev, delete: false };

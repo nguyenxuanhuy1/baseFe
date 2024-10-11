@@ -22,12 +22,18 @@ const useGetListBanner = (props: IProps) => {
     setLoading(true);
     if (searchForm) {
       try {
-        const response = await httpMethod.get(
-          `http://localhost:3001/banners123123123`
+        const payload = {
+          ...searchForm,
+          page: paramsPage.page,
+          pageSize: paramsPage.pageSize,
+        };
+        const response = await httpMethod.post(
+          `http://localhost:3001/banners/search`,
+          payload
         );
         if (response.status === 200) {
-          setData(response.data.content);
-          setMeta(response.data.totalElements);
+          setData(response.data.list);
+          setMeta(response.data.totalItems);
         }
       } catch (error: any) {
         if (error.response && error.response.status === 400) {
