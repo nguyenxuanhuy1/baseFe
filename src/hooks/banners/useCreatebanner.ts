@@ -17,17 +17,17 @@ const useCreateBanner = () => {
     setLoading(true);
 
     try {
-      const formData = new FormData();
-      formData.append("file", fileImage); // Thêm file vào FormData
-      formData.append("slug", searchForm.slug);
+      // const formData = new FormData();
+      // formData.append("file", fileImage); // Thêm file vào FormData
+      // formData.append("slug", searchForm.slug);
       const response = await httpMethod.post(
         `http://localhost:3001/banners`,
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
+        searchForm
+        // {
+        //   headers: {
+        //     "Content-Type": "multipart/form-data",
+        //   },
+        // }
       );
       if (response.status === 201) {
         if (response.data) {

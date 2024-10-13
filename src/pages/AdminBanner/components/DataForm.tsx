@@ -13,7 +13,7 @@ import { ButtonCreate, ButtonDelete } from "components/Button";
 import { ButtonHTMLTypes } from "interfaces/common";
 import { initialValuesDataForm } from "../helper/inittialValue";
 import useCreateBanner from "hooks/banners/useCreatebanner";
-
+import UploadF from "./upload";
 function DataForm() {
   const {
     actions,
@@ -25,7 +25,8 @@ function DataForm() {
   } = useContext(FileContext);
   const isDisabled = actions["create"] || actions["update"] ? false : true;
 
-  const [fileImage, setFileImage] = useState<any | null>(null);
+  // const [fileImage, setFileImage] = useState<any | null>(null);
+  const [image, setImage] = useState<string | null>(null);
 
   const { createBanner } = useCreateBanner();
 
@@ -44,7 +45,7 @@ function DataForm() {
     } else {
       alert("Ảnh không đúng định dạng .JPEG, .JPG, .PNG");
     }
-    setFileImage(acceptedFiles[0]);
+    // setFileImage(acceptedFiles[0]);
   }, []);
   const accept: Accept = {
     "image/png": [".png"],
@@ -64,7 +65,7 @@ function DataForm() {
     if (itemTarget) {
       formikRef.current?.setValues({
         ...itemTarget,
-        fileImage: itemTarget?.image,
+        // fileImage: itemTarget?.image,
       });
     }
   }, [itemTarget, !actions["update"]]);
@@ -81,13 +82,15 @@ function DataForm() {
           createBanner(
             {
               ...values,
+              image,
             },
             refreshData,
             setActions,
             setItemTarget,
-            fileImage
+            image
+            // fileImage
           );
-          setFileImage(null);
+          // setFileImage(null);
         }
         formikRef.current.resetForm({ values: initialValuesDataForm });
       }}
@@ -107,7 +110,7 @@ function DataForm() {
             />
           </Col>
 
-          <Col span={24}>
+          {/* <Col span={24}>
             <div className="flex mt-3">
               <div>Logo</div>
               &nbsp;
@@ -178,7 +181,7 @@ function DataForm() {
                   </div>
                   <div
                     role={"button"}
-                    onClick={() => setFileImage(null)}
+                    // onClick={() => setFileImage(null)}
                     className="flex h-6 w-6 items-start justify-end"
                   >
                     <CloseOutlined />
@@ -186,7 +189,8 @@ function DataForm() {
                 </div>
               )}
             </div>
-          </Col>
+          </Col> */}
+          <UploadF onChange={(filename) => setImage(filename)} />
         </Row>
         {(actions["create"] || actions["update"]) && (
           <div style={{ display: "flex", justifyContent: "center" }}>
@@ -196,7 +200,7 @@ function DataForm() {
               htmlType={ButtonHTMLTypes.Submit}
               onClick={() =>
                 setActions((prev: any) => {
-                  setFileImage(null);
+                  // setFileImage(null);
                   return { ...prev, create: false, update: false };
                 })
               }

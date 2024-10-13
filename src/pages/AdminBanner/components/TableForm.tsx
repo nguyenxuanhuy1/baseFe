@@ -27,20 +27,20 @@ function TableForm() {
       align: "center",
     },
     {
-      title: "Ảnh",
+      title: "Link ảnh",
       dataIndex: "image",
       key: "image",
       align: "center",
       render: (text: string, record: any) => (
-        <div style={{ display: "flex", alignItems: "center" }}>
+        <div>
           <img
-            src={text}
+            src={
+              // "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThbl47VAQK_3kDo3-L6d84Y2qX-f0TTUlgIQ&s"
+              "http://localhost:3001/public/uploads/" + text
+            }
             alt="ERR"
-            style={{ width: "40px", height: "30px", marginRight: "10px" }}
+            className="w-[200px] m-auto"
           />
-          <a href={record?.image} target="blank">
-            {record?.image}
-          </a>
         </div>
       ),
     },
