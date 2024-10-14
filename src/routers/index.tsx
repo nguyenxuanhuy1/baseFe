@@ -11,6 +11,7 @@ const Homepage = lazy(() => import("pages/Homepage"));
 const PageUser = lazy(() => import("pagesUser/Homepage"));
 const QuanLySanPham = lazy(() => import("pages/AdminProduct"));
 const QuanLyBanner = lazy(() => import("pages/AdminBanner"));
+const Details = lazy(() => import("../pagesUser/Homepage/pageDetails/details"));
 
 const routes: IRoute[] = [
   {
@@ -68,6 +69,14 @@ const routes: IRoute[] = [
         routeChild: [],
       },
     ],
+  },
+  {
+    name: "details",
+    key: "details",
+    path: BaseUrl.pageDetails,
+    layout: DefaultLayoutUser,
+    component: Details,
+    routeChild: [],
   },
 ];
 
