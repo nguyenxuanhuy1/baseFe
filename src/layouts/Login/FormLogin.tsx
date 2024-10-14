@@ -1,10 +1,7 @@
-import { Image, Modal } from "antd";
+import { Modal } from "antd";
 import { FastField, Form, Formik } from "formik";
-import * as Yup from "yup";
 import { showError } from "helpers/toast";
 import { useAuth } from "providers/AuthenticationProvider";
-import { Navigate } from "react-router-dom";
-import BaseUrl from "constants/baseUrl";
 import Input from "components/CustomField/InputField";
 import { ButtonHTMLTypes } from "interfaces/common";
 import { useState } from "react";
@@ -12,7 +9,6 @@ import { validationLoginSchema } from "./helper/validation";
 import Button from "components/CustomButton";
 import { valueLogin } from "./helper/inittialValue";
 import useLogin from "hooks/Login/login";
-import img_login from "assets/img_login.svg";
 interface IProps {
   open: boolean;
   onCancel: () => void;
@@ -115,6 +111,61 @@ const Login = (props: IProps) => {
                         Đăng ký để theo dõi đơn hàng, lưu danh sách sản phẩm yêu
                         thích và nhận nhiều ưu đãi hấp dẫn
                       </div>
+                      <div>
+                        <FastField
+                          style={{
+                            height: "40px",
+                            width: "100%",
+                          }}
+                          component={Input}
+                          name="username"
+                          label="Tài khoản [Dùng để đăng nhập]"
+                          placeholder="Tài khoản"
+                        />
+                        <FastField
+                          style={{
+                            height: "40px",
+                            width: "100%",
+                          }}
+                          component={Input}
+                          name="password"
+                          placeholder="Mật khẩu"
+                          type="password"
+                          label="Mật khẩu"
+                        />
+                        <FastField
+                          style={{
+                            height: "40px",
+                            width: "100%",
+                          }}
+                          component={Input}
+                          name="confirmPassword"
+                          placeholder="Xác nhận mật khẩu"
+                          type="password"
+                          label="Xác nhận mật khẩu"
+                        />
+                        <FastField
+                          style={{
+                            height: "40px",
+                            width: "100%",
+                          }}
+                          component={Input}
+                          name="gmail"
+                          placeholder="Nhập gmail"
+                          type="gmail"
+                          label="Gmail"
+                        />
+                      </div>
+                      <Button
+                        htmlType={ButtonHTMLTypes.Submit}
+                        title="Đăng kí"
+                        style={{
+                          width: "100%",
+                          height: "40px",
+                          backgroundColor: "#2579F2",
+                          color: "#fff",
+                        }}
+                      />
                     </>
                   )}
                 </div>
@@ -123,7 +174,6 @@ const Login = (props: IProps) => {
                     src="https://cdn.divineshop.vn/static/368e705d45bfc8742aa9d20dbcf4c78c.svg"
                     alt="lỗi img login"
                   ></img>
-                  {/* <Image src={img_login}/> */}
                 </div>
               </div>
             </Form>

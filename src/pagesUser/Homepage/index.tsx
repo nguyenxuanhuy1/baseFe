@@ -5,6 +5,8 @@ import useSlide from "hooks/slide/slide";
 import useBanner from "hooks/banners/useGetBanner";
 import useFeatured from "hooks/featured/featured";
 import useTrending from "hooks/trending/trending";
+import { useNavigate } from "react-router-dom";
+import BaseUrl from "constants/baseUrl";
 
 const ShowMenu = lazy(() => import("./menu/ViewMenu"));
 const ShowBanner = lazy(() => import("./banner/ViewBaner"));
@@ -21,6 +23,7 @@ const Menu = () => {
   const { data: banner } = useBanner();
   const { data: featured, loadMorefeatured } = useFeatured();
   const { data: trending, loadMoreTrending } = useTrending();
+  const navigate = useNavigate();
   return (
     <SyncDataContext.Provider
       value={{
@@ -42,7 +45,10 @@ const Menu = () => {
             <div className="h-full w-full lg:w-[67%] mx-6 lg:max-h-[486px]">
               <SlideComponent />
             </div>
-            <div className="w-full lg:w-1/4 hidden lg:flex flex-col">
+            <div
+              className="w-full lg:w-1/4 hidden lg:flex flex-col"
+              onClick={() => navigate(BaseUrl.pageDetails)}
+            >
               {banner.slice(0, 2).map((item, index) => (
                 <div key={index}>
                   <img

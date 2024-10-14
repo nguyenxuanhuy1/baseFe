@@ -1,0 +1,58 @@
+.details-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.details-content {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  margin-right: 20px;
+  margin-left: 20px;
+  // Áp dụng quy tắc cho phần tử bên trong
+  .image-container {
+    width: 35%;
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+
+    .image {
+      height: auto;
+      max-height: 210px;
+      width: 100%;
+      margin-bottom: 8px;
+      border-radius: 6px;
+    }
+
+    .image-caption {
+      text-align: center;
+      color: #2579f2;
+      cursor: pointer;
+      font-weight: 700;
+    }
+  }
+  .text-content {
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1200px;
+    margin-right: 20px;
+    margin-left: 20px;
+    gap: 16px;
+  }
+  .text-content {
+    width: 40%;
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+  .share-content {
+    width: 20%;
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+}

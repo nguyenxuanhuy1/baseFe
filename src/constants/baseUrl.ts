@@ -14,6 +14,7 @@ const BaseUrl = {
   AppConnect: "/app-connect",
   ManageProduct: "/quan-ly-san-pham",
   manageBanner: "/quan-ly-banner",
+  pageDetails: "/chi-tiet-san-pham",
 };
 
 export default BaseUrl;

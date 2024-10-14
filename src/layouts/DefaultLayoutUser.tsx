@@ -96,7 +96,12 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
         <div className="w-full xl:w-[1200px]">
           <div className="flex items-center gap-2 w-full justify-between pt-1">
             <div className="items-center gap-2 hidden sm:flex">
-              <Image width={50} height={50} preview={false} src="https://free.vector6.com/wp-content/uploads/2021/03/freepng1793-rong-than-rong-thieng-con-rong-tach-nen-png-163.png" />
+              <Image
+                width={50}
+                height={50}
+                preview={false}
+                src="https://free.vector6.com/wp-content/uploads/2021/03/freepng1793-rong-than-rong-thieng-con-rong-tach-nen-png-163.png"
+              />
               <CustomTypography.Text
                 title="TADA SH"
                 strong
@@ -119,7 +124,7 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
               className="input-search"
             />
             <div className="hidden md:block">
-              <div>
+              <div style={{ cursor: "pointer" }}>
                 <Avatar
                   size="large"
                   icon={<UserOutlined />}
