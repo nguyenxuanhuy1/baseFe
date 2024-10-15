@@ -207,7 +207,7 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
         </div>
       </Header>
       <Content
-        className="bg-[#ebeaea] pt-4"
+        className="bg-[#fefeff] pt-4"
         style={{
           // maxHeight: "calc(100vh)",
           // overflow: "auto",
