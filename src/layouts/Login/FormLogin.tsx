@@ -5,10 +5,14 @@ import { useAuth } from "providers/AuthenticationProvider";
 import Input from "components/CustomField/InputField";
 import { ButtonHTMLTypes } from "interfaces/common";
 import { useState } from "react";
-import { validationLoginSchema } from "./helper/validation";
+import {
+  validationLoginSchema,
+  validationRegisterSchema,
+} from "./helper/validation";
 import Button from "components/CustomButton";
-import { valueLogin } from "./helper/inittialValue";
+import { valueLogin, valueRegis } from "./helper/inittialValue";
 import useLogin from "hooks/Login/login";
+import useRegister from "hooks/Login/register";
 interface IProps {
   open: boolean;
   onCancel: () => void;
@@ -19,21 +23,25 @@ const Login = (props: IProps) => {
   const auth = useAuth();
   const [loginAndRegis, setLoginAndRegis] = useState(false);
   const { login } = useAuth();
-  const { logIn, loading } = useLogin();
-  // if (isAuthenticated) {
-  //   return <Navigate to={BaseUrl.Pageuser} />;
-  // }
+  const { logIn } = useLogin();
+  const { Register } = useRegister();
   return (
     <Modal open={open} onCancel={onCancel} footer={false} width={"68%"}>
       <Formik
-        initialValues={valueLogin}
-        validationSchema={validationLoginSchema}
+        initialValues={loginAndRegis ? valueRegis : valueLogin}
+        validationSchema={
+          loginAndRegis ? validationRegisterSchema : validationLoginSchema
+        }
         onSubmit={async (values) => {
-          try {
-            const { username, password } = values;
-            await logIn(username, password);
-          } catch (error) {
-            showError("Đăng nhập thất bại");
+          if (loginAndRegis === false) {
+            logIn({
+              ...values,
+            });
+          } else {
+            const { confirmPassword, ...deleteCfPass } = values;
+            Register({
+              ...deleteCfPass,
+            });
           }
         }}
       >
@@ -170,10 +178,7 @@ const Login = (props: IProps) => {
                   )}
                 </div>
                 <div className="item-right">
-                  <img
-                    src="https://cdn.divineshop.vn/static/368e705d45bfc8742aa9d20dbcf4c78c.svg"
-                    alt="lỗi img login"
-                  ></img>
+                  <img src="/Authen.png" alt="lỗi img login"></img>
                 </div>
               </div>
             </Form>

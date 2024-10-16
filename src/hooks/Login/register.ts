@@ -2,22 +2,22 @@ import { useState } from "react";
 import { showError, showSuccess } from "helpers/toast";
 import httpMethod from "services/httpMethod";
 
-const useLogin = () => {
+const useRegister = () => {
   //! State
   const [user, setUser] = useState<any>(null);
 
-  const logIn = async (inforLogin: any) => {
+  const Register = async (inforRegis: any) => {
     try {
       const response = await httpMethod.post(
-        `http://localhost:3001/user/login`,
-        inforLogin,
+        `http://localhost:3001/user/register`,
+        inforRegis,
         { withCredentials: true }
       );
 
       if (response.status === 201) {
         // setIsAuthenticated(true);
         setUser(response.data.user);
-        showSuccess(response.data.message || "Đăng nhập thành công!");
+        showSuccess(response.data.message || "Đăng kí thành thành công!");
       }
     } catch (err: any) {
       if (err.response && err.response.status === 400) {
@@ -28,7 +28,7 @@ const useLogin = () => {
     }
   };
 
-  return { logIn, user };
+  return { Register, user };
 };
 
-export default useLogin;
+export default useRegister;
