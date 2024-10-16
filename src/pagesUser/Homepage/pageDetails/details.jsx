@@ -5,9 +5,12 @@ import {
   ShoppingCartOutlined,
   TagOutlined,
 } from "@ant-design/icons";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { SyncDataContext } from "..";
 
 const Details = () => {
+  const { productId, productSlug } = useContext(SyncDataContext);
+
   const [data, setData] = useState(null);
   const [tags, setTags] = useState([]);
   const [productInfo, setProductInfo] = useState("");
@@ -17,7 +20,9 @@ const Details = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "https://divineshop.vn/page-data/cho-thue-tai-khoan-steam-black-myth-wukong-gia-re/page-data.json"
+          `https://divineshop.vn/page-data/${localStorage.getItem(
+            "productSlug"
+          )}/page-data.json`
         );
         const result = await response.json();
         setData(result);
@@ -28,14 +33,17 @@ const Details = () => {
     };
 
     fetchData();
-  }, []);
+  }, [productSlug]);
+
   //
   // call api lấy dữ liệu cho mô tả chi tiết
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "https://divineshop.vn/api/product/description?id=29366"
+          `https://divineshop.vn/api/product/description?id=${localStorage.getItem(
+            "productId"
+          )}`
         );
         const result = await response.json();
         setProductInfo(result);
@@ -45,18 +53,24 @@ const Details = () => {
     };
 
     fetchData();
-  }, []);
+  }, [productId]);
+
+  // call ippai ìnor sản phẩm
+
+  //
   return (
-    <div className="detail-container">
+    <div className="container-page-details">
       <div>
         <div className="details-content">
           <div className="image-container">
             <img
               loading="lazy"
-              src="https://cdn.divineshop.vn/image/catalog/Anh-SP-New/Thang/black myth wukong-1d-22302.png?hash=1724216887"
+              src={`https://divineshop.vn/${data?.result?.data?.product?.image}`}
               className="image"
             />
-            <p className="image-caption">Xem thêm ảnh</p>
+            <p className="image-caption" onClick={() => {}}>
+              Xem thêm ảnh
+            </p>
           </div>
           <div className="text-content">
             <div>

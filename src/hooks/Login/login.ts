@@ -8,7 +8,6 @@ const useLogin = () => {
   const [user, setUser] = useState<any>(null);
 
   const logIn = async (username: string, password: string) => {
-    setLoading(true);
     try {
       const response = await httpMethod.post(
         `http://localhost:3001/user/login`,
@@ -30,7 +29,6 @@ const useLogin = () => {
         showError("Có lỗi xảy ra khi đăng nhập. Vui lòng thử lại.");
       }
     } finally {
-      setLoading(false);
     }
   };
 

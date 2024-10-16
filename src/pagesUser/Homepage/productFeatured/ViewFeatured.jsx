@@ -1,8 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { SyncDataContext } from "..";
+import { useNavigate } from "react-router-dom";
 
 const ShowFeatured = () => {
-  const { featured, loadMorefeatured } = useContext(SyncDataContext);
+  const navigate = useNavigate();
+  const {
+    featured,
+    loadMorefeatured,
+    // setProductId,
+    // setProductSlug,
+    // productId,
+  } = useContext(SyncDataContext);
   const calculateDiscountPercentage = (originalPrice, price) => {
     if (originalPrice === 0) return 0;
     return Math.round(((originalPrice - price) / originalPrice) * 100);
@@ -24,12 +32,21 @@ const ShowFeatured = () => {
       {/* <div className="grid grid-cols-2 md:grid-cols-4 gap-6 px-6 lg:px-0"> */}
       <div className="grid">
         {featured.map((item, index) => (
-          <a key={index}>
+          <a
+            key={index}
+            onClick={() => {
+              navigate(`/chi-tiet-san-pham`);
+            }}
+          >
             <img
               loading="lazy"
               src={`https://divineshop.vn${item.image}`}
               className="it-image"
               alt={item.text}
+              onClick={() => {
+                localStorage.setItem("productId", item.id);
+                localStorage.setItem("productSlug", item.slug);
+              }}
             />
             <p>{item.name}</p>
             <div className="show-price">

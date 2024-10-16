@@ -6,7 +6,7 @@ const ShowMenu = () => {
 
   return (
     <div className="show-menu">
-      {menu.map((menuItem: any, index: number) => (
+      {menu.map((menuItem, index) => (
         <a key={index} href={menuItem.link} className="item-image">
           <img
             className="ic-img-menu"

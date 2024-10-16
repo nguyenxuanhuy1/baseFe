@@ -13,22 +13,22 @@ const useFeatured = () => {
   const APIs = [`${Body.FEATURED}`, `${Body.FEATURED1}`, `${Body.FEATURED2}`];
 
   const getFeatured = async (url: string) => {
-    setLoading(true);
+    // if (!data) {
     try {
       const response = await httpMethod.get(url);
       if (response.status === 200) {
         setData((prevData) => {
-          const newData = response.data.list.filter((item: any) =>
-            !prevData.some((prevItem: any) => prevItem.id === item.id)
+          const newData = response.data.list.filter(
+            (item: any) =>
+              !prevData.some((prevItem: any) => prevItem.id === item.id)
           );
           return [...prevData, ...newData];
         });
       }
     } catch (error: any) {
       showError("call api featured có vấn đề rồi");
-    } finally {
-      setLoading(false);
     }
+    // }
   };
 
   const loadMorefeatured = () => {
