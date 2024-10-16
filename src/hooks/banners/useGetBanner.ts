@@ -9,19 +9,21 @@ const useBanner = () => {
   //! state
   const [data, setData] = useState<any[]>([]);
   const { setLoading } = useContext(AppContext);
-
+  const [etag, setEtag] = useState<string | null>(null);
   const getBanner = async () => {
-    setLoading(true);
+    // if (!data) {
     try {
-      const response = await httpMethod.get(`${Body.BANNER}`);
-      // const response = await httpMethod.get(`http://localhost:3001/banners`);
+      const response = await httpMethod.get(`${Body.BANNER}`, {
+        headers: {
+          "If-None-Match": etag,
+        },
+      });
       if (response.status === 200) {
         setData(response.data.list);
       }
     } catch (error: any) {
       showError("call api banner có vấn đề rồi");
-    } finally {
-      setLoading(false);
+      // }
     }
   };
   useEffect(() => {

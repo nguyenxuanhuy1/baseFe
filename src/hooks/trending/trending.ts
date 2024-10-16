@@ -13,7 +13,6 @@ const useTrending = () => {
   const APIs = [`${Body.TRENDING}`, `${Body.TRENDING1}`, `${Body.TRENDING2}`];
 
   const getTrending = async (url: string) => {
-    setLoading(true);
     try {
       const response = await httpMethod.get(url);
       if (response.status === 200) {
@@ -28,7 +27,6 @@ const useTrending = () => {
     } catch (error: any) {
       showError("call api featured có vấn đề rồi");
     } finally {
-      setLoading(false);
     }
   };
 

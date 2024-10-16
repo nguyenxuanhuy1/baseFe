@@ -1,4 +1,4 @@
-import React, { createContext, lazy } from "react";
+import React, { createContext, lazy, useState } from "react";
 import useMenu from "hooks/menu/menu";
 import SlideComponent from "./slide/ViewSlide";
 import useSlide from "hooks/slide/slide";
@@ -7,15 +7,21 @@ import useFeatured from "hooks/featured/featured";
 import useTrending from "hooks/trending/trending";
 import { useNavigate } from "react-router-dom";
 import BaseUrl from "constants/baseUrl";
+import Details from "./pageDetails/details";
 
 const ShowMenu = lazy(() => import("./menu/ViewMenu"));
 const ShowBanner = lazy(() => import("./banner/ViewBaner"));
 const ShowFeatured = lazy(() => import("./productFeatured/ViewFeatured"));
-const ShowTrending = lazy(
-  () => import("pagesUser/Homepage/productTrending/ViewTrending")
+const ShowTrending = lazy(() =>
+  import("pagesUser/Homepage/productTrending/ViewTrending")
 );
 
-export const SyncDataContext = createContext<any>({});
+export const SyncDataContext = createContext({
+  productSlug: null,
+  productId: null,
+  setProductId: () => {},
+  setProductSlug: () => {},
+});
 
 const Menu = () => {
   const { data: menu } = useMenu();
@@ -23,7 +29,10 @@ const Menu = () => {
   const { data: banner } = useBanner();
   const { data: featured, loadMorefeatured } = useFeatured();
   const { data: trending, loadMoreTrending } = useTrending();
-  const navigate = useNavigate();
+
+  const [productId, setProductId] = useState(null);
+  const [productSlug, setProductSlug] = useState(null);
+  // const navigate = useNavigate();
   return (
     <SyncDataContext.Provider
       value={{
@@ -31,9 +40,14 @@ const Menu = () => {
         slide,
         banner,
         trending,
-        loadMoreTrending,
         featured,
+        productId,
+        productSlug,
+
+        loadMoreTrending,
         loadMorefeatured,
+        setProductId,
+        setProductSlug,
       }}
     >
       <div className="flex w-full justify-center flex-wrap">
@@ -47,7 +61,7 @@ const Menu = () => {
             </div>
             <div
               className="w-full lg:w-1/4 hidden lg:flex flex-col"
-              onClick={() => navigate(BaseUrl.pageDetails)}
+              // onClick={() => navigate(BaseUrl.pageDetails)}
             >
               {banner.slice(0, 2).map((item, index) => (
                 <div key={index}>
@@ -73,6 +87,9 @@ const Menu = () => {
             <ShowTrending />
           </div>
         </div>
+      </div>
+      <div className="hidden">
+        <Details />
       </div>
     </SyncDataContext.Provider>
   );

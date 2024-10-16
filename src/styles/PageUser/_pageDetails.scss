@@ -1,36 +1,4 @@
-.details-container {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-.details-text {
-  width: 100%;
-  max-width: 1200px;
-  flex-wrap: wrap;
-}
-.details-tutorial {
-  max-width: 100%;
-}
-.details-decription {
-  flex-wrap: wrap;
-  display: flex;
-  padding: 0.5rem;
-
-  .details-sanpham {
-    width: 16rem;
-    font-size: 1rem;
-  }
-
-  .details-show {
-    width: 65%;
-    @media (max-width: 768px) {
-      width: 100%;
-    }
-  }
-}
-
-.detail-container {
+.container-page-details {
   display: flex;
   width: 100%;
   justify-content: center;
@@ -39,12 +7,43 @@
     padding: 10px;
   }
 
+  .details-text {
+    width: 100%;
+    max-width: 1200px;
+    flex-wrap: wrap;
+  }
+  .details-tutorial {
+    max-width: 100%;
+  }
+  .details-decription {
+    flex-wrap: wrap;
+    display: flex;
+    padding: 0.5rem;
+
+    .details-sanpham {
+      width: 16rem;
+      font-size: 1rem;
+    }
+
+    .details-show {
+      width: 65%;
+      @media (max-width: 768px) {
+        width: 100%;
+      }
+    }
+  }
+
   .details-content {
     display: flex;
     width: 100%;
     max-width: 1200px;
-
+    flex-wrap: nowrap;
     // Áp dụng quy tắc cho phần tử bên trong
+
+    @media (max-width: 768px) {
+      flex-wrap: wrap;
+    }
+
     .image-container {
       width: 35%;
 
