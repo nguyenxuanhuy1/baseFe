@@ -133,7 +133,7 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
                 <CustomTypography.Text
                   strong
                   title="Đăng nhập / Đăng kí"
-                  className="text-white"
+                  className="hidden lg:inline-block text-white"
                   onClick={() => setOpenModal(true)}
                 />
                 {openModal && (
