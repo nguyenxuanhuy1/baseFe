@@ -140,3 +140,25 @@
     color: #fff;
   }
 }
+
+.container-menu-sm-login {
+  .menu-sm-login {
+    height: 2.5rem;
+    background-color: #1888e4;
+    display: flex;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background-color: #2579f2;
+    }
+
+    .icon-sm-login {
+      margin-right: 0.5rem;
+      font-size: 1.2rem;
+    }
+  }
+}
