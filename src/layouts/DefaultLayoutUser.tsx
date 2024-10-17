@@ -17,6 +17,7 @@ import useMidHeader from "hooks/header/midHeader";
 import useBotHeader from "hooks/header/botHeader";
 import Login from "./Login/FormLogin";
 import img_logo from "assets/img_logo.svg";
+import useMenu from "hooks/menu/menu";
 
 export const TopHeaderDataContext = createContext<any>({
   ListTopHeaderData: [],
@@ -34,7 +35,10 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
   const { data: midHeader } = useMidHeader();
   //bot header
   const { data: botHeader } = useBotHeader();
+  //call menu khi màn hình về chế độ điện thoại tưucs là kích thước sm
+  const { data: menu } = useMenu();
   //! state
+
   const [openModal, setOpenModal] = useState<boolean>(false);
   const { Header, Content } = Layout;
   const auth = useAuth();
@@ -54,17 +58,30 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
   ];
   const [open, setOpen] = useState(false);
   const content = (
-    <div>
-      <p
-        style={{ backgroundColor: "green" }}
+    <div className="container-menu-sm-login">
+      <div
+        className="menu-sm-login"
         onClick={() => {
           setOpen(false);
           setOpenModal(true);
         }}
       >
-        Đăng nhập/đăng kí
-      </p>
-      <p>aaaa</p>
+        <div className="icon-sm-login">
+          <UserOutlined />
+        </div>
+        <div>Đăng nhập/đăng kí</div>
+      </div>
+      {menu.map((menuItem, index) => (
+        <a key={index} href={menuItem.link} className="item-image">
+          <img
+            className="ic-img-menu"
+            loading="lazy"
+            src={`https://divineshop.vn${menuItem.icon}`}
+            alt={menuItem.text}
+          />
+          <span className="sp-menu">{menuItem.text}</span>
+        </a>
+      ))}
     </div>
   );
   const handleOpenChange = (newOpen: boolean) => {
@@ -224,9 +241,6 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
       >
         {children}
       </Content>
-      {/* <Footer className="bg-[#000D21]">
-        <div>Footer</div>
-      </Footer> */}
     </Layout>
   );
 };

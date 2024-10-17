@@ -7,28 +7,28 @@
   @media (min-width: 1024px) {
     min-height: 312px;
   }
-  .item-image {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    text-decoration: none;
-    padding-top: 0.25rem;
-    padding-bottom: 0.25rem;
-    padding-left: 2rem;
-    transition: background-color 0.3s ease;
-
-    &:hover {
-      background-color: #e5e7eb;
-    }
-    .ic-img-menu {
-      max-width: 1.5rem;
-      max-height: 1.2rem;
-    }
-    // style={{ marginLeft: "5px", whiteSpace: "nowrap" }}
-    .sp-menu {
-      margin-left: 0.5rem;
-      white-space: nowrap;
-    }
-  }
 }
 //
+.item-image {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  padding-left: 2rem;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #e5e7eb;
+  }
+  .ic-img-menu {
+    max-width: 1.5rem;
+    max-height: 1.2rem;
+  }
+  // style={{ marginLeft: "5px", whiteSpace: "nowrap" }}
+  .sp-menu {
+    margin-left: 0.5rem;
+    white-space: nowrap;
+  }
+}
