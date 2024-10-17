@@ -55,8 +55,16 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
   const [open, setOpen] = useState(false);
   const content = (
     <div>
-      <p>Đăng nhập/đăng kí</p>
-      <p></p>
+      <p
+        style={{ backgroundColor: "green" }}
+        onClick={() => {
+          setOpen(false);
+          setOpenModal(true);
+        }}
+      >
+        Đăng nhập/đăng kí
+      </p>
+      <p>aaaa</p>
     </div>
   );
   const handleOpenChange = (newOpen: boolean) => {

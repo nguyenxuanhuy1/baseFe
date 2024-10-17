@@ -1,3 +1,5 @@
+@import "variable";
+
 .loginRegister {
   display: flex;
   .item-left {
@@ -40,8 +42,21 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    @media (max-width: $breakpoint-sm) {
+    @media (max-width: $breakpoint-md) {
       display: none;
+    }
+  }
+  .responsive-text {
+    @media (max-width: $breakpoint-md) {
+      display: none;
+    }
+  }
+  .btn-loginRes {
+    @media (max-width: $breakpoint-md) {
+      .login,
+      .register {
+        font-size: 20px;
+      }
     }
   }
 }

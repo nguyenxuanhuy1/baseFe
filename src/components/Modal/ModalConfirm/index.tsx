@@ -7,6 +7,8 @@ const ModalConfirm = (props: IModalConfirm) => {
   //! define
   const { open, onCancel, onOk, title, footer, content, closeIcon, icon } =
     props;
+  const isMobile = window.innerWidth <= 768;
+  console.log("isMobile", isMobile);
 
   const customFooter = (
     <div style={{ textAlign: "center" }}>
@@ -24,10 +26,11 @@ const ModalConfirm = (props: IModalConfirm) => {
       footer={customFooter || footer}
       closeIcon={false}
       className="modal-confirm"
-      width={400}
+      // width={400}
+      width={isMobile ? "100%" : 400}
       centered={true}
-    // maskClosable={false}
-    // mask={false}
+      // maskClosable={false}
+      // mask={false}
     >
       <div className="modal-confirm-content">
         {icon}

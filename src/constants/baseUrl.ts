@@ -15,6 +15,7 @@ const BaseUrl = {
   ManageProduct: "/quan-ly-san-pham",
   manageBanner: "/quan-ly-banner",
   pageDetails: "/chi-tiet-san-pham",
+  cart: "/cart",
 };
 
 export default BaseUrl;
