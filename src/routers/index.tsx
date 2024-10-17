@@ -12,6 +12,7 @@ const PageUser = lazy(() => import("pagesUser/Homepage/index"));
 const QuanLySanPham = lazy(() => import("pages/AdminProduct"));
 const QuanLyBanner = lazy(() => import("pages/AdminBanner"));
 const Details = lazy(() => import("pagesUser/Homepage/pageDetails/details"));
+const Cart = lazy(() => import("pagesUser/Homepage/cart/cart"));
 
 const routes: IRoute[] = [
   {
@@ -76,6 +77,14 @@ const routes: IRoute[] = [
     path: BaseUrl.pageDetails,
     layout: DefaultLayoutUser,
     component: Details,
+    routeChild: [],
+  },
+  {
+    name: "cart",
+    key: "cart",
+    path: BaseUrl.cart,
+    layout: DefaultLayoutUser,
+    component: Cart,
     routeChild: [],
   },
 ];

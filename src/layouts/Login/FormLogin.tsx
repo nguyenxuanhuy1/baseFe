@@ -1,6 +1,5 @@
 import { Modal } from "antd";
 import { FastField, Form, Formik } from "formik";
-import { showError } from "helpers/toast";
 import { useAuth } from "providers/AuthenticationProvider";
 import Input from "components/CustomField/InputField";
 import { ButtonHTMLTypes } from "interfaces/common";
@@ -55,12 +54,16 @@ const Login = (props: IProps) => {
                       onClick={() => {
                         setLoginAndRegis(false);
                       }}
-                      className={`pointer ${!loginAndRegis ? "bold" : ""}`}
+                      className={`pointer login ${
+                        !loginAndRegis ? "bold" : ""
+                      }`}
                     >
                       Đăng nhập
                     </a>
                     <a
-                      className={`pointer ${loginAndRegis ? "bold" : ""}`}
+                      className={`pointer register ${
+                        loginAndRegis ? "bold" : ""
+                      }`}
                       onClick={() => {
                         setLoginAndRegis(true);
                       }}
@@ -71,7 +74,7 @@ const Login = (props: IProps) => {
                   </div>
                   {loginAndRegis === false ? (
                     <>
-                      <div style={{ marginBottom: 2 }}>
+                      <div className="responsive-text">
                         Đăng nhập để theo dõi đơn hàng, lưu danh sách sản phẩm
                         yêu thích và nhận nhiều ưu đãi hấp dẫn
                       </div>
@@ -115,7 +118,7 @@ const Login = (props: IProps) => {
                     </>
                   ) : (
                     <>
-                      <div>
+                      <div className="responsive-text">
                         Đăng ký để theo dõi đơn hàng, lưu danh sách sản phẩm yêu
                         thích và nhận nhiều ưu đãi hấp dẫn
                       </div>
@@ -127,7 +130,7 @@ const Login = (props: IProps) => {
                           }}
                           component={Input}
                           name="username"
-                          label="Tài khoản [Dùng để đăng nhập]"
+                          label="Tài khoản đăng nhập"
                           placeholder="Tài khoản"
                         />
                         <FastField
