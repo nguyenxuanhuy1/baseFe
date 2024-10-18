@@ -7,6 +7,7 @@ import {
 } from "@ant-design/icons";
 import { useContext, useEffect, useState } from "react";
 import { SyncDataContext } from "..";
+import { useLocation } from "react-router-dom";
 
 const Details = () => {
   const { productId, productSlug } = useContext(SyncDataContext);
@@ -14,6 +15,8 @@ const Details = () => {
   const [data, setData] = useState(null);
   const [tags, setTags] = useState([]);
   const [productInfo, setProductInfo] = useState("");
+  const location = useLocation();
+  console.log("location", location);
 
   //
   useEffect(() => {

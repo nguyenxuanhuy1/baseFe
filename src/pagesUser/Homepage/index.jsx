@@ -5,16 +5,12 @@ import useSlide from "hooks/slide/slide";
 import useBanner from "hooks/banners/useGetBanner";
 import useFeatured from "hooks/featured/featured";
 import useTrending from "hooks/trending/trending";
-import { useNavigate } from "react-router-dom";
-import BaseUrl from "constants/baseUrl";
-import Details from "./pageDetails/details";
 
 const ShowMenu = lazy(() => import("./menu/ViewMenu"));
 const ShowBanner = lazy(() => import("./banner/ViewBaner"));
 const ShowFeatured = lazy(() => import("./productFeatured/ViewFeatured"));
-const ShowTrending = lazy(() =>
-  import("pagesUser/Homepage/productTrending/ViewTrending")
-);
+const ShowTrending = lazy(() => import("./productTrending/ViewTrending"));
+const Details = lazy(() => import("./pageDetails/details"));
 
 export const SyncDataContext = createContext({
   productSlug: null,
@@ -32,7 +28,7 @@ const Menu = () => {
 
   const [productId, setProductId] = useState(null);
   const [productSlug, setProductSlug] = useState(null);
-  // const navigate = useNavigate();
+
   return (
     <SyncDataContext.Provider
       value={{

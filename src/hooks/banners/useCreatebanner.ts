@@ -11,23 +11,14 @@ const useCreateBanner = () => {
     searchForm: any,
     refreshData: () => void,
     setActions: React.Dispatch<React.SetStateAction<dictActions>>,
-    setItemTarget: React.Dispatch<any>,
-    fileImage: any
+    setItemTarget: React.Dispatch<any>
   ) => {
     setLoading(true);
 
     try {
-      // const formData = new FormData();
-      // formData.append("file", fileImage); // Thêm file vào FormData
-      // formData.append("slug", searchForm.slug);
       const response = await httpMethod.post(
         `http://localhost:3001/banners`,
         searchForm
-        // {
-        //   headers: {
-        //     "Content-Type": "multipart/form-data",
-        //   },
-        // }
       );
       if (response.status === 201) {
         if (response.data) {
