@@ -19,7 +19,6 @@ const useGetListBanner = (props: IProps) => {
 
   //! function
   const getSearch = async () => {
-    setLoading(true);
     if (searchForm) {
       try {
         const payload = {
@@ -41,8 +40,6 @@ const useGetListBanner = (props: IProps) => {
         } else {
           showError("Có lỗi xảy ra, vui lòng thử lại sau");
         }
-      } finally {
-        setLoading(false);
       }
     }
   };

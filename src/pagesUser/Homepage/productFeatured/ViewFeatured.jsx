@@ -4,13 +4,8 @@ import { useNavigate } from "react-router-dom";
 
 const ShowFeatured = () => {
   const navigate = useNavigate();
-  const {
-    featured,
-    loadMorefeatured,
-    // setProductId,
-    // setProductSlug,
-    // productId,
-  } = useContext(SyncDataContext);
+  const { featured, loadMorefeatured, setProductId, setProductSlug, producId } =
+    useContext(SyncDataContext);
   const calculateDiscountPercentage = (originalPrice, price) => {
     if (originalPrice === 0) return 0;
     return Math.round(((originalPrice - price) / originalPrice) * 100);
@@ -35,7 +30,7 @@ const ShowFeatured = () => {
           <a
             key={index}
             onClick={() => {
-              navigate(`/chi-tiet-san-pham`);
+              navigate(`/chi-tiet-san-pham`, { state: { id: producId } });
             }}
           >
             <img
@@ -44,8 +39,9 @@ const ShowFeatured = () => {
               className="it-image"
               alt={item.text}
               onClick={() => {
-                localStorage.setItem("productId", item.id);
-                localStorage.setItem("productSlug", item.slug);
+                setProductId(item.id);
+                setProductSlug(item.slug);
+                // localStorage.setItem("productSlug", item.slug);
               }}
             />
             <p>{item.name}</p>
