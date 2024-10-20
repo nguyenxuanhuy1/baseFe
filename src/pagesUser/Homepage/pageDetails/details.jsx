@@ -16,16 +16,12 @@ const Details = () => {
   const [tags, setTags] = useState([]);
   const [productInfo, setProductInfo] = useState("");
   const location = useLocation();
-  console.log("location", location);
-
   //
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `https://divineshop.vn/page-data/${localStorage.getItem(
-            "productSlug"
-          )}/page-data.json`
+          `https://divineshop.vn/page-data/${location.state.slug}/page-data.json`
         );
         const result = await response.json();
         setData(result);
@@ -44,9 +40,7 @@ const Details = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `https://divineshop.vn/api/product/description?id=${localStorage.getItem(
-            "productId"
-          )}`
+          `https://divineshop.vn/api/product/description?id=${location.state.id}`
         );
         const result = await response.json();
         setProductInfo(result);
