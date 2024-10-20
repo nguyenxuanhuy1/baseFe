@@ -13,8 +13,8 @@ const ShowTrending = lazy(() => import("./productTrending/ViewTrending"));
 const Details = lazy(() => import("./pageDetails/details"));
 
 export const SyncDataContext = createContext({
-  productSlug: null,
-  productId: null,
+  // productSlug: null,
+  // productId: null,
   setProductId: () => {},
   setProductSlug: () => {},
 });
@@ -26,8 +26,8 @@ const Menu = () => {
   const { data: featured, loadMorefeatured } = useFeatured();
   const { data: trending, loadMoreTrending } = useTrending();
 
-  const [productId, setProductId] = useState(null);
-  const [productSlug, setProductSlug] = useState(null);
+  // const [productId, setProductId] = useState(null);
+  // const [productSlug, setProductSlug] = useState(null);
 
   return (
     <SyncDataContext.Provider
@@ -37,13 +37,13 @@ const Menu = () => {
         banner,
         trending,
         featured,
-        productId,
-        productSlug,
+        // productId,
+        // productSlug,
 
         loadMoreTrending,
         loadMorefeatured,
-        setProductId,
-        setProductSlug,
+        // setProductId,
+        // setProductSlug,
       }}
     >
       <div className="flex w-full justify-center flex-wrap">
@@ -55,10 +55,7 @@ const Menu = () => {
             <div className="h-full w-full lg:w-[67%] mx-6 lg:max-h-[486px]">
               <SlideComponent />
             </div>
-            <div
-              className="w-full lg:w-1/4 hidden lg:flex flex-col"
-              // onClick={() => navigate(BaseUrl.pageDetails)}
-            >
+            <div className="w-full lg:w-1/4 hidden lg:flex flex-col">
               {banner.slice(0, 2).map((item, index) => (
                 <div key={index}>
                   <img
@@ -83,9 +80,6 @@ const Menu = () => {
             <ShowTrending />
           </div>
         </div>
-      </div>
-      <div className="hidden">
-        <Details />
       </div>
     </SyncDataContext.Provider>
   );

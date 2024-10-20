@@ -13,7 +13,9 @@ const QuanLySanPham = lazy(() => import("pages/AdminProduct"));
 const QuanLyBanner = lazy(() => import("pages/AdminBanner"));
 const Details = lazy(() => import("pagesUser/Homepage/pageDetails/details"));
 const Cart = lazy(() => import("pagesUser/Homepage/cart/cart"));
-
+const PageTypeProduct = lazy(
+  () => import("pagesUser/Homepage/typeProduct/typeProduct")
+);
 const routes: IRoute[] = [
   {
     name: "Login",
@@ -85,6 +87,14 @@ const routes: IRoute[] = [
     path: BaseUrl.cart,
     layout: DefaultLayoutUser,
     component: Cart,
+    routeChild: [],
+  },
+  {
+    name: "sản phẩm theo loại",
+    key: "cart",
+    path: BaseUrl.productType,
+    layout: DefaultLayoutUser,
+    component: PageTypeProduct,
     routeChild: [],
   },
 ];
