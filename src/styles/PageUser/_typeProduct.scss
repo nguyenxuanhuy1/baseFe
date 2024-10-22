@@ -1,0 +1,35 @@
+@import "variable";
+
+.container-page-typeproduct {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+
+  @media (max-width: $breakpoint-xl) {
+    padding: 10px;
+  }
+
+  .typeproduct-body {
+    width: 100%;
+    max-width: 1200px;
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+
+    .item {
+      flex: 0 1 25%;
+      background-color: aqua;
+    }
+    @media (max-width: $breakpoint-lg) {
+      flex-wrap: wrap;
+      .item {
+        flex: 0 1 33.33%;
+      }
+    }
+    @media (max-width: $breakpoint-md) {
+      .item {
+        flex: 0 1 50%;
+      }
+    }
+  }
+}

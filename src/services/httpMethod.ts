@@ -18,20 +18,20 @@ class Services {
       baseURL: "",
       timeout: 60000,
     });
-    // this.axios.defaults.withCredentials = true;
+
+    const token = localStorage.getItem("accessToken");
+    if (token) {
+      this.attachTokenToHeader(token);
+    }
 
     this.axios.interceptors.response.use(
       function (response: any) {
-        // Do something before request is sent
-        // const nextResponse = cloneDeep(response);
-        // nextResponse.data = nextResponse?.data?.data;
-
         return response;
       },
       function (error: any) {
         if (error?.response?.status === 401) {
           window.localStorage.clear();
-          window.location.href = BaseUrl.Login;
+          window.location.href = BaseUrl.Pageuser;
         } else {
           return Promise.reject(error);
         }
@@ -42,7 +42,6 @@ class Services {
   attachTokenToHeader(token: string) {
     this.axios.interceptors.request.use(
       function (config: any) {
-        // Do something before request is sent
         config.headers.Authorization = `Bearer ${token}`;
         config.headers["Accept-Language"] = "vi";
         return config;
@@ -98,7 +97,6 @@ class Services {
     return this.axios.patch(url, data, config);
   }
 
-
   saveTokenStorage(token: any) {
     localStorage.setItem(TOKEN_KEY, JSON.stringify(token));
   }
@@ -124,7 +122,6 @@ class Services {
 
     return null;
   }
-
 }
 
 export default new Services();
