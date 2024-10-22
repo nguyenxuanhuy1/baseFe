@@ -8,6 +8,7 @@ import {
 import { useContext, useEffect, useState } from "react";
 import { SyncDataContext } from "..";
 import { useLocation } from "react-router-dom";
+import httpMethod from "services/httpMethod";
 
 const Details = () => {
   const { productId, productSlug } = useContext(SyncDataContext);
@@ -17,22 +18,22 @@ const Details = () => {
   const [productInfo, setProductInfo] = useState("");
   const location = useLocation();
   //
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(
+        const response = await httpMethod.get(
           `https://divineshop.vn/page-data/${location.state.slug}/page-data.json`
         );
-        const result = await response.json();
+        const result = response.data;
         setData(result);
         setTags(result?.result.data.product.tags);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
-
     fetchData();
-  }, [productSlug]);
+  }, [location.state.slug]); // Hoặc [productSlug] nếu sử dụng productSlug
 
   //
   // call api lấy dữ liệu cho mô tả chi tiết

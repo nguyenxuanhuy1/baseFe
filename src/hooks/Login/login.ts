@@ -3,9 +3,6 @@ import { showError, showSuccess } from "helpers/toast";
 import httpMethod from "services/httpMethod";
 
 const useLogin = () => {
-  //! State
-  const [user, setUser] = useState<any>(null);
-
   const logIn = async (inforLogin: any) => {
     try {
       const response = await httpMethod.post(
@@ -14,21 +11,21 @@ const useLogin = () => {
         { withCredentials: true }
       );
 
-      if (response.status === 201) {
-        // setIsAuthenticated(true);
-        setUser(response.data.user);
+      if (response.status === 200) {
+        const { accessToken } = response.data;
+        localStorage.setItem("accessToken", accessToken);
         showSuccess(response.data.message || "Đăng nhập thành công!");
       }
     } catch (err: any) {
-      if (err.response && err.response.status === 400) {
-        showError(err.response.data.message[0]);
+      if (err.response) {
+        showError(err.response.data.message[0] || "Đã xảy ra lỗi!");
       } else {
         showError("Vui lòng thử lại sau.");
       }
     }
   };
 
-  return { logIn, user };
+  return { logIn };
 };
 
 export default useLogin;

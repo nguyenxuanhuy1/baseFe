@@ -18,9 +18,6 @@ const ShowFeatured = () => {
           <a
             href="/san-pham-theo-loai/noi-bat"
             className="btn-discover"
-            // onClick={() => {
-            //   navigate(`/san-pham-theo-loai/noi-bat`);
-            // }}
             target="blank"
           >
             Khám phá

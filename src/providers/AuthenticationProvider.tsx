@@ -7,7 +7,7 @@ import {
 } from "react";
 import { UserInfo } from "interfaces/user";
 import { showError } from "helpers/toast";
-import httpService from "services/httpService";
+import httpMethod from "services/httpMethod";
 
 interface AuthenticationContextI {
   loading: boolean;
@@ -35,9 +35,9 @@ export const useAuth = () => useContext(AuthenticationContext);
 
 const AuthenticationProvider = ({ children }: { children: any }) => {
   //! State
-  const [token, setToken] = useState(httpService.getTokenStorage());
+  const [token, setToken] = useState(httpMethod.getTokenStorage());
   const [user, setUser] = useState<UserInfo | null>(
-    httpService.getUserStorage()
+    httpMethod.getUserStorage()
   );
   const [isLogging, setIsLogging] = useState(false);
 
@@ -64,9 +64,9 @@ const AuthenticationProvider = ({ children }: { children: any }) => {
         setToken(mockToken);
         setUser(mockUser);
 
-        httpService.attachTokenToHeader(mockToken);
-        httpService.saveTokenStorage(mockToken);
-        httpService.saveUserStorage(mockUser);
+        httpMethod.attachTokenToHeader(mockToken);
+        httpMethod.saveTokenStorage(mockToken);
+        httpMethod.saveUserStorage(mockUser);
         setIsLogging(false);
       } else {
         showError("User/password is not correct!");
@@ -76,7 +76,7 @@ const AuthenticationProvider = ({ children }: { children: any }) => {
   );
 
   const logout = useCallback(() => {
-    httpService.clearStorage();
+    httpMethod.clearStorage();
     window.sessionStorage.clear();
     window.location.reload();
   }, []);
