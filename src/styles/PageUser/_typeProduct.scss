@@ -5,30 +5,33 @@
   width: 100%;
   justify-content: center;
 
-  @media (max-width: $breakpoint-xl) {
+  @media (max-width: $breakpoint-md) {
     padding: 10px;
   }
 
-  .typeproduct-body {
+  .page80 {
     width: 100%;
     max-width: 1200px;
+  }
+
+  .typeproduct-image {
     border-radius: 5px;
     display: flex;
     flex-wrap: wrap;
+    gap: 0.7rem;
 
     .item {
-      flex: 0 1 25%;
-      background-color: aqua;
+      flex: 0 1 calc(25% - 0.7rem);
     }
     @media (max-width: $breakpoint-lg) {
       flex-wrap: wrap;
       .item {
-        flex: 0 1 33.33%;
+        flex: 0 1 calc(33.33% - 0.7rem);
       }
     }
     @media (max-width: $breakpoint-md) {
       .item {
-        flex: 0 1 50%;
+        flex: 0 1 calc(50% - 0.7rem);
       }
     }
   }

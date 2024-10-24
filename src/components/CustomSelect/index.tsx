@@ -72,7 +72,7 @@ const Select: FunctionComponent<FieldSelectPropsRoot> = ({
           field?.value ? (
             close && (
               <CloseOutlined
-                onClick={() => setFieldValue(field?.name || "", "" || null)}
+                onClick={() => setFieldValue(field?.name || "", "")}
               />
             )
           ) : (
