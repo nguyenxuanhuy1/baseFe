@@ -59,44 +59,43 @@ const PageTypeProduct = () => {
               <Row gutter={[8, 8]}>
                 <Col xs={24} sm={12} md={4}>
                   <Field
-                    component={Input}
-                    label="cột 1"
-                    name="content"
-                    placeholder="Thông tin phản ánh"
+                    component={Select}
+                    options={fakeOptions}
+                    name="danhmuc"
+                    placeholder="Danh mục"
                   />
                 </Col>
                 <Col xs={24} sm={12} md={4}>
                   <Field
                     component={Select}
                     options={fakeOptions}
-                    label="Ơ sao méo tháy nhỉ"
                     name="danhmuc"
-                    placeholder="Ơ sao méo tháy nhỉ"
+                    placeholder="Thể loại"
                   />
                 </Col>
 
-                <Col xs={12} sm={8} md={4}>
+                <Col xs={12} sm={6} md={4}>
                   <Field
-                    component={Select}
-                    options={fakeOptions}
-                    name="danhmuc"
-                    placeholder="Chọn cột 3"
+                    component={Input}
+                    label="Mức giá từ"
+                    name="giatu"
+                    placeholder="Mức giá từ"
                   />
                 </Col>
-                <Col xs={12} sm={8} md={4}>
+                <Col xs={12} sm={6} md={4}>
                   <Field
-                    component={Select}
-                    options={fakeOptions}
-                    name="danhmuc"
-                    placeholder="Chọn cột 4"
+                    component={Input}
+                    label="Mức giá đến"
+                    name="giaden"
+                    placeholder="Mức giá đến"
                   />
                 </Col>
-                <Col xs={24} sm={8} md={4}>
+                <Col xs={24} sm={12} md={4}>
                   <Field
                     component={Select}
                     options={fakeOptions}
                     name="danhmuc"
-                    placeholder="Chọn cột 5"
+                    placeholder="Sắp xếp"
                   />
                 </Col>
 
