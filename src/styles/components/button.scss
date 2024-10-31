@@ -1,190 +1,211 @@
 :root {
-    --color-green-teca: #387338;
-    --color-red-original: #e42428;
-    --color-create-button: #1e88e5;
-    --color-search-button: #1e88e5;
-    --color-delete-button: white;
-    --color-remain-button: #1e88e5;
-    --color-text-create-button: white;
-    --color-text-delete-button: black;
-  }
-  
-  .create-button {
-    background-color: var(--color-green-teca);
-    color: var(--color-text-create-button);
-  }
-  
-  .search-button {
-    background-color: var(--color-green-teca) !important;
-  }
-  
-  .delete-button {
-    background-color: var(--color-delete-button);
-    color: var(--color-text-delete-button);
-  }
-  
-  .remain-button {
-    background-color: var(--color-green-teca);
-  }
-  
-  .row-group-button {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .center-group-button {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .btn-group {
-    min-width: 100px;
-    font-weight: 700;
-    color: white;
-    margin: 10px;
-    padding: 4px 15px;
-    border: none;
-  }
-  
-  .btn-group-create {
-    min-width: 100px;
-    font-weight: 700;
-    color: var(--color-green-teca);
-    margin: 10px;
-    padding: 4px 15px;
-    border: none;
-  }
-  
-  .search-button .btn-searchIcon {
-    color: white;
-    background-color: var(--color-green-teca);
-  }
-  
-  .btn-create,
-  .btn-search {
-    color: white;
-    background-color: var(--color-green-teca);
-  }
-  
-  .btn-create:hover,
-  .btn-searchIcon:hover,
-  .btn-search:hover,
-  .btn-remain:hover {
-    color: white !important;
-    background-color: var(--color-green-teca) !important;
-    border-color: transparent !important;
-  }
-  
-  .btn-delete {
-    background-color: var(--color-red-original);
-    color: white;
-  }
-  
-  .btn-delete:hover {
-    color: white !important;
-    border-color: white !important;
-    background-color: var(--color-red-original) !important;
-  }
-  
-  .btn-remain {
-    font-weight: 700;
-    color: white;
-    margin: 10px;
-    border: none;
-    background-color: var(--color_remain_button);
-  
-    color: white;
-    border-radius: 6px;
-  }
-  
-  .btn-remain-disable {
-    font-weight: 700;
-    margin: 10px;
-    border: none;
-    background-color: #ffffff;
-    color: white;
-    border-radius: 6px;
-  }
-  
-  :where(.css-dev-only-do-not-override-19gw05y).ant-btn-default {
-    box-shadow: none;
-  }
-  
-  :where(.css-dev-only-do-not-override-19gw05y).ant-btn {
-    transition: none;
-    touch-action: none;
-  }
-  
-  .group-button-fixed {
-    position: fixed;
-    bottom: 0px;
-    right: 300px;
-    display: flex;
-    background: #ffffff;
-    justify-content: center;
-    border-top: 1px solid #ccc;
-    z-index: 1;
-    transition: left 0.2s;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .group-button-fixed-end-qlbm {
-    left: calc(250px + var(--width-menu));
-  }
-  
-  .group-button-fixed-end-ths {
-    left: calc(300px + var(--width-menu));
-  }
-  
-  .menu-collapsed .group-button-fixed-end-qlbm {
-    left: calc(250px + var(--width-menu-collapse));
-  }
-  
-  .menu-collapsed .group-button-fixed-end-ths {
-    left: calc(300px + var(--width-menu-collapse));
-  }
-  
-  .group-button-fixed-not-design {
-    position: fixed;
-    bottom: 0px;
-    display: flex;
-    background: #ffffff;
-    justify-content: center;
-    border-top: 1px solid #ccc;
-    z-index: 9999;
-    transition: left 0.2s;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .group-button-fixed-end-not-design {
-    left: var(--width-menu);
-    right: 0px;
-  }
-  
-  .menu-collapsed .group-button-fixed-end-not-design {
-    left: var(--width-menu-collapse);
-    right: 0px;
-  }
-  
-  .person-border {
-    border: 1px solid #c9abab;
-    padding: 6px;
-    border-radius: 9px;
-    position: relative;
-    width: fit-content;
-    margin-bottom: 12px;
-  }
-  
-  .person-border::after {
-    content: attr(data-text);
-    position: absolute;
-    top: -12px;
-    left: 20px;
-    background-color: white;
-    font-size: 14;
-    padding: 0 5px;
-  }
-  .btn-table{
-    font-size: 18px;
-    margin: 0px 6px;
-  }
+  --color-green-teca: #387338;
+  --color-red-original: #e42428;
+  --color-create-button: #1e88e5;
+  --color-search-button: #1e88e5;
+  --color-delete-button: white;
+  --color-remain-button: #1e88e5;
+  --color-text-create-button: white;
+  --color-text-delete-button: black;
+}
+
+.create-button {
+  background-color: var(--color-green-teca);
+  color: var(--color-text-create-button);
+}
+
+.search-button {
+  background-color: var(--color-green-teca) !important;
+}
+
+.delete-button {
+  background-color: var(--color-delete-button);
+  color: var(--color-text-delete-button);
+}
+
+.remain-button {
+  background-color: var(--color-green-teca);
+}
+
+.row-group-button {
+  display: flex;
+  justify-content: space-between;
+}
+
+.center-group-button {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-group {
+  min-width: 100px;
+  font-weight: 700;
+  color: white;
+  margin: 10px;
+  padding: 4px 15px;
+  border: none;
+}
+
+.btn-group-create {
+  min-width: 100px;
+  font-weight: 700;
+  color: var(--color-green-teca);
+  margin: 10px;
+  padding: 4px 15px;
+  border: none;
+}
+
+.search-button .btn-searchIcon {
+  color: white;
+  background-color: var(--color-green-teca);
+}
+
+.btn-create,
+.btn-search {
+  color: white;
+  background-color: var(--color-green-teca);
+}
+
+.btn-create:hover,
+.btn-searchIcon:hover,
+.btn-search:hover,
+.btn-remain:hover {
+  color: white !important;
+  background-color: var(--color-green-teca) !important;
+  border-color: transparent !important;
+}
+//
+
+.search-button .btn-filterIcon {
+  color: white;
+  background-color: var(--color-search-button);
+}
+
+.btn-create,
+.btn-filter {
+  color: white;
+  background-color: var(--color-search-button);
+}
+
+.btn-create:hover,
+.btn-filterIcon:hover,
+.btn-filter:hover,
+.btn-remain:hover {
+  color: white !important;
+  background-color: var(--color-search-button) !important;
+  border-color: transparent !important;
+}
+//
+.btn-delete {
+  background-color: var(--color-red-original);
+  color: white;
+}
+
+.btn-delete:hover {
+  color: white !important;
+  border-color: white !important;
+  background-color: var(--color-red-original) !important;
+}
+
+.btn-remain {
+  font-weight: 700;
+  color: white;
+  margin: 10px;
+  border: none;
+  background-color: var(--color_remain_button);
+
+  color: white;
+  border-radius: 6px;
+}
+
+.btn-remain-disable {
+  font-weight: 700;
+  margin: 10px;
+  border: none;
+  background-color: #ffffff;
+  color: white;
+  border-radius: 6px;
+}
+
+:where(.css-dev-only-do-not-override-19gw05y).ant-btn-default {
+  box-shadow: none;
+}
+
+:where(.css-dev-only-do-not-override-19gw05y).ant-btn {
+  transition: none;
+  touch-action: none;
+}
+
+.group-button-fixed {
+  position: fixed;
+  bottom: 0px;
+  right: 300px;
+  display: flex;
+  background: #ffffff;
+  justify-content: center;
+  border-top: 1px solid #ccc;
+  z-index: 1;
+  transition: left 0.2s;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.group-button-fixed-end-qlbm {
+  left: calc(250px + var(--width-menu));
+}
+
+.group-button-fixed-end-ths {
+  left: calc(300px + var(--width-menu));
+}
+
+.menu-collapsed .group-button-fixed-end-qlbm {
+  left: calc(250px + var(--width-menu-collapse));
+}
+
+.menu-collapsed .group-button-fixed-end-ths {
+  left: calc(300px + var(--width-menu-collapse));
+}
+
+.group-button-fixed-not-design {
+  position: fixed;
+  bottom: 0px;
+  display: flex;
+  background: #ffffff;
+  justify-content: center;
+  border-top: 1px solid #ccc;
+  z-index: 9999;
+  transition: left 0.2s;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.group-button-fixed-end-not-design {
+  left: var(--width-menu);
+  right: 0px;
+}
+
+.menu-collapsed .group-button-fixed-end-not-design {
+  left: var(--width-menu-collapse);
+  right: 0px;
+}
+
+.person-border {
+  border: 1px solid #c9abab;
+  padding: 6px;
+  border-radius: 9px;
+  position: relative;
+  width: fit-content;
+  margin-bottom: 12px;
+}
+
+.person-border::after {
+  content: attr(data-text);
+  position: absolute;
+  top: -12px;
+  left: 20px;
+  background-color: white;
+  font-size: 14;
+  padding: 0 5px;
+}
+.btn-table {
+  font-size: 18px;
+  margin: 0px 6px;
+}

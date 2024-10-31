@@ -9,9 +9,13 @@
     padding: 10px;
   }
 
-  .page80 {
+  .page {
     width: 100%;
     max-width: 1200px;
+    .title {
+      font-size: xx-large;
+      font-weight: bold;
+    }
   }
 
   .typeproduct-image {
