@@ -16,9 +16,12 @@ const ShowFeatured = () => {
         <div className="flex justify-between">
           <div className="tFeature">Sản phẩm nổi bật</div>
           <a
-            href="/san-pham-theo-loai/noi-bat"
             className="btn-discover"
-            target="blank"
+            onClick={() => {
+              navigate(`/san-pham-theo-loai`, {
+                state: { type: "featured" },
+              });
+            }}
           >
             Khám phá
           </a>

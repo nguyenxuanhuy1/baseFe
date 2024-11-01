@@ -16,7 +16,7 @@ const BaseUrl = {
   manageBanner: "/quan-ly-banner",
   pageDetails: "/chi-tiet-san-pham",
   cart: "/cart",
-  productType: "/san-pham-theo-loai/noi-bat",
+  productType: "/san-pham-theo-loai",
 };
 
 export default BaseUrl;

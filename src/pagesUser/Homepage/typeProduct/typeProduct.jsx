@@ -7,12 +7,13 @@ import { ButtonFilter } from "components/Button";
 import { ButtonHTMLTypes } from "interfaces/common";
 import Input from "components/CustomField/InputField";
 import Select from "components/CustomSelect";
+import { useLocation } from "react-router-dom";
 
 const PageTypeProduct = () => {
   const [data, setData] = useState(null);
   const [dataDanhMuc, setDataDanhMuc] = useState([]);
   const [dataTheLoai, setDataTheLoai] = useState([]);
-  console.log("dataTheLoai", dataTheLoai);
+  const location = useLocation();
 
   // call api danh mục để lấy value và lable
   useEffect(() => {
@@ -61,15 +62,26 @@ const PageTypeProduct = () => {
   }));
 
   //
+  // op sắp xếp
+  const opXapSep = [
+    { value: "", label: "Mặc định" },
+    { value: "sort=sales-desc", label: "Bán chạy nhất" },
+    { value: "sort=date-desc", label: "Mới cập nhật" },
+    { value: "sort=price-asc", label: "Giá thấp đến cáo" },
+    { value: "sort=price-desc", label: "Giá cao đến thấp" },
+    { value: "sort=name-asc", label: "Tên từ A - Z" },
+    { value: "sort=name-desc", label: "Tên từ Z - A" },
+  ];
+  //
 
   const fetchData = async (values) => {
-    let url = "https://divineshop.vn/api/product/list?limit=24&slug=featured";
+    let url = `https://divineshop.vn/api/product/list?limit=24&slug=${location.state.type}`;
 
     if (values.category_id) url += `&${"category_id="}${values.category_id}`;
     if (values.tag) url += `&${"tag="}${values.tag}`;
     if (values.price_from) url += `&${"price_from="}${values.price_from}`;
     if (values.price_to) url += `&${"price_to="}${values.price_to}`;
-    if (values.sort) url += `&${"sort="}${values.sort}`;
+    if (values.sort) url += `&${values.sort}`;
 
     try {
       const response = await httpMethod.get(url);
@@ -93,7 +105,7 @@ const PageTypeProduct = () => {
       {({ setFieldValue }) => (
         <div className="container-page-typeproduct">
           <div className="page">
-            {/* <div className="title">Sản phẩm nổi bật</div> */}
+            <div className="title">Sản phẩm nổi bật</div>
             <Form>
               <Row gutter={[8, 8]}>
                 <Col xs={24} sm={12} md={5}>
@@ -120,20 +132,23 @@ const PageTypeProduct = () => {
                     label="Mức giá từ"
                     name="price_from"
                     placeholder="Mức giá từ"
+                    min={10000}
                   />
                 </Col>
                 <Col xs={12} sm={6} md={4}>
                   <Field
                     component={Input}
+                    type="number"
                     label="Mức giá đến"
                     name="price_to"
                     placeholder="Mức giá đến"
+                    min={10000}
                   />
                 </Col>
                 <Col xs={24} sm={12} md={4}>
                   <Field
                     component={Select}
-                    options={opDanhMuc}
+                    options={opXapSep}
                     name="sort"
                     placeholder="Sắp xếp"
                   />
