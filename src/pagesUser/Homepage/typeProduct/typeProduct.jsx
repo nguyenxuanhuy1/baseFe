@@ -10,39 +10,78 @@ import Select from "components/CustomSelect";
 
 const PageTypeProduct = () => {
   const [data, setData] = useState(null);
+  const [dataDanhMuc, setDataDanhMuc] = useState([]);
+  const [dataTheLoai, setDataTheLoai] = useState([]);
+  console.log("dataTheLoai", dataTheLoai);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await httpMethod.get(
-  //         "https://divineshop.vn/api/home/banners"
-  //       );
+  // call api danh mục để lấy value và lable
+  useEffect(() => {
+    const getdataDanhMuc = async () => {
+      try {
+        const response = await httpMethod.get(
+          `https://divineshop.vn/page-data/sq/d/1685146032.json`
+        );
+        if (response.status === 200) {
+          setDataDanhMuc(response?.data?.data?.productCategoryList?.list);
+        }
+      } catch (err) {
+        console.log("err", err);
+      }
+    };
+    getdataDanhMuc();
+  }, []);
 
-  //       setData(response.data.list);
-  //     } catch (error) {
-  //       console.error("Error fetching data:", error);
-  //     }
-  //   };
-  //   fetchData();
-  // }, []);
+  const opDanhMuc = dataDanhMuc.map((item) => ({
+    value: item.value,
+    label: item.text,
+  }));
+
+  //
+
+  // call api thể loại để lấy value và lable
+  useEffect(() => {
+    const getdataTheLoai = async () => {
+      try {
+        const response = await httpMethod.get(
+          `https://divineshop.vn/page-data/sq/d/90173942.json`
+        );
+        if (response.status === 200) {
+          setDataTheLoai(response?.data?.data?.productTagList?.list);
+        }
+      } catch (err) {
+        console.log("err", err);
+      }
+    };
+    getdataTheLoai();
+  }, []);
+
+  const opTheLoai = dataTheLoai?.map((item) => ({
+    value: item.text,
+    label: item.text,
+  }));
+
+  //
 
   const fetchData = async (values) => {
+    let url = "https://divineshop.vn/api/product/list?limit=24&slug=featured";
+
+    if (values.category_id) url += `&${"category_id="}${values.category_id}`;
+    if (values.tag) url += `&${"tag="}${values.tag}`;
+    if (values.price_from) url += `&${"price_from="}${values.price_from}`;
+    if (values.price_to) url += `&${"price_to="}${values.price_to}`;
+    if (values.sort) url += `&${"sort="}${values.sort}`;
+
     try {
-      const response = await httpMethod.get(
-        `https://divineshop.vn/api/home/banners${values.content}/${values.danhmuc}`
-      );
-      setData(response.data.list);
+      const response = await httpMethod.get(url);
+      setData(response?.data?.list);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
 
-  const fakeOptions = [
-    { value: "option1", label: "Tùy chọn 1" },
-    { value: "option2", label: "Tùy chọn 2" },
-    { value: "option3", label: "Tùy chọn 3" },
-    { value: "option4", label: "Tùy chọn 4" },
-  ];
+  useEffect(() => {
+    fetchData(initialValues);
+  }, []);
 
   return (
     <Formik
@@ -57,28 +96,29 @@ const PageTypeProduct = () => {
             {/* <div className="title">Sản phẩm nổi bật</div> */}
             <Form>
               <Row gutter={[8, 8]}>
-                <Col xs={24} sm={12} md={4}>
+                <Col xs={24} sm={12} md={5}>
                   <Field
                     component={Select}
-                    options={fakeOptions}
-                    name="danhmuc"
+                    options={opDanhMuc}
+                    name="category_id"
                     placeholder="Danh mục"
                   />
                 </Col>
-                <Col xs={24} sm={12} md={4}>
+                <Col xs={24} sm={12} md={5}>
                   <Field
                     component={Select}
-                    options={fakeOptions}
-                    name="danhmuc"
+                    options={opTheLoai}
+                    name="tag"
                     placeholder="Thể loại"
                   />
                 </Col>
-
                 <Col xs={12} sm={6} md={4}>
                   <Field
+                    type="number"
+                    maxLength={9}
                     component={Input}
                     label="Mức giá từ"
-                    name="giatu"
+                    name="price_from"
                     placeholder="Mức giá từ"
                   />
                 </Col>
@@ -86,15 +126,15 @@ const PageTypeProduct = () => {
                   <Field
                     component={Input}
                     label="Mức giá đến"
-                    name="giaden"
+                    name="price_to"
                     placeholder="Mức giá đến"
                   />
                 </Col>
                 <Col xs={24} sm={12} md={4}>
                   <Field
                     component={Select}
-                    options={fakeOptions}
-                    name="danhmuc"
+                    options={opDanhMuc}
+                    name="sort"
                     placeholder="Sắp xếp"
                   />
                 </Col>
@@ -103,7 +143,7 @@ const PageTypeProduct = () => {
               </Row>
             </Form>
 
-            {/* <div className="typeproduct-image">
+            <div className="typeproduct-image">
               {data?.map((item, index) => (
                 <a key={index} className="item">
                   <img
@@ -114,7 +154,7 @@ const PageTypeProduct = () => {
                   />
                 </a>
               ))}
-            </div> */}
+            </div>
           </div>
         </div>
       )}

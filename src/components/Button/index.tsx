@@ -88,12 +88,9 @@ export const ButtonFilter = (props: ButtonProps) => {
   const { title, htmlType, onClick, className, icon, disable } = props;
   return (
     <Button
-      // style={{ marginTop: "1.2rem" }}
       title={title || "Lọc"}
       className={
-        disable
-          ? `${className} btn-remain-disable`
-          : `${className} btn-group btn-filter`
+        disable ? `${className} btn-remain-disable` : `${className} btn-filter`
       }
       icon={icon || <FilterOutlined />}
       disabled={disable}
