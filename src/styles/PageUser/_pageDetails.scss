@@ -73,6 +73,20 @@
       margin-right: 20px;
       margin-left: 20px;
       gap: 16px;
+      .btn-addToCart {
+        .btn-cart {
+          background-color: #2579f2;
+          width: 50%;
+          height: 40px;
+          color: white;
+          border-radius: 5px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 10px;
+          cursor: pointer;
+        }
+      }
     }
     .text-content {
       width: 40%;

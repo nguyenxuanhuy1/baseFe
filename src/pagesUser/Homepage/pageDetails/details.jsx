@@ -110,20 +110,7 @@ const Details = () => {
               }}
             />
             <div className="btn-addToCart">
-              <div
-                style={{
-                  backgroundColor: "#2579F2",
-                  width: "50%",
-                  height: "40px",
-                  color: "white",
-                  borderRadius: "5px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  marginBottom: "10px",
-                  cursor: "pointer",
-                }}
-              >
+              <div className="btn-cart">
                 <ShoppingCartOutlined style={{ fontSize: "25px" }} />
                 <button>Mua ngay</button>
               </div>

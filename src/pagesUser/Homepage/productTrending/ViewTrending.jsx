@@ -1,7 +1,9 @@
 import React, { useContext } from "react";
 import { SyncDataContext } from "..";
 import { RiseOutlined } from "@ant-design/icons";
+import { useNavigate } from "react-router-dom";
 const ShowTrending = () => {
+  const navigate = useNavigate();
   const { trending, loadMoreTrending } = useContext(SyncDataContext);
   const calculateDiscountPercentage = (originalPrice, price) => {
     if (originalPrice === 0) return 0;
@@ -18,7 +20,15 @@ const ShowTrending = () => {
             </div>
             <div className="t-trend">#Sản phẩm bán chạy nhất</div>
           </div>
-          <a href="" className="btn-discover">
+          <a
+            href=""
+            className="btn-discover"
+            onClick={() => {
+              navigate(`/san-pham-theo-loai`, {
+                state: { type: "trending" },
+              });
+            }}
+          >
             Khám phá
           </a>
         </div>

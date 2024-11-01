@@ -60,6 +60,7 @@ const Input = ({
         maxLength={maxLength}
         bordered={bordered}
         showCount={showCount}
+        step={10000}
       />
       <label
         className={`placeholder ${inputValue ? "filled" : ""}`} // Thêm class để điều chỉnh hiệu ứng
