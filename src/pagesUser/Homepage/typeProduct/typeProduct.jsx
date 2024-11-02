@@ -14,7 +14,14 @@ const PageTypeProduct = () => {
   const [dataDanhMuc, setDataDanhMuc] = useState([]);
   const [dataTheLoai, setDataTheLoai] = useState([]);
   const location = useLocation();
+  console.log("location", location);
 
+  //hàm tính giảm giá
+  const calculateDiscountPercentage = (originalPrice, price) => {
+    if (originalPrice === 0) return 0;
+    return Math.round(((originalPrice - price) / originalPrice) * 100);
+  };
+  //
   // call api danh mục để lấy value và lable
   useEffect(() => {
     const getdataDanhMuc = async () => {
@@ -75,13 +82,14 @@ const PageTypeProduct = () => {
   //
 
   const fetchData = async (values) => {
-    let url = `https://divineshop.vn/api/product/list?limit=24&slug=${location.state.type}`;
+    let url = `https://divineshop.vn/api/product/list?limit=24&${location.state.type}`;
 
-    if (values.category_id) url += `&${"category_id="}${values.category_id}`;
-    if (values.tag) url += `&${"tag="}${values.tag}`;
-    if (values.price_from) url += `&${"price_from="}${values.price_from}`;
-    if (values.price_to) url += `&${"price_to="}${values.price_to}`;
-    if (values.sort) url += `&${values.sort}`;
+    if (values.category_id)
+      url += `&${"slug=category_id="}${values.category_id}`;
+    if (values.tag) url += `&${"slug=tag="}${values.tag}`;
+    if (values.price_from) url += `&${"slug=price_from="}${values.price_from}`;
+    if (values.price_to) url += `&${"slug=price_to="}${values.price_to}`;
+    if (values.sort) url += `&${"slug="}${values.sort}`;
 
     try {
       const response = await httpMethod.get(url);
@@ -167,6 +175,25 @@ const PageTypeProduct = () => {
                     className="it-image"
                     alt={item.text}
                   />
+                  <p>{item.name}</p>
+                  <div className="show-price">
+                    <div className="price">{item.price.toLocaleString()}đ</div>
+                    {item.originalPrice !== item.price && (
+                      <>
+                        <div className="origin-price">
+                          {item.originalPrice.toLocaleString()}đ
+                        </div>
+                        <div className="discountpercen">
+                          -
+                          {calculateDiscountPercentage(
+                            item.originalPrice,
+                            item.price
+                          )}
+                          %
+                        </div>
+                      </>
+                    )}
+                  </div>
                 </a>
               ))}
             </div>

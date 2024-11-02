@@ -1,40 +1,45 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { SyncDataContext } from "..";
-import { RiseOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
-const ShowTrending = () => {
+
+const ShowGameSteam = () => {
   const navigate = useNavigate();
-  const { trending, loadMoreTrending } = useContext(SyncDataContext);
+  const { featured, loadMorefeatured } = useContext(SyncDataContext);
   const calculateDiscountPercentage = (originalPrice, price) => {
     if (originalPrice === 0) return 0;
     return Math.round(((originalPrice - price) / originalPrice) * 100);
   };
 
   return (
-    <div className="layout-trending container-item">
+    <div className="container-item">
       <div className="px-6 lg:px-0">
         <div className="flex justify-between">
-          <div className="i-trending">
-            <div className="icRise">
-              <RiseOutlined />
-            </div>
-            <div className="t-trend">#Sản phẩm bán chạy nhất</div>
-          </div>
+          <div className="tFeature">Sản phẩm nổi bật</div>
           <a
             className="btn-discover"
             onClick={() => {
               navigate(`/san-pham-theo-loai`, {
-                state: { type: "trending" },
+                state: { type: "featured" },
               });
             }}
           >
             Khám phá
           </a>
         </div>
+        <div className="mb-4">
+          Danh sách những sản phẩm theo xu hướng mà có thể bạn sẽ thích
+        </div>
       </div>
       <div className="grid">
-        {trending.map((item, index) => (
-          <a key={index} className="product-item">
+        {featured.map((item, index) => (
+          <a
+            key={index}
+            onClick={() => {
+              navigate(`/chi-tiet-san-pham`, {
+                state: { id: item.id, slug: item.slug },
+              });
+            }}
+          >
             <img
               loading="lazy"
               src={`https://divineshop.vn${item.image}`}
@@ -64,7 +69,7 @@ const ShowTrending = () => {
         ))}
       </div>
       <div className="l-more">
-        <button onClick={loadMoreTrending} className="btn-more">
+        <button onClick={loadMorefeatured} className="btn-more">
           Xem thêm
         </button>
       </div>
@@ -72,4 +77,4 @@ const ShowTrending = () => {
   );
 };
 
-export default ShowTrending;
+export default ShowGameSteam;

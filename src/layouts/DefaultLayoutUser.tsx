@@ -16,7 +16,6 @@ import useTopheader from "hooks/header/topHeader";
 import useMidHeader from "hooks/header/midHeader";
 import useBotHeader from "hooks/header/botHeader";
 import Login from "./Login/FormLogin";
-import img_logo from "assets/img_logo.svg";
 import useMenu from "hooks/menu/menu";
 
 export const TopHeaderDataContext = createContext<any>({
