@@ -6,6 +6,7 @@ import useBanner from "hooks/banners/useGetBanner";
 import useFeatured from "hooks/featured/featured";
 import useTrending from "hooks/trending/trending";
 import ChosePrice from "./selectPrice";
+import ShowGameSteam from "./gameSteam/ShowGameSteam";
 
 const ShowMenu = lazy(() => import("./menu/ViewMenu"));
 const ShowBanner = lazy(() => import("./banner/ViewBaner"));
@@ -38,45 +39,48 @@ const Menu = () => {
         loadMorefeatured,
       }}
     >
-      <div className="flex w-full justify-center flex-wrap">
-        <div className="flex flex-wrap w-full xl:max-w-[1200px]">
-          <div className="hidden lg:block cssMenu w-[19%]">
+      <div className="containerPageUser">
+        <div className="pageChildren80">
+          <div className="cssMenu">
             <ShowMenu />
           </div>
-          <div className="flex flex-wrap flex-row w-full pr-[47px] lg:pr-0 lg:w-[80%]">
-            <div className="h-full w-full lg:w-[67%] mx-6 lg:max-h-[486px]">
+          <div className="containerSlider">
+            <div className="cssSlider">
               <SlideComponent />
             </div>
-            <div className="w-full lg:w-1/4 hidden lg:flex flex-col">
+            <div className="imageBanner">
               {banner.slice(0, 2).map((item, index) => (
                 <div key={index}>
                   <img
                     loading="lazy"
                     src={`https://divineshop.vn${item.image}`}
-                    className="h-auto max-h-[143px] w-auto lg:min-w-[281px] mb-6  rounded-[6px]"
+                    className="image"
                     alt={item.text}
                   />
                 </div>
               ))}
             </div>
           </div>
-          <div className="flex w-full mx-6 xl:mx-0 justify-center flex-wrap">
+          <div className="cssBanner">
             <ShowBanner />
           </div>
-          <div className="flex w-full mx-6 xl:mx-0  justify-center flex-wrap mt-6">
+          <div className="cssFeatured">
             <ShowFeatured />
           </div>
         </div>
-        <div className="flex w-full justify-center background-div flex-wrap mt-6 bg-[#000d21] h-auto">
-          <div className="mx-6 xl:mx-0 xl:max-w-[1200px]">
+
+        <div className="background-div">
+          <div className="cssTrending">
             <ShowTrending />
           </div>
         </div>
 
-        <div className="flex flex-wrap w-full xl:max-w-[1200px]">
-          <div className="hidden lg:block cssMenu w-[19%]">
-            <ChosePrice />
-          </div>
+        <div className="pageChildren80">
+          <ChosePrice />
+        </div>
+
+        <div className="pageChildren80">
+          <ShowGameSteam />
         </div>
       </div>
     </SyncDataContext.Provider>

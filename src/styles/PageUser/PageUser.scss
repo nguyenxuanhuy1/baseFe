@@ -8,13 +8,6 @@
     contrast(100%);
 }
 
-.background-div {
-  width: 100%;
-  background-image: url("../../../public/BGRIMAGE.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: top;
-}
 // page user default
 .menu-sm {
   display: flex;
@@ -40,11 +33,6 @@
   .px-6 {
     padding: 0 24px;
     @include border-radius(6px);
-  }
-
-  .tFeature {
-    font-size: x-large;
-    font-weight: 600;
   }
 
   .lg\:px-0 {
@@ -89,56 +77,6 @@
     text-align: center;
     color: #3490dc;
   }
-
-  .btn-discover {
-    background-color: #2579f2;
-    line-height: 1.5rem;
-    border-radius: 5px;
-    width: 94px;
-    text-align: center;
-    color: #eeeded;
-    height: 27px;
-    font-size: 0.9rem;
-
-    &:hover {
-      width: 95px;
-      font-size: 1rem;
-      color: #fff;
-    }
-  }
-
-  .i-trending {
-    display: flex;
-    padding: 0.1rem 0;
-    border-radius: 9999px;
-    border-color: #f1efef;
-    border-width: 1px;
-    margin-bottom: 2rem;
-
-    .icRise {
-      margin-left: 1rem;
-      font-size: 1.6rem;
-      color: red;
-    }
-
-    .t-trend {
-      width: 110px;
-      line-height: 2.5rem;
-      margin-right: 1rem;
-      font-size: large;
-      font-family: Arial, Helvetica, sans-serif;
-      padding-left: 1rem;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: pre;
-    }
-  }
-
-  .layout-trending {
-    padding-top: 11rem;
-    padding-bottom: 3rem;
-    color: #fff;
-  }
 }
 
 .container-menu-sm-login {
@@ -160,5 +98,193 @@
       margin-right: 0.5rem;
       font-size: 1.2rem;
     }
+  }
+}
+
+.containerPageUser {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  .pageChildren80 {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+
+    @media (min-width: 1280px) {
+      max-width: 1200px;
+    }
+    .cssMenu {
+      display: none;
+      width: 19%;
+
+      @media (min-width: 1024px) {
+        display: block;
+      }
+    }
+
+    .containerSlider {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      width: 100%;
+      padding-right: 47px;
+
+      @media (min-width: 1024px) {
+        // 1024px là breakpoint 'lg' trong Tailwind
+        padding-right: 0;
+        width: 80%;
+      }
+      .cssSlider {
+        height: 100%;
+        width: 100%;
+        margin-inline: 1.5rem;
+
+        @media (min-width: 1024px) {
+          // 1024px là breakpoint `lg` trong Tailwind
+          width: 67%;
+          max-height: 486px;
+        }
+      }
+      .imageBanner {
+        width: 100%;
+        display: none;
+        flex-direction: column;
+
+        @media (min-width: 1024px) {
+          width: 25%;
+          display: flex;
+        }
+        .image {
+          height: auto;
+          max-height: 143px;
+          width: auto;
+          margin-bottom: 1.5rem;
+          border-radius: 6px;
+
+          @media (min-width: 1024px) {
+            min-width: 281px;
+          }
+        }
+      }
+    }
+    .cssBanner {
+      display: flex;
+      width: 100%;
+      margin-left: 1.5rem;
+      margin-right: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      @media (max-width: 1023px) {
+        margin-top: 1rem;
+      }
+
+      @media (min-width: 1280px) {
+        // margin-left: 0;
+        // margin-right: 0;
+        margin: 0;
+      }
+    }
+    .cssFeatured {
+      display: flex;
+      width: 100%;
+      margin-left: 1.5rem;
+      margin-right: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+
+      @media (min-width: 1280px) {
+        // margin-left: 0;
+        // margin-right: 0;
+        margin: 0;
+      }
+    }
+  }
+  .background-div {
+    width: 100%;
+    background-image: url("../../../public/BGRIMAGE.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+    background-color: #000d21;
+    height: auto;
+
+    .cssTrending {
+      margin-left: 1.5rem;
+      margin-right: 1.5rem;
+
+      @media (min-width: 1280px) {
+        margin-left: 0;
+        margin-right: 0;
+        max-width: 1200px;
+      }
+      // cần được bao bọc
+      .i-trending {
+        display: flex;
+        padding: 0.1rem 0;
+        border-radius: 9999px;
+        border-color: #f1efef;
+        border-width: 1px;
+        margin-bottom: 2rem;
+
+        .icRise {
+          margin-left: 1rem;
+          font-size: 1.6rem;
+          color: red;
+        }
+
+        .t-trend {
+          line-height: 2.5rem;
+          margin-right: 1rem;
+          font-size: large;
+          font-family: Arial, Helvetica, sans-serif;
+          padding-left: 1rem;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: pre;
+
+          @media (max-width: 640px) {
+            width: 110px;
+          }
+        }
+      }
+
+      .layout-trending {
+        padding-top: 11rem;
+        padding-bottom: 3rem;
+        color: #fff;
+      }
+      //
+    }
+  }
+
+  // css cho nút khám phá
+  .btn-discover {
+    background-color: #2579f2;
+    line-height: 1.5rem;
+    border-radius: 5px;
+    width: 94px;
+    text-align: center;
+    color: #eeeded;
+    height: 27px;
+    font-size: 0.9rem;
+
+    &:hover {
+      width: 95px;
+      font-size: 1rem;
+      color: #fff;
+    }
+  }
+  .tFeature {
+    font-size: x-large;
+    font-weight: 600;
   }
 }

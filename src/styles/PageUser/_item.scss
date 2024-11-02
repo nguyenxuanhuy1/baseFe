@@ -1,6 +1,8 @@
 // item chung
 .container-item {
+  margin-top: 1rem;
   width: 100%;
+
   .grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -29,28 +31,8 @@
         max-width: 310px;
       }
     }
-    .origin-price {
-      font-weight: 600; 
-      padding-right: 0.5rem; 
-      text-decoration: line-through; 
-      opacity: 0.5;
-    }
-    .discountpercen{
-      background-color: #dc2626;
-      border-radius: 10%;
-      color: #fff;
-    }
-    .show-price{
-      display: flex;
-      flex-wrap: wrap;
-      margin-top: 0.5rem;
-      margin-bottom: 0.5rem;
-      .price{
-        font-weight: 600;
-        margin-right: 0.5rem;
-      }
-    }
   }
+
   .l-more {
     display: flex;
     justify-content: center;
@@ -64,5 +46,26 @@
       color: #3490dc;
     }
   }
+}
+.show-price {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  .price {
+    font-weight: 600;
+    margin-right: 0.5rem;
+  }
+}
+.origin-price {
+  font-weight: 600;
+  padding-right: 0.5rem;
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+.discountpercen {
+  background-color: #dc2626;
+  border-radius: 10%;
+  color: #fff;
 }
 //
