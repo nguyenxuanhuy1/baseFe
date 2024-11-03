@@ -5,14 +5,16 @@ import useSlide from "hooks/slide/slide";
 import useBanner from "hooks/banners/useGetBanner";
 import useFeatured from "hooks/featured/featured";
 import useTrending from "hooks/trending/trending";
-import ChosePrice from "./selectPrice";
-import ShowGameSteam from "./gameSteam/ShowGameSteam";
+import useSteam from "hooks/steam/steam";
+import useNewProduct from "hooks/newproduct/newproduct";
 
 const ShowMenu = lazy(() => import("./menu/ViewMenu"));
 const ShowBanner = lazy(() => import("./banner/ViewBaner"));
 const ShowFeatured = lazy(() => import("./productFeatured/ViewFeatured"));
 const ShowTrending = lazy(() => import("./productTrending/ViewTrending"));
-const Details = lazy(() => import("./pageDetails/details"));
+const ChosePrice = lazy(() => import("./selectPrice"));
+const ShowGameSteam = lazy(() => import("./productgameSteam/ShowGameSteam"));
+const ShowGameNewProduct = lazy(() => import("./newProduct/ShowNewProduct."));
 
 export const SyncDataContext = createContext({
   setProductId: () => {},
@@ -25,6 +27,8 @@ const Menu = () => {
   const { data: banner } = useBanner();
   const { data: featured, loadMorefeatured } = useFeatured();
   const { data: trending, loadMoreTrending } = useTrending();
+  const { data: steam, loadMoreSteam } = useSteam();
+  const { data: newproduct, loadMoreNewProduct } = useNewProduct();
 
   return (
     <SyncDataContext.Provider
@@ -34,9 +38,12 @@ const Menu = () => {
         banner,
         trending,
         featured,
-
+        steam,
+        newproduct,
+        loadMoreSteam,
         loadMoreTrending,
         loadMorefeatured,
+        loadMoreNewProduct,
       }}
     >
       <div className="containerPageUser">
@@ -75,12 +82,17 @@ const Menu = () => {
           </div>
         </div>
 
-        <div className="pageChildren80">
-          <ChosePrice />
-        </div>
+        <div>
+          <div className="pageChildren80">
+            <ChosePrice />
+          </div>
 
-        <div className="pageChildren80">
-          <ShowGameSteam />
+          <div className="pageChildren80">
+            <ShowGameSteam />
+          </div>
+          <div className="pageChildren80">
+            <ShowGameNewProduct />
+          </div>
         </div>
       </div>
     </SyncDataContext.Provider>

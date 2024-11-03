@@ -18,5 +18,11 @@ export const Body = {
   FEATURED1: `https://divineshop.vn/api/product/list?page=2&slug=featured`,
   FEATURED2: `https://divineshop.vn/api/product/list?page=3&slug=featured`,
 
+  STEAM: `https://divineshop.vn/api/product/list?slug=steam`,
+  STEAM1: `https://divineshop.vn/api/product/list?page=2&slug=steam`,
+  STEAM2: `https://divineshop.vn/api/product/list?page=3&slug=steam`,
 
+  NEWPRODUCT: `https://divineshop.vn/api/product/list?slug=new-product`,
+  NEWPRODUCT1: `https://divineshop.vn/api/product/list?page=2&slug=new-product`,
+  NEWPRODUCT2: `https://divineshop.vn/api/product/list?page=3&slug=new-product`,
 };
