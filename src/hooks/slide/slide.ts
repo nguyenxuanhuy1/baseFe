@@ -13,7 +13,8 @@ const useSlide = () => {
         setData(response.data.list);
       }
     } catch (error: any) {
-      showError("Gọi api Slide lỗi rồi");
+      // showError("Gọi api Slide lỗi rồi");
+      console.log("Gọi api Slide lỗi rồi");
     }
   };
   useEffect(() => {

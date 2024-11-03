@@ -14,7 +14,8 @@ const useMenu = () => {
         setData(response.data.list);
       }
     } catch (error: any) {
-      showError("có vấn đề rồi");
+      // showError("có vấn đề rồi");
+      console.log("lỗi call menu");
     }
   };
   useEffect(() => {

@@ -1,18 +1,14 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Body } from "constants/api";
 import httpMethod from "services/httpMethod";
 import { showError } from "helpers/toast";
-import { AppContext } from "App";
-
-const useTrending = () => {
+const useSteam = () => {
   //! state
   const [data, setData] = useState<any[]>([]);
   const [currentPage, setCurrentPage] = useState(0);
-  const { setLoading } = useContext(AppContext);
-
-  const APIs = [`${Body.TRENDING}`, `${Body.TRENDING1}`, `${Body.TRENDING2}`];
-
-  const getTrending = async (url: string) => {
+  const APIs = [`${Body.STEAM}`, `${Body.STEAM1}`, `${Body.STEAM2}`];
+  const getSteam = async (url: string) => {
+    // if (!data) {
     try {
       const response = await httpMethod.get(url);
       if (response.status === 200) {
@@ -25,20 +21,20 @@ const useTrending = () => {
         });
       }
     } catch (error: any) {
-      // showError("call api trending có vấn đề rồi");
-      console.log("call lỗi Steam");
-    } finally {
+      //   showError("call api Steam có vấn đề rồi");
+      console.log("call Steam lỗi");
     }
+    // }
   };
 
-  const loadMoreTrending = () => {
+  const loadMoreSteam = () => {
     setCurrentPage((prevPage) => (prevPage + 1) % APIs.length);
   };
   useEffect(() => {
-    getTrending(APIs[currentPage]);
+    getSteam(APIs[currentPage]);
   }, [currentPage]);
 
-  return { data, loadMoreTrending };
+  return { data, loadMoreSteam };
 };
 
-export default useTrending;
+export default useSteam;

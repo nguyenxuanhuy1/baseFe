@@ -21,7 +21,8 @@ const useFeatured = () => {
         });
       }
     } catch (error: any) {
-      showError("call api featured có vấn đề rồi");
+      // showError("call api featured có vấn đề rồi");
+      console.log("call featured lỗi");
     }
     // }
   };

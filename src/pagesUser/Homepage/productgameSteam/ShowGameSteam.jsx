@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import { SyncDataContext } from "..";
 import { useNavigate } from "react-router-dom";
+import httpMethod from "services/httpMethod";
 
 const ShowGameSteam = () => {
   const navigate = useNavigate();
-  const { featured, loadMorefeatured } = useContext(SyncDataContext);
+  const { steam, loadMoreSteam } = useContext(SyncDataContext);
+
   const calculateDiscountPercentage = (originalPrice, price) => {
     if (originalPrice === 0) return 0;
     return Math.round(((originalPrice - price) / originalPrice) * 100);
@@ -14,24 +16,25 @@ const ShowGameSteam = () => {
     <div className="container-item">
       <div className="px-6 lg:px-0">
         <div className="flex justify-between">
-          <div className="tFeature">Sản phẩm nổi bật</div>
+          <div className="tFeature">Game trên steam</div>
           <a
             className="btn-discover"
-            onClick={() => {
-              navigate(`/san-pham-theo-loai`, {
-                state: { type: "featured" },
-              });
-            }}
+            // onClick={() => {
+            //   navigate(`/san-pham-theo-loai`, {
+            //     state: { type: "steam" },
+            //   });
+            // }}
           >
             Khám phá
           </a>
         </div>
         <div className="mb-4">
-          Danh sách những sản phẩm theo xu hướng mà có thể bạn sẽ thích
+          Những trò chơi được đánh giá tốt, nội dung hấp dẫn thu hút đang chờ
+          bạn
         </div>
       </div>
       <div className="grid">
-        {featured.map((item, index) => (
+        {steam.map((item, index) => (
           <a
             key={index}
             onClick={() => {
@@ -42,7 +45,11 @@ const ShowGameSteam = () => {
           >
             <img
               loading="lazy"
-              src={`https://divineshop.vn${item.image}`}
+              src={
+                item.image.startsWith("http")
+                  ? item.image
+                  : `https://divineshop.vn${item.image}`
+              }
               className="it-image"
               alt={item.text}
             />
@@ -69,7 +76,7 @@ const ShowGameSteam = () => {
         ))}
       </div>
       <div className="l-more">
-        <button onClick={loadMorefeatured} className="btn-more">
+        <button onClick={loadMoreSteam} className="btn-more">
           Xem thêm
         </button>
       </div>

@@ -1,18 +1,17 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Body } from "constants/api";
 import httpMethod from "services/httpMethod";
-import { showError } from "helpers/toast";
-import { AppContext } from "App";
-
-const useTrending = () => {
+const useNewProduct = () => {
   //! state
   const [data, setData] = useState<any[]>([]);
   const [currentPage, setCurrentPage] = useState(0);
-  const { setLoading } = useContext(AppContext);
-
-  const APIs = [`${Body.TRENDING}`, `${Body.TRENDING1}`, `${Body.TRENDING2}`];
-
-  const getTrending = async (url: string) => {
+  const APIs = [
+    `${Body.NEWPRODUCT}`,
+    `${Body.NEWPRODUCT1}`,
+    `${Body.NEWPRODUCT2}`,
+  ];
+  const getNewProduct = async (url: string) => {
+    // if (!data) {
     try {
       const response = await httpMethod.get(url);
       if (response.status === 200) {
@@ -25,20 +24,20 @@ const useTrending = () => {
         });
       }
     } catch (error: any) {
-      // showError("call api trending có vấn đề rồi");
-      console.log("call lỗi Steam");
-    } finally {
+      //   showError("call api NewProduct có vấn đề rồi");
+      console.log("call sản phẩm mới lỗi");
     }
+    // }
   };
 
-  const loadMoreTrending = () => {
+  const loadMoreNewProduct = () => {
     setCurrentPage((prevPage) => (prevPage + 1) % APIs.length);
   };
   useEffect(() => {
-    getTrending(APIs[currentPage]);
+    getNewProduct(APIs[currentPage]);
   }, [currentPage]);
 
-  return { data, loadMoreTrending };
+  return { data, loadMoreNewProduct };
 };
 
-export default useTrending;
+export default useNewProduct;
