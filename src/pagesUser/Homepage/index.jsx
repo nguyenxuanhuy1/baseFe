@@ -7,6 +7,7 @@ import useFeatured from "hooks/featured/featured";
 import useTrending from "hooks/trending/trending";
 import useSteam from "hooks/steam/steam";
 import useNewProduct from "hooks/newproduct/newproduct";
+import useStudy from "hooks/study/study";
 
 const ShowMenu = lazy(() => import("./menu/ViewMenu"));
 const ShowBanner = lazy(() => import("./banner/ViewBaner"));
@@ -14,7 +15,8 @@ const ShowFeatured = lazy(() => import("./productFeatured/ViewFeatured"));
 const ShowTrending = lazy(() => import("./productTrending/ViewTrending"));
 const ChosePrice = lazy(() => import("./selectPrice"));
 const ShowGameSteam = lazy(() => import("./productgameSteam/ShowGameSteam"));
-const ShowGameNewProduct = lazy(() => import("./newProduct/ShowNewProduct."));
+const ShowGameNewProduct = lazy(() => import("./newProduct/ShowNewProduct"));
+const ShowStudy = lazy(() => import("./study/ShowStudy"));
 
 export const SyncDataContext = createContext({
   setProductId: () => {},
@@ -29,7 +31,7 @@ const Menu = () => {
   const { data: trending, loadMoreTrending } = useTrending();
   const { data: steam, loadMoreSteam } = useSteam();
   const { data: newproduct, loadMoreNewProduct } = useNewProduct();
-
+  const { data: study, loadMoreStudy } = useStudy();
   return (
     <SyncDataContext.Provider
       value={{
@@ -40,6 +42,9 @@ const Menu = () => {
         featured,
         steam,
         newproduct,
+        study,
+
+        loadMoreStudy,
         loadMoreSteam,
         loadMoreTrending,
         loadMorefeatured,
@@ -83,15 +88,18 @@ const Menu = () => {
         </div>
 
         <div>
-          <div className="pageChildren80">
+          {/* <div className="pageChildren80">
             <ChosePrice />
-          </div>
+          </div> */}
 
           <div className="pageChildren80">
             <ShowGameSteam />
           </div>
           <div className="pageChildren80">
             <ShowGameNewProduct />
+          </div>
+          <div className="pageChildren80">
+            <ShowStudy />
           </div>
         </div>
       </div>

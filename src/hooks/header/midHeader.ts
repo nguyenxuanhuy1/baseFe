@@ -13,7 +13,8 @@ const useMidHeader = () => {
         setData(response.data.data.homeTopMenu.shortcuts);
       }
     } catch (error: any) {
-      showError("Lấy getMidheader lỗi");
+      // showError("Lấy getMidheader lỗi");
+      console.log("getMidheader lỗi");
     }
   };
   useEffect(() => {
