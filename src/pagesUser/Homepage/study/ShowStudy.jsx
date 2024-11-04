@@ -2,9 +2,9 @@ import React, { useContext } from "react";
 import { SyncDataContext } from "..";
 import { useNavigate } from "react-router-dom";
 
-const ShowGameNewProduct = () => {
+const ShowStudy = () => {
   const navigate = useNavigate();
-  const { newproduct, loadMoreNewProduct } = useContext(SyncDataContext);
+  const { study, loadMoreStudy } = useContext(SyncDataContext);
 
   const calculateDiscountPercentage = (originalPrice, price) => {
     if (originalPrice === 0) return 0;
@@ -15,14 +15,14 @@ const ShowGameNewProduct = () => {
     <div className="container-item">
       <div className="px-6 lg:px-0">
         <div className="flex justify-between">
-          <div className="tFeature">Sản phẩm mới ra mắt</div>
+          <div className="tFeature">Học tập</div>
           <a
             className="btn-discover"
-            // onClick={() => {
-            //   navigate(`/san-pham-theo-loai`, {
-            //     state: { type: "newproduct" },
-            //   });
-            // }}
+            onClick={() => {
+              navigate(`/san-pham-theo-loai`, {
+                state: { type: "study" },
+              });
+            }}
           >
             Khám phá
           </a>
@@ -30,7 +30,7 @@ const ShowGameNewProduct = () => {
         <div className="mb-4"></div>
       </div>
       <div className="grid">
-        {newproduct.map((item, index) => (
+        {study.map((item, index) => (
           <a
             key={index}
             onClick={() => {
@@ -72,7 +72,7 @@ const ShowGameNewProduct = () => {
         ))}
       </div>
       <div className="l-more">
-        <button onClick={loadMoreNewProduct} className="btn-more">
+        <button onClick={loadMoreStudy} className="btn-more">
           Xem thêm
         </button>
       </div>
@@ -80,4 +80,4 @@ const ShowGameNewProduct = () => {
   );
 };
 
-export default ShowGameNewProduct;
+export default ShowStudy;

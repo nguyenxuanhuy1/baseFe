@@ -72,11 +72,6 @@
   .justify-center {
     justify-content: center;
   }
-
-  .load-more {
-    text-align: center;
-    color: #3490dc;
-  }
 }
 
 .container-menu-sm-login {
@@ -111,7 +106,6 @@
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-
     @media (min-width: 1280px) {
       max-width: 1200px;
     }
@@ -286,5 +280,14 @@
   .tFeature {
     font-size: x-large;
     font-weight: 600;
+  }
+  @media (max-width: 768px) {
+    .tFeature {
+      font-size: large;
+    }
+  }
+  .load-more {
+    text-align: center;
+    color: #3490dc;
   }
 }
