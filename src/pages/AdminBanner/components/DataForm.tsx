@@ -2,7 +2,7 @@ import { useCallback, useContext, useEffect, useState } from "react";
 import { FileContext } from "..";
 import { Button, Col, Row, Upload } from "antd";
 import { Field, Form, Formik } from "formik";
-import Input from "components/CustomField/InputField";
+import Input from "components/CustomField/InputField/inputPro";
 import {
   CloseOutlined,
   CloudUploadOutlined,

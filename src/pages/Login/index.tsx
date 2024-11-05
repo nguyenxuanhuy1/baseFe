@@ -5,7 +5,7 @@ import { showError } from "helpers/toast";
 import { useAuth } from "providers/AuthenticationProvider";
 import { Navigate } from "react-router-dom";
 import BaseUrl from "constants/baseUrl";
-import Input from "components/CustomField/InputField";
+import Input from "components/CustomField/InputField/inputPro";
 import Button from "components/CustomButton";
 import { ButtonHTMLTypes, ButtonType } from "interfaces/common";
 

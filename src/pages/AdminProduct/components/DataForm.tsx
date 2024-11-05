@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { FileContext } from "..";
 import { Col, Row } from "antd";
 import { Field, Form, Formik } from "formik";
-import Input from "components/CustomField/InputField";
+import Input from "components/CustomField/InputField/inputPro";
 
 function DataForm() {
   const {} = useContext(FileContext);
