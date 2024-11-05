@@ -39,6 +39,7 @@ interface InputProps<T, V> extends ICustomFieldInputProps<any, any> {
   readOnly?: boolean;
   showCount?: boolean;
   colSpan?: any;
+  errorMessageHeight?: string;
 }
 
 export default InputProps;

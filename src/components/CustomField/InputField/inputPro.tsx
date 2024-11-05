@@ -26,23 +26,17 @@ const Input = ({
   style,
   bordered,
   showCount,
-  errorMessageHeight,
   ...props
 }: InputProps<any, any>) => {
   const inputName = name || props?.field?.name || "";
   const inputValue = value || props.field?.value;
   const inputOnChange = onChange || props.field?.onChange;
+
   const inputOnBlur = onBlur || props.field?.onBlur;
   const { errors, touched } = form ?? {};
 
   return (
-    <div className="wrap-input">
-      <>
-        {label}
-        {isRequired ? (
-          <span style={{ color: "red", margin: "0 4px" }}>*</span>
-        ) : null}
-      </>
+    <div className="wrap-input" style={{ position: "relative" }}>
       <InputAntd
         allowClear={allowClear}
         defaultValue={defaultValue}
@@ -58,7 +52,7 @@ const Input = ({
         onClick={onClick}
         placeholder={placeholder}
         className={`custom-input ${className}`}
-        style={style || { color: "#495057" }}
+        style={style || { color: "#495057", padding: "20px 10px" }} // Điều chỉnh padding
         prefix={prefix}
         suffix={suffix}
         status={touched?.[inputName] && errors?.[inputName] ? "error" : ""}
@@ -66,14 +60,18 @@ const Input = ({
         maxLength={maxLength}
         bordered={bordered}
         showCount={showCount}
+        step={10000}
       />
-      <div style={{ minHeight: errorMessageHeight }}>
-        {touched?.[inputName] && errors?.[inputName] && (
-          <span className="span_error">
-            <ErrorMessage name={inputName || ""} />
-          </span>
-        )}
-      </div>
+      <label
+        className={`placeholder ${inputValue ? "filled" : ""}`} // Thêm class để điều chỉnh hiệu ứng
+      >
+        {placeholder}
+      </label>
+      {touched?.[inputName] && errors?.[inputName] && (
+        <span className="span_error">
+          <ErrorMessage name={inputName || ""} />
+        </span>
+      )}
     </div>
   );
 };

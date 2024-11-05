@@ -1,7 +1,7 @@
 import { Modal } from "antd";
 import { FastField, Form, Formik } from "formik";
 import { useAuth } from "providers/AuthenticationProvider";
-import Input from "components/CustomField/InputField";
+import Input from "components/CustomField/InputField/index";
 import { ButtonHTMLTypes } from "interfaces/common";
 import { useState } from "react";
 import {

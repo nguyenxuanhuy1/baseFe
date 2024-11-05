@@ -5,7 +5,7 @@ import httpMethod from "services/httpMethod";
 import { initialValues } from "./helper/inittialValue";
 import { ButtonFilter } from "components/Button";
 import { ButtonHTMLTypes } from "interfaces/common";
-import Input from "components/CustomField/InputField";
+import Input from "components/CustomField/InputField/inputPro";
 import Select from "components/CustomSelect";
 import { useLocation } from "react-router-dom";
 

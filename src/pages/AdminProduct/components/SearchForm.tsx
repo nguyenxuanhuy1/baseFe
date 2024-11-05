@@ -2,7 +2,7 @@ import { Fragment, useContext } from "react";
 import { Field, Form, Formik, FormikProps } from "formik";
 import { FileContext } from "..";
 import { Col, Row } from "antd";
-import Input from "components/CustomField/InputField";
+import Input from "components/CustomField/InputField/inputPro";
 import { ButtonCreate, ButtonDelete, ButtonSearch } from "components/Button";
 import { SearchOutlined } from "@ant-design/icons";
 import { ButtonHTMLTypes } from "interfaces/common";
