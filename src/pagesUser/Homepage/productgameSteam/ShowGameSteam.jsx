@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { SyncDataContext } from "..";
 import { useNavigate } from "react-router-dom";
-import httpMethod from "services/httpMethod";
 
 const ShowGameSteam = () => {
   const navigate = useNavigate();
@@ -19,11 +18,11 @@ const ShowGameSteam = () => {
           <div className="tFeature">Game trên steam</div>
           <a
             className="btn-discover"
-            // onClick={() => {
-            //   navigate(`/san-pham-theo-loai`, {
-            //     state: { type: "steam" },
-            //   });
-            // }}
+            onClick={() => {
+              navigate(`/san-pham-theo-loai`, {
+                state: { type: "steam" },
+              });
+            }}
           >
             Khám phá
           </a>

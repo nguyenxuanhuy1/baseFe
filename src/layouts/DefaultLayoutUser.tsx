@@ -5,13 +5,21 @@ import {
   UnorderedListOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { Avatar, Layout, MenuProps, Image, Button, Popover } from "antd";
+import {
+  Avatar,
+  Layout,
+  MenuProps,
+  Image,
+  Button,
+  Popover,
+  Typography,
+} from "antd";
 import { CommonIcons } from "components/CommonIcons";
 import { CustomTypography } from "components/CustomTypography";
 import { useAuth } from "providers/AuthenticationProvider";
 import Search from "antd/es/input/Search";
 import { Footer } from "antd/es/layout/layout";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import useTopheader from "hooks/header/topHeader";
 import useMidHeader from "hooks/header/midHeader";
 import useBotHeader from "hooks/header/botHeader";
@@ -43,6 +51,36 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
   const auth = useAuth();
   // const { user, isAuthenticated } = useLogin();
 
+  // đang fix cứng đoạn text header
+  const titles = [
+    "Giải trí cùng các sản phẩm mới",
+    "Khám phá công nghệ hiện đại",
+    "Sản phẩm độc đáo và ưu đãi lớn",
+    "Anh xuân huy đây ",
+  ];
+  const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentTitleIndex((prevIndex) => (prevIndex + 1) % titles.length);
+    }, 5000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
+  // Hàm chuyển đến tiêu đề tiếp theo
+  const handleNext = () => {
+    setCurrentTitleIndex((prevIndex) => (prevIndex + 1) % titles.length);
+  };
+
+  // Hàm quay lại tiêu đề trước đó
+  const handlePrevious = () => {
+    setCurrentTitleIndex(
+      (prevIndex) => (prevIndex - 1 + titles.length) % titles.length
+    );
+  };
+
+  //
   const items: MenuProps["items"] = [
     {
       key: "1",
@@ -92,13 +130,15 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
         <div className="w-full justify-center bg-[#0A59CC] h-[42px] hidden lg:flex">
           <div className="w-full xl:w-[1200px]  flex justify-between  h-[42px] mr-3 ml-3">
             <div className="flex items-center gap-1 hover:underline">
-              <LeftOutlined />
-              <RightOutlined />
-              <CustomTypography.Text
+              <LeftOutlined onClick={handleNext} />
+              <RightOutlined onClick={handlePrevious} />
+              <Typography.Text
                 strong
-                title="Giải trí cùng các sản phẩm mới"
+                title={titles[currentTitleIndex]}
                 className="text-white"
-              />
+              >
+                {titles[currentTitleIndex]}
+              </Typography.Text>
             </div>
             <div className="flex items-center gap-5 hover:underline">
               {topHeader.map((item, index) => (
@@ -119,18 +159,24 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
         </div>
         <div className="w-full xl:w-[1200px]">
           <div className="flex items-center gap-2 w-full justify-between pt-1">
-            <div className="items-center gap-2 hidden sm:flex">
-              <Image
-                width={50}
-                height={50}
-                preview={false}
-                src="https://free.vector6.com/wp-content/uploads/2021/03/freepng1793-rong-than-rong-thieng-con-rong-tach-nen-png-163.png"
-              />
-              <CustomTypography.Text
-                title="TADA SH"
-                strong
-                className="text-white"
-              />
+            <div>
+              <a
+                href={process.env.REACT_APP_BASE_URL}
+                className="items-center gap-2 hidden sm:flex"
+              >
+                <Image
+                  className="hover-image"
+                  width={50}
+                  height={50}
+                  preview={false}
+                  src="https://images.vexels.com/content/279873/preview/dragon-high-contrast-head-de3570.png"
+                />
+                <CustomTypography.Text
+                  title="TADA SH"
+                  strong
+                  className="hover-text"
+                />
+              </a>
             </div>
             <Popover
               className="menu-sm"
