@@ -40,6 +40,11 @@ const ShowTrending = () => {
               src={`https://divineshop.vn${item.image}`}
               className="it-image"
               alt={item.text}
+              onClick={() => {
+                navigate(`/chi-tiet-san-pham`, {
+                  state: { id: item.id, slug: item.slug },
+                });
+              }}
             />
             <p>{item.name}</p>
             <div className="show-price">
