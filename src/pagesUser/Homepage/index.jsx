@@ -23,7 +23,7 @@ export const SyncDataContext = createContext({
   setProductSlug: () => {},
 });
 
-const Menu = () => {
+const PageUser = () => {
   const { data: menu } = useMenu();
   const { data: slide } = useSlide();
   const { data: banner } = useBanner();
@@ -107,4 +107,4 @@ const Menu = () => {
   );
 };
 
-export default Menu;
+export default PageUser;
