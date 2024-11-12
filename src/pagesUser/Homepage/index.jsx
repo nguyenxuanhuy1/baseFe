@@ -73,10 +73,10 @@ const PageUser = () => {
               ))}
             </div>
           </div>
-          <div className="cssBanner">
+          <div className="cssItem Banner">
             <ShowBanner />
           </div>
-          <div className="cssFeatured">
+          <div className="cssItem Featured">
             <ShowFeatured />
           </div>
         </div>
@@ -93,13 +93,19 @@ const PageUser = () => {
           </div> */}
 
           <div className="pageChildren80">
-            <ShowGameSteam />
+            <div className="cssItem GameSteam">
+              <ShowGameSteam />
+            </div>
           </div>
           <div className="pageChildren80">
-            <ShowGameNewProduct />
+            <div className="cssItem GameNewProduct">
+              <ShowGameNewProduct />
+            </div>
           </div>
           <div className="pageChildren80">
-            <ShowStudy />
+            <div className="cssItem Study">
+              <ShowStudy />
+            </div>
           </div>
         </div>
       </div>

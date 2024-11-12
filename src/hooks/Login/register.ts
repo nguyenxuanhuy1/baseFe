@@ -18,6 +18,7 @@ const useRegister = () => {
         // setIsAuthenticated(true);
         setUser(response.data.user);
         showSuccess(response.data.message || "Đăng kí thành thành công!");
+        return true;
       }
     } catch (err: any) {
       if (err.response && err.response.status === 400) {
@@ -25,6 +26,7 @@ const useRegister = () => {
       } else {
         showError("Vui lòng thử lại sau.");
       }
+      return false;
     }
   };
 

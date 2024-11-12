@@ -33,18 +33,16 @@ const Login = (props: IProps) => {
         }
         onSubmit={async (values) => {
           if (loginAndRegis === false) {
-            logIn({
-              ...values,
-            });
+            const isSuccess = await logIn(values);
+            if (isSuccess) onCancel();
           } else {
             const { confirmPassword, ...deleteCfPass } = values;
-            Register({
-              ...deleteCfPass,
-            });
+            const isSuccess = await Register(deleteCfPass);
+            if (isSuccess) onCancel();
           }
         }}
       >
-        {({}) => {
+        {({ resetForm }) => {
           return (
             <Form>
               <div className="loginRegister">
@@ -53,6 +51,7 @@ const Login = (props: IProps) => {
                     <a
                       onClick={() => {
                         setLoginAndRegis(false);
+                        resetForm();
                       }}
                       className={`pointer login ${
                         !loginAndRegis ? "bold" : ""
@@ -66,11 +65,11 @@ const Login = (props: IProps) => {
                       }`}
                       onClick={() => {
                         setLoginAndRegis(true);
+                        resetForm();
                       }}
                     >
                       Đăng kí
                     </a>
-                    <div></div>
                   </div>
                   {loginAndRegis === false ? (
                     <>

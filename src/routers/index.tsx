@@ -16,6 +16,9 @@ const Cart = lazy(() => import("pagesUser/Homepage/cart/cart"));
 const PageTypeProduct = lazy(
   () => import("pagesUser/Homepage/typeProduct/typeProduct")
 );
+const Recuitment = lazy(
+  () => import("pagesUser/Homepage/recruitment/ShowRecruitment")
+);
 const routes: IRoute[] = [
   {
     name: "Login",
@@ -95,6 +98,14 @@ const routes: IRoute[] = [
     path: BaseUrl.productType,
     layout: DefaultLayoutUser,
     component: PageTypeProduct,
+    routeChild: [],
+  },
+  {
+    name: "Tuyển dụng",
+    key: "recuitment",
+    path: BaseUrl.recuitment,
+    layout: DefaultLayoutUser,
+    component: Recuitment,
     routeChild: [],
   },
 ];

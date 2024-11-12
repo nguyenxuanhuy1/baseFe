@@ -13,7 +13,7 @@ const ShowGameNewProduct = () => {
 
   return (
     <div className="container-item">
-      <div className="px-6 lg:px-0">
+      <div className="lg:px-0">
         <div className="flex justify-between">
           <div className="tFeature">Sản phẩm mới</div>
           <a
