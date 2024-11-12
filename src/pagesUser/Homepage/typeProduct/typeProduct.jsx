@@ -82,7 +82,7 @@ const PageTypeProduct = () => {
   //
 
   const fetchData = async (values) => {
-    let url = `https://divineshop.vn/api/product/list?limit=24&${location.state.type}`;
+    let url = `https://divineshop.vn/api/product/list?limit=24&${location?.state?.type}`;
 
     if (values.category_id)
       url += `&${"slug=category_id="}${values.category_id}`;

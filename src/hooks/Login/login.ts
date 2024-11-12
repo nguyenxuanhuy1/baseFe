@@ -15,6 +15,7 @@ const useLogin = () => {
         const { accessToken } = response.data;
         localStorage.setItem("accessToken", accessToken);
         showSuccess(response.data.message || "Đăng nhập thành công!");
+        return true;
       }
     } catch (err: any) {
       if (err.response) {
@@ -22,6 +23,7 @@ const useLogin = () => {
       } else {
         showError("Vui lòng thử lại sau.");
       }
+      return false;
     }
   };
 

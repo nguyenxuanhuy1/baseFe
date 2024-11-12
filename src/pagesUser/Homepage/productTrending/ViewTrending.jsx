@@ -12,7 +12,7 @@ const ShowTrending = () => {
 
   return (
     <div className="layout-trending container-item">
-      <div className="px-6 lg:px-0">
+      <div className="lg:px-0">
         <div className="flex justify-between">
           <div className="i-trending">
             <div className="icRise">

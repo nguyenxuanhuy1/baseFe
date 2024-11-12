@@ -49,6 +49,7 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
   const [openModal, setOpenModal] = useState<boolean>(false);
   const { Header, Content } = Layout;
   const auth = useAuth();
+  const [userName, setUserName] = useState("");
   // const { user, isAuthenticated } = useLogin();
 
   // đang fix cứng đoạn text header
@@ -59,6 +60,13 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
     "Anh xuân huy đây ",
   ];
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
+
+  useEffect(() => {
+    const user = localStorage?.getItem("user");
+    if (user) {
+      setUserName(JSON.parse(user)?.username);
+    }
+  }, []);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -106,7 +114,7 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
         <div className="icon-sm-login">
           <UserOutlined />
         </div>
-        <div>Đăng nhập/đăng kí</div>
+        {userName ? <div>Sếp - {userName}</div> : <div>Đăng nhập/đăng kí</div>}
       </div>
       {menu.map((menuItem, index) => (
         <a key={index} href={menuItem.link} className="item-image">
@@ -119,6 +127,20 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
           <span className="sp-menu">{menuItem.text}</span>
         </a>
       ))}
+      <div
+        style={{
+          backgroundColor: "red",
+          height: "2.5rem",
+          borderRadius: "5px",
+          color: "white",
+        }}
+        onClick={() => {
+          localStorage.clear();
+          setUserName("");
+        }}
+      >
+        Đăng xuất
+      </div>
     </div>
   );
   const handleOpenChange = (newOpen: boolean) => {

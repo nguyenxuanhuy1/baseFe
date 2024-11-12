@@ -1,0 +1,50 @@
+@import "variable";
+
+.pageContainerRecruitment {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+
+  @media (max-width: $breakpoint-xl) {
+    padding: 10px;
+  }
+  .recuitmentbody {
+    width: 100%;
+    max-width: 1200px;
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: nowrap;
+
+    @media (max-width: $breakpoint-lg) {
+      flex-wrap: wrap;
+    }
+    .textRecuitment {
+      width: 50%;
+      padding: 4rem;
+
+      @media (max-width: $breakpoint-sm) {
+        width: 100%;
+        padding: 1rem;
+      }
+      .textTop {
+        font-size: 2.5rem;
+        line-height: 1.2;
+        font-weight: 600;
+
+        @media (max-width: $breakpoint-sm) {
+          text-align: center;
+        }
+      }
+      .textMid {
+        margin-top: 1rem;
+        font-size: 1rem;
+        @media (max-width: $breakpoint-sm) {
+          text-align: center;
+        }
+      }
+    }
+    .imageRecuitment {
+      width: 50%;
+    }
+  }
+}

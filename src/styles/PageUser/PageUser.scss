@@ -184,25 +184,23 @@
         }
       }
     }
-    .cssBanner {
-      display: flex;
-      width: 100%;
-      margin-left: 1rem;
-      margin-right: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
+    // .cssBanner {
+    //   display: flex;
+    //   width: 100%;
+    //   margin-left: 1rem;
+    //   margin-right: 1rem;
+    //   justify-content: center;
+    //   flex-wrap: wrap;
 
-      @media (max-width: $breakpoint-lg) {
-        margin-top: 1rem;
-      }
+    //   @media (max-width: $breakpoint-lg) {
+    //     margin-top: 1rem;
+    //   }
 
-      @media (min-width: $breakpoint-xl) {
-        // margin-left: 0;
-        // margin-right: 0;
-        margin: 0;
-      }
-    }
-    .cssFeatured {
+    //   @media (min-width: $breakpoint-xl) {
+    //     margin: 0;
+    //   }
+    // }
+    .cssItem {
       display: flex;
       width: 100%;
       margin-left: 1rem;
@@ -212,8 +210,6 @@
       margin-top: 1.5rem;
 
       @media (min-width: $breakpoint-xl) {
-        // margin-left: 0;
-        // margin-right: 0;
         margin: 0;
       }
     }
@@ -311,4 +307,5 @@
     text-align: center;
     color: #3490dc;
   }
+  // hết
 }
