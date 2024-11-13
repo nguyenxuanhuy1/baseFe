@@ -12,6 +12,7 @@ import Button from "components/CustomButton";
 import { valueLogin, valueRegis } from "./helper/inittialValue";
 import useLogin from "hooks/Login/login";
 import useRegister from "hooks/Login/register";
+import useGetUserInfor from "hooks/Login/getInforUser";
 interface IProps {
   open: boolean;
   onCancel: () => void;
@@ -21,9 +22,10 @@ const Login = (props: IProps) => {
   const { open, onCancel } = props;
   const auth = useAuth();
   const [loginAndRegis, setLoginAndRegis] = useState(false);
-  const { login } = useAuth();
+  // const { login } = useAuth();
   const { logIn } = useLogin();
   const { Register } = useRegister();
+  const { saveInfor } = useGetUserInfor();
   return (
     <Modal open={open} onCancel={onCancel} footer={false} width={"68%"}>
       <Formik
@@ -34,7 +36,10 @@ const Login = (props: IProps) => {
         onSubmit={async (values) => {
           if (loginAndRegis === false) {
             const isSuccess = await logIn(values);
-            if (isSuccess) onCancel();
+            if (isSuccess) {
+              onCancel();
+              saveInfor();
+            }
           } else {
             const { confirmPassword, ...deleteCfPass } = values;
             const isSuccess = await Register(deleteCfPass);

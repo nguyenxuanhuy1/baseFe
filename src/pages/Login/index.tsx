@@ -17,7 +17,7 @@ const validationLoginSchema = Yup.object().shape({
 const Login = () => {
   //! State
   const auth = useAuth();
-  const { login } = useAuth();
+  // const { login } = useAuth();
 
   //! Function
 
@@ -34,7 +34,7 @@ const Login = () => {
         try {
           const { username, password } = values;
           setSubmitting(true);
-          login({ username, password });
+          // login({ username, password });
           setSubmitting(false);
         } catch (error) {
           showError(error);

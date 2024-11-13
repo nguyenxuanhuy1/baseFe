@@ -8,8 +8,8 @@ import BaseUrl from "constants/baseUrl";
 import { UserInfo } from "interfaces/user";
 import { isString } from "lodash";
 
-export const TOKEN_KEY = "token";
-export const USER_KEY = "user";
+export const TOKEN_KEY = "accessToken";
+export const USER_KEY = "UserInfor";
 class Services {
   axios: AxiosInstance;
 
