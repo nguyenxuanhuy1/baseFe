@@ -70,7 +70,14 @@ const AppUpload: React.FC<AppUploadProps> = ({
         width: "100%",
       }}
     >
-      <div style={{ display: "flex", flexDirection: "column", width: "100%" }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          width: "100%",
+          marginTop: "1rem",
+        }}
+      >
         <Upload
           multiple={multiple}
           accept={accept || ".png,.jpg,.jpeg"}
@@ -96,6 +103,7 @@ const AppUpload: React.FC<AppUploadProps> = ({
             flexDirection: "column",
             alignItems: "center",
             width: "100%",
+            marginTop: "1rem",
           }}
         >
           <Image src={previewImage} preview={false} width={"50%"} />

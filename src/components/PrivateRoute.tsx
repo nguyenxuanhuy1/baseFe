@@ -9,7 +9,7 @@ const PrivateRoute = (props: { children: any }) => {
     return props.children;
   }
 
-  return <Navigate to={BaseUrl.Login} replace />;
+  return <Navigate to={BaseUrl.Pageuser} replace />;
 };
 
 export default PrivateRoute;

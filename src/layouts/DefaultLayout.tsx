@@ -78,7 +78,7 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
         width={270}
         trigger={renderTrigger}
       >
-        <div className="h-[64px] flex justify-center items-center bg-[#2579F2]">
+        <div className="h-[62px] flex justify-center items-center bg-[#2579F2]">
           <DoubleLeftOutlined style={{ fontSize: "30px" }} />
           {!collapsed && (
             <CustomTypography.Text
@@ -103,11 +103,11 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
         >
           <div className="flex items-center gap-2">
             <Image
+              className="hover-image"
               width={50}
               height={50}
               preview={false}
-              src={img_logo}
-              className="color-white"
+              src="https://images.vexels.com/content/279873/preview/dragon-high-contrast-head-de3570.png"
             />
             <CustomTypography.Text
               strong
