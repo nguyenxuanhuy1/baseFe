@@ -13,6 +13,7 @@ const useLogin = () => {
 
       if (response.status === 200) {
         const { accessToken } = response.data;
+        httpMethod.attachTokenToHeader(accessToken);
         localStorage.setItem("accessToken", accessToken);
         showSuccess(response.data.message || "Đăng nhập thành công!");
         return true;
