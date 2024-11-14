@@ -42,16 +42,23 @@ const ShowGameSteam = () => {
               });
             }}
           >
-            <img
-              loading="lazy"
-              src={
-                item.image.startsWith("http")
-                  ? item.image
-                  : `https://divineshop.vn${item.image}`
-              }
-              className="it-image"
-              alt={item.text}
-            />
+            <div className="image-wrapper">
+              <img
+                loading="lazy"
+                src={
+                  item.image.startsWith("http")
+                    ? item.image
+                    : `https://divineshop.vn${item.image}`
+                }
+                className="it-image"
+                alt={item.text}
+              />
+              {item.status === "Hết hàng" && (
+                <div className="overlay">
+                  <div className="out-of-stock">Hết hàng</div>
+                </div>
+              )}
+            </div>
             <p>{item.name}</p>
             <div className="show-price">
               <div className="price">{item.price.toLocaleString()}đ</div>
