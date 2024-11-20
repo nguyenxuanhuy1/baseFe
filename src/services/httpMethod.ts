@@ -8,7 +8,7 @@ import BaseUrl from "constants/baseUrl";
 import { UserInfo } from "interfaces/user";
 import { isString } from "lodash";
 
-export const TOKEN_KEY = "accessToken";
+export const TOKEN_KEY = "access_token";
 export const USER_KEY = "UserInfor";
 class Services {
   axios: AxiosInstance;
@@ -19,7 +19,7 @@ class Services {
       timeout: 60000,
     });
 
-    const token = localStorage.getItem("accessToken");
+    const token = localStorage.getItem("access_token");
     if (token) {
       this.attachTokenToHeader(token);
     }

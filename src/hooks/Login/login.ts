@@ -6,15 +6,15 @@ const useLogin = () => {
   const logIn = async (inforLogin: any) => {
     try {
       const response = await httpMethod.post(
-        `http://localhost:3001/user/login`,
+        `http://localhost:3001/api/auth/login`,
         inforLogin,
         { withCredentials: true }
       );
 
-      if (response.status === 200) {
-        const { accessToken } = response.data;
-        httpMethod.attachTokenToHeader(accessToken);
-        localStorage.setItem("accessToken", accessToken);
+      if (response.status === 201) {
+        const { access_token } = response.data;
+        httpMethod.attachTokenToHeader(access_token);
+        localStorage.setItem("access_token", access_token);
         showSuccess(response.data.message || "Đăng nhập thành công!");
         return true;
       }
