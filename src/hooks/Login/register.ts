@@ -9,7 +9,7 @@ const useRegister = () => {
   const Register = async (inforRegis: any) => {
     try {
       const response = await httpMethod.post(
-        `http://localhost:3001/user/register`,
+        `http://localhost:3001/api/auth/register`,
         inforRegis,
         { withCredentials: true }
       );

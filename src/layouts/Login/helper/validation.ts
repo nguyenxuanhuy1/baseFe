@@ -13,5 +13,5 @@ export const validationRegisterSchema = Yup.object().shape({
     .oneOf([Yup.ref("password")], "Mật khẩu không khớp")
     .required("Xác nhận mật khẩu là bắt buộc"),
 
-  gmail: Yup.string().email("Gmail không hợp lệ").required("Gmail là bắt buộc"),
+  email: Yup.string().email("Email không hợp lệ").required("Gmail là bắt buộc"),
 });
