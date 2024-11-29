@@ -4,7 +4,7 @@ const useGetUserInfor = () => {
   const saveInfor = async () => {
     try {
       const response = await httpMethod.get(
-        "http://localhost:3001/user/member"
+        "http://localhost:3001/api/auth/profile"
       );
       if (response.status === 200) {
         const UserInfor = response.data;
