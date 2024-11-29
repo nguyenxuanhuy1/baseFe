@@ -21,7 +21,9 @@
     .textRecuitment {
       width: 50%;
       padding: 4rem;
-
+      @media (min-width: $breakpoint-lg) {
+        padding-left: 0px;
+      }
       @media (max-width: $breakpoint-sm) {
         width: 100%;
         padding: 1rem;

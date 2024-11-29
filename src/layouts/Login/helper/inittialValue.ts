@@ -5,5 +5,5 @@ export const valueLogin: any = {
 export const valueRegis: any = {
   username: null,
   password: null,
-  gmail: null,
+  email: null,
 };

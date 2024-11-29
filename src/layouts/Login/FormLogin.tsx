@@ -165,7 +165,7 @@ const Login = (props: IProps) => {
                             width: "100%",
                           }}
                           component={Input}
-                          name="gmail"
+                          name="email"
                           placeholder="Nhập gmail"
                           type="gmail"
                           label="Gmail"
