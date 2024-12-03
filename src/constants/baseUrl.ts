@@ -17,6 +17,7 @@ const BaseUrl = {
   cart: "/cart",
   productType: "/san-pham-theo-loai",
   recuitment: "/tuyen-dung",
+  identifi: "/identifi",
 };
 
 export default BaseUrl;
