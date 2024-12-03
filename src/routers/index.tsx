@@ -19,6 +19,9 @@ const PageTypeProduct = lazy(
 const Recuitment = lazy(
   () => import("pagesUser/Homepage/recruitment/ShowRecruitment")
 );
+const ShowIdentifi = lazy(
+  () => import("pagesUser/Homepage/identification/ViewIdentifi")
+);
 const routes: IRoute[] = [
   {
     name: "Login",
@@ -106,6 +109,14 @@ const routes: IRoute[] = [
     path: BaseUrl.recuitment,
     layout: DefaultLayoutUser,
     component: Recuitment,
+    routeChild: [],
+  },
+  {
+    name: "Nhận diện",
+    key: "identifi",
+    path: BaseUrl.identifi,
+    layout: DefaultLayoutUser,
+    component: ShowIdentifi,
     routeChild: [],
   },
 ];
