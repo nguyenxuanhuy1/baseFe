@@ -1,10 +1,10 @@
 import { Col, Row, Table } from "antd";
 import { createContext, useState } from "react";
 import TableForm from "./components/TableForm";
-import SearchForm from "./components/SearchForm";
 import ModalConfirm from "components/Modal/ModalConfirm";
 import useActions from "constants/action";
 import DataForm from "./components/DataForm";
+import SearchImg from "./components/SearchImg";
 
 export const FileContext = createContext<any>({});
 
@@ -17,7 +17,8 @@ const QuanLySanPham = () => {
       <FileContext.Provider value={{}}>
         <Row>
           <Col span={15}>
-            <SearchForm />
+            {/* <SearchForm /> */}
+            <SearchImg />
             <TableForm />
           </Col>
           <Col span={9}>

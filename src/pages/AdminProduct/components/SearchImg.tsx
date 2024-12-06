@@ -1,9 +1,15 @@
-import React, { useRef } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import * as tmImage from "@teachablemachine/image";
-import { ButtonCreate, ButtonDelete } from "components/Button";
-import { FileSearchOutlined } from "@ant-design/icons";
+import { ButtonCreate, ButtonDelete, ButtonSearch } from "components/Button";
+import { FileSearchOutlined, SearchOutlined } from "@ant-design/icons";
+import { ButtonHTMLTypes } from "interfaces/common";
+import { Form, Formik, FormikProps } from "formik";
+import { FileContext } from "..";
+import { initialValues } from "../helper/initialValues";
 
-const ViewIdentifi: React.FC = () => {
+const SearchImg: React.FC = () => {
+  const {} = useContext(FileContext);
+  const formikRef = useRef<any>();
   // Khai báo kiểu an toàn cho các ref
   const webcamRef = useRef<HTMLDivElement | null>(null);
   const labelContainerRef = useRef<HTMLDivElement | null>(null);
@@ -15,6 +21,8 @@ const ViewIdentifi: React.FC = () => {
   let webcam: tmImage.Webcam | null = null;
   let lastLabel: string = "";
   let isRunning: boolean = false;
+
+  const [dataSearch, setDataSearch] = useState<any>(null);
 
   // Kích hoạt quyền âm thanh
   const enableAudioContext = () => {
@@ -43,16 +51,14 @@ const ViewIdentifi: React.FC = () => {
       model = await tmImage.load(modelURL, metadataURL);
       // Thiết lập webcam
       const flip = true;
-      webcam = new tmImage.Webcam(100, 100, flip);
+      webcam = new tmImage.Webcam(50, 50, flip);
       await webcam.setup();
       await webcam.play();
-
       // Gắn canvas vào container
       if (webcamRef.current) {
         webcamRef.current.innerHTML = "";
         webcamRef.current.appendChild(webcam.canvas);
       }
-
       isRunning = true;
       loop();
     } catch (error) {
@@ -68,53 +74,79 @@ const ViewIdentifi: React.FC = () => {
     requestAnimationFrame(loop);
   };
 
+  const [label, setLabel] = useState<string>("");
   // Hàm dự đoán
   const predict = async () => {
     if (!isRunning || !webcam || !model) return;
 
     const predictions = await model.predictTopK(webcam.canvas, 1);
-    const label = predictions[0].className;
-
+    setLabel(predictions[0].className);
     if (label !== lastLabel) {
       lastLabel = label;
 
       if (labelContainerRef.current) {
         labelContainerRef.current.innerText = label;
       }
-
       // Đọc nhãn mới
       speakLabel(label);
+      setDataSearch(label);
     }
   };
 
-  // Hàm dừng nhận diện
   const stop = () => {
     isRunning = false;
-
     if (webcam) {
       webcam.stop();
     }
-
     if (labelContainerRef.current) {
       labelContainerRef.current.innerText = "";
     }
     speechSynthesis.cancel();
   };
-
+  useEffect(() => {
+    formikRef.current.setFieldValue("slug", label);
+  }, [label]);
   return (
-    <div className="container flex">
-      <div>
-        <div id="webcam-container" ref={webcamRef}></div>
-        <div id="label-container" ref={labelContainerRef}></div>
-      </div>
-      <ButtonCreate
-        onClick={init}
-        title="Bắt đầu"
-        icon={<FileSearchOutlined />}
-      />
-      <ButtonDelete title="Dừng" onClick={stop} />
-    </div>
+    <Formik
+      onSubmit={(values) => {
+        console.log("valuee", values);
+      }}
+      initialValues={initialValues}
+      innerRef={formikRef}
+    >
+      {(propFormik: FormikProps<any>) => {
+        return (
+          <Form>
+            <div className="container flex">
+              <div>
+                <div id="webcam-container" ref={webcamRef}></div>
+                <div id="label-container" ref={labelContainerRef}></div>
+              </div>
+
+              <ButtonCreate
+                onClick={init}
+                title="Bắt đầu quét"
+                icon={<FileSearchOutlined />}
+              />
+              <ButtonDelete title="Dừng" onClick={stop} />
+              <ButtonSearch
+                htmlType={ButtonHTMLTypes.Submit}
+                icon={<SearchOutlined />}
+              />
+              <ButtonCreate
+                onClick={() => {
+                  // setItemTarget(null);
+                  // setActions((prev: any) => {
+                  //   return { ...prev, create: true };
+                  // });
+                }}
+              />
+            </div>
+          </Form>
+        );
+      }}
+    </Formik>
   );
 };
 
-export default ViewIdentifi;
+export default SearchImg;
