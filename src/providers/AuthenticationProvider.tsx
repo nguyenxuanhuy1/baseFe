@@ -31,7 +31,6 @@ const AuthenticationProvider = ({ children }: { children: any }) => {
   const [token] = useState(httpMethod.getTokenStorage());
   const [user] = useState<UserInfo | null>(httpMethod.getUserStorage());
   const [isLogging, setIsLogging] = useState(false);
-  console.log("user", user, "token", token);
 
   const logout = useCallback(() => {
     httpMethod.clearStorage();

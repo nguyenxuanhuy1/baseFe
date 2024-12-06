@@ -79,11 +79,10 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
         trigger={renderTrigger}
       >
         <div className="h-[62px] flex justify-center items-center bg-[#2579F2]">
-          <DoubleLeftOutlined style={{ fontSize: "30px" }} />
           {!collapsed && (
             <CustomTypography.Text
               strong
-              title="Trở về DoardBoard"
+              title="DoardBoard"
               className="text-white"
             />
           )}

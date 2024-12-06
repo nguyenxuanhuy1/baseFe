@@ -129,10 +129,10 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
       ))}
       <div
         style={{
-          backgroundColor: "red",
+          // backgroundColor: "red",
           height: "2.5rem",
           borderRadius: "5px",
-          color: "white",
+          // color: "white",
         }}
         onClick={() => {
           localStorage.clear();
