@@ -62,7 +62,7 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
 
   useEffect(() => {
-    const user = localStorage?.getItem("user");
+    const user = localStorage?.getItem("UserInfor");
     if (user) {
       setUserName(JSON.parse(user)?.username);
     }
@@ -224,7 +224,9 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
                 />
                 <CustomTypography.Text
                   strong
-                  title="Đăng nhập / Đăng kí"
+                  title={
+                    userName ? `Chào sếp ${userName}` : "Đăng nhập/Đăng kí"
+                  }
                   className="hidden lg:inline-block text-white"
                   onClick={() => setOpenModal(true)}
                 />

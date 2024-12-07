@@ -8,8 +8,6 @@ const ModalConfirm = (props: IModalConfirm) => {
   const { open, onCancel, onOk, title, footer, content, closeIcon, icon } =
     props;
   const isMobile = window.innerWidth <= 768;
-  console.log("isMobile", isMobile);
-
   const customFooter = (
     <div style={{ textAlign: "center" }}>
       <ButtonCreate title="Xác nhận" onClick={onOk} />

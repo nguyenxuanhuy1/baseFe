@@ -8,7 +8,7 @@ import { FileContext } from "..";
 import { initialValues } from "../helper/initialValues";
 
 const SearchImg: React.FC = () => {
-  const {} = useContext(FileContext);
+  const { setActions, actions } = useContext(FileContext);
   const formikRef = useRef<any>();
   // Khai báo kiểu an toàn cho các ref
   const webcamRef = useRef<HTMLDivElement | null>(null);
@@ -127,6 +127,7 @@ const SearchImg: React.FC = () => {
                 onClick={init}
                 title="Bắt đầu quét"
                 icon={<FileSearchOutlined />}
+                disabled={actions["create"] || actions["update"] ? false : true}
               />
               <ButtonDelete title="Dừng" onClick={stop} />
               <ButtonSearch
@@ -135,10 +136,9 @@ const SearchImg: React.FC = () => {
               />
               <ButtonCreate
                 onClick={() => {
-                  // setItemTarget(null);
-                  // setActions((prev: any) => {
-                  //   return { ...prev, create: true };
-                  // });
+                  setActions((prev: any) => {
+                    return { ...prev, create: true };
+                  });
                 }}
               />
             </div>
