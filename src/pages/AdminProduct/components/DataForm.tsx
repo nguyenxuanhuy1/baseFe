@@ -101,7 +101,8 @@ function DataForm() {
           </Col>
           <Col span={24}>
             <Field
-              component={Input}
+              component={Select}
+              mode="tags"
               name="slide"
               placeholder="Nhập slide"
               disabled={actions["create"] || actions["update"] ? false : true}
@@ -134,7 +135,7 @@ function DataForm() {
           </Col>
           <Col span={24}>
             <Field
-              component={Input}
+              component={Select}
               name="options"
               placeholder="Nhập options"
               disabled={actions["create"] || actions["update"] ? false : true}

@@ -1,11 +1,11 @@
 export const initialValues = {
-  slug: "",
+  name: "",
 };
 export const initialValuesData = {
   parentId: null,
   categoryId: null,
   image: null,
-  slide: null,
+  slide: [],
   name: null,
   slug: null,
   meta: {

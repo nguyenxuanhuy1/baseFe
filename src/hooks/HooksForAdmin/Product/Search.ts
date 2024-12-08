@@ -20,14 +20,11 @@ const useSearchProducts = (props: IProps) => {
   const getSearchDepartment = async () => {
     setLoading(true);
     if (searchForm) {
-      const payload = {
-        ...searchForm,
-        page: paramsPage.page - 1,
-        size: paramsPage.pageSize,
-      };
       try {
         const response = await httpMethod.get(
-          `http://localhost:3001/api/products?parentId=1&categoryId=1&page=1&size=10`
+          `http://localhost:3001/api/products?&name=${
+            searchForm?.values?.name || null
+          }&page=${paramsPage.page}&size=${paramsPage.pageSize}`
         );
         if (response.status === 200) {
           setData(response.data.items);
