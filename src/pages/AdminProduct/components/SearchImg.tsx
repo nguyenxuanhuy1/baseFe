@@ -8,7 +8,7 @@ import { FileContext } from "..";
 import { initialValues } from "../helper/initialValues";
 
 const SearchImg: React.FC = () => {
-  const { setActions, actions } = useContext(FileContext);
+  const { setActions, actions, setSearchForm } = useContext(FileContext);
   const formikRef = useRef<any>();
   // Khai báo kiểu an toàn cho các ref
   const webcamRef = useRef<HTMLDivElement | null>(null);
@@ -104,12 +104,12 @@ const SearchImg: React.FC = () => {
     speechSynthesis.cancel();
   };
   useEffect(() => {
-    formikRef.current.setFieldValue("slug", label);
+    formikRef.current.setFieldValue("name", label);
   }, [label]);
   return (
     <Formik
       onSubmit={(values) => {
-        console.log("valuee", values);
+        setSearchForm({ values });
       }}
       initialValues={initialValues}
       innerRef={formikRef}
@@ -127,7 +127,7 @@ const SearchImg: React.FC = () => {
                 onClick={init}
                 title="Bắt đầu quét"
                 icon={<FileSearchOutlined />}
-                disabled={actions["create"] || actions["update"] ? false : true}
+                // disabled={actions["create"] || actions["update"] ? false : true}
               />
               <ButtonDelete title="Dừng" onClick={stop} />
               <ButtonSearch

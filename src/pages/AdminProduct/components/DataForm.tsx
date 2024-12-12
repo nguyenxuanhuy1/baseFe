@@ -115,14 +115,7 @@ function DataForm() {
               disabled={actions["create"] || actions["update"] ? false : true}
             />
           </Col>
-          <Col span={24}>
-            <Field
-              component={Input}
-              name="status"
-              placeholder="Nhập status"
-              disabled={actions["create"] || actions["update"] ? false : true}
-            />
-          </Col>
+
           <Col span={24}>
             <Field
               component={Input}
@@ -139,23 +132,6 @@ function DataForm() {
               disabled={actions["create"] || actions["update"] ? false : true}
             />
           </Col>
-          {/* <Col span={24}>
-            <Field
-              component={Input}
-              name="options"
-              placeholder="Nhập options"
-              disabled={actions["create"] || actions["update"] ? false : true}
-            />
-          </Col>
-          <Col span={24}>
-            <Field
-              component={Input}
-              name="tags"
-              placeholder="Nhập tags"
-              disabled={actions["create"] || actions["update"] ? false : true}
-            />
-          </Col> */}
-
           <Col span={24}>
             <Field
               component={UploadImage}
