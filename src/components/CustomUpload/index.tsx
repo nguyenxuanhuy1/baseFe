@@ -40,19 +40,9 @@ const CustomUpload = (props: ICustomUpload) => {
       </div>
     </div>
   );
-
-  // const handlePreview = async (file: any) => {
-  //   if (!file.url && !file.preview) {
-  //     file.preview = await getBase64(file.originFileObj);
-  //   }
-  //   setPreviewImage(file.url || file.preview);
-  //   setPreviewOpen(true);
-  //   setPreviewTitle(
-  //     file.name || file.url.substring(file.url.lastIndexOf("/") + 1)
-  //   );
-  // };
-
   const handleChange = (info: any) => {
+    console.log("info", info);
+
     const { fileList } = info;
 
     // Reset thumbUrl of removed files

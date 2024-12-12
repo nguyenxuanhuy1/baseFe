@@ -1,13 +1,15 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FileContext } from "..";
 import { Col, Row } from "antd";
 import { Field, Form, Formik } from "formik";
 import Input from "components/CustomField/InputField/inputPro";
 import { ButtonCreate, ButtonDelete } from "components/Button";
 import { ButtonHTMLTypes } from "interfaces/common";
-import Select from "components/CustomSelect";
 import useUpdateSector from "hooks/HooksForAdmin/Product/Update";
 import useCreateSector from "hooks/HooksForAdmin/Product/Create";
+import { validation } from "../helper/validation";
+import { initialValuesData } from "../helper/initialValues";
+import UploadImage from "components/CustomUpload/UploadFile";
 
 function DataForm() {
   const {
@@ -36,14 +38,18 @@ function DataForm() {
   }, [itemTarget, !actions["update"]]);
   const { createSector } = useCreateSector();
   const { updateSector } = useUpdateSector();
+  const [path, setPath] = useState<string>("");
+
   return (
     <Formik
-      initialValues={{ searchTerm: "" }}
       onSubmit={(values) => {
         if (actions["create"]) {
           createSector(
             {
               ...values,
+              slide: path,
+              image: path,
+              meta: path,
             },
             refreshData,
             setActions,
@@ -62,6 +68,8 @@ function DataForm() {
           );
         }
       }}
+      initialValues={initialValuesData}
+      validationSchema={validation}
       innerRef={formikRef}
     >
       <Form>
@@ -91,72 +99,6 @@ function DataForm() {
               disabled={actions["create"] || actions["update"] ? false : true}
             />
           </Col>
-          <Col span={24}>
-            <Field
-              component={Input}
-              name="image"
-              placeholder="Nhập image Url"
-              disabled={actions["create"] || actions["update"] ? false : true}
-            />
-          </Col>
-          <Col span={24}>
-            <Field
-              component={Input}
-              name="slide"
-              placeholder="Nhập slide"
-              disabled={actions["create"] || actions["update"] ? false : true}
-            />
-          </Col>
-          <Col span={24}>
-            <Field
-              component={Input}
-              name="name"
-              placeholder="Nhập name"
-              disabled={actions["create"] || actions["update"] ? false : true}
-            />
-          </Col>
-          <Col span={24}>
-            <Field
-              component={Input}
-              name="slug"
-              placeholder="Nhập slug"
-              disabled={actions["create"] || actions["update"] ? false : true}
-            />
-          </Col>
-          <Col span={24}>
-            <Field
-              component={Select}
-              mode="tags"
-              name="meta"
-              placeholder="Nhập meta"
-              disabled={actions["create"] || actions["update"] ? false : true}
-            />
-          </Col>
-          <Col span={24}>
-            <Field
-              component={Input}
-              name="options"
-              placeholder="Nhập options"
-              disabled={actions["create"] || actions["update"] ? false : true}
-            />
-          </Col>
-          <Col span={24}>
-            <Field
-              component={Input}
-              name="tags"
-              placeholder="Nhập tags"
-              disabled={actions["create"] || actions["update"] ? false : true}
-            />
-          </Col>
-
-          <Col span={24}>
-            <Field
-              component={Input}
-              name="redirectUrl"
-              placeholder="Nhập redirectUrl"
-              disabled={actions["create"] || actions["update"] ? false : true}
-            />
-          </Col>
           <Col span={12}>
             <Field
               component={Input}
@@ -179,6 +121,47 @@ function DataForm() {
               name="status"
               placeholder="Nhập status"
               disabled={actions["create"] || actions["update"] ? false : true}
+            />
+          </Col>
+          <Col span={24}>
+            <Field
+              component={Input}
+              name="name"
+              placeholder="Nhập name"
+              disabled={actions["create"] || actions["update"] ? false : true}
+            />
+          </Col>
+          <Col span={24}>
+            <Field
+              component={Input}
+              name="slug"
+              placeholder="Nhập slug"
+              disabled={actions["create"] || actions["update"] ? false : true}
+            />
+          </Col>
+          {/* <Col span={24}>
+            <Field
+              component={Input}
+              name="options"
+              placeholder="Nhập options"
+              disabled={actions["create"] || actions["update"] ? false : true}
+            />
+          </Col>
+          <Col span={24}>
+            <Field
+              component={Input}
+              name="tags"
+              placeholder="Nhập tags"
+              disabled={actions["create"] || actions["update"] ? false : true}
+            />
+          </Col> */}
+
+          <Col span={24}>
+            <Field
+              component={UploadImage}
+              name="pathImage"
+              placeholder="Nhập name"
+              setPath={setPath}
             />
           </Col>
         </Row>

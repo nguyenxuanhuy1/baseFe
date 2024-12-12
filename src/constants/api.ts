@@ -1,5 +1,5 @@
 export const BASE_URL = process.env.REACT_APP_BASE_URL;
-
+export const BASE_URL_DEV = process.env.REACT_APP_BASE_URL_DEV;
 export const Header = {
   TOP: `${BASE_URL}/page-data/sq/d/2215486189.json`,
   MID: `${BASE_URL}/page-data/sq/d/2247331527.json`,

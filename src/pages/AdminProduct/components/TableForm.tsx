@@ -59,18 +59,7 @@ function TableForm() {
       align: "center" as "center",
       key: "slug",
     },
-    // {
-    //   title: "meta",
-    //   dataIndex: "meta",
-    //   align: "center" as "center",
-    //   key: "meta",
-    // },
-    // {
-    //   title: "options",
-    //   dataIndex: "options",
-    //   align: "center" as "center",
-    //   key: "options",
-    // },
+
     {
       title: "Thao tác",
       render: (text: string, record: any) => (

@@ -3,6 +3,7 @@ import { IMeta, IParamsPage } from "interfaces/common";
 import httpMethod from "../../../services/httpMethod";
 import { showError } from "helpers/toast";
 import { AppContext } from "App";
+import { BASE_URL_DEV } from "constants/api";
 
 interface IProps {
   paramsPage: IParamsPage;
@@ -16,18 +17,14 @@ const useSearchProducts = (props: IProps) => {
   const [meta, setMeta] = useState<number>(0);
   const { setLoading } = useContext(AppContext);
 
-  //! function
   const getSearchDepartment = async () => {
     setLoading(true);
     if (searchForm) {
-      const payload = {
-        ...searchForm,
-        page: paramsPage.page - 1,
-        size: paramsPage.pageSize,
-      };
       try {
         const response = await httpMethod.get(
-          `http://localhost:3001/api/products?parentId=1&categoryId=1&page=1&size=10`
+          `${BASE_URL_DEV}/products?&name=${
+            searchForm?.values?.name || null
+          }&page=${paramsPage.page}&size=${paramsPage.pageSize}`
         );
         if (response.status === 200) {
           setData(response.data.items);
@@ -47,8 +44,6 @@ const useSearchProducts = (props: IProps) => {
   const refresh = () => {
     getSearchDepartment();
   };
-
-  //! useEffect
   useEffect(() => {
     if (paramsPage.page === 1) {
       getSearchDepartment();
@@ -60,8 +55,6 @@ const useSearchProducts = (props: IProps) => {
   useEffect(() => {
     getSearchDepartment();
   }, [paramsPage]);
-
-  //! render
   return { refresh, data, meta };
 };
 
