@@ -23,7 +23,7 @@ const useSearchProducts = (props: IProps) => {
       try {
         const response = await httpMethod.get(
           `${BASE_URL_DEV}/products?&name=${
-            searchForm?.values?.name || null
+            searchForm?.values?.name || ""
           }&page=${paramsPage.page}&size=${paramsPage.pageSize}`
         );
         if (response.status === 200) {

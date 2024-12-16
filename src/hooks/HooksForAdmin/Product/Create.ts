@@ -19,7 +19,7 @@ const useCreateSector = () => {
         `http://localhost:3001/api/products`,
         searchForm
       );
-      if (response.status === 200) {
+      if (response.status === 201) {
         showSuccess("Thêm mới thành công !");
         refreshData();
         setActions((prev: any) => {

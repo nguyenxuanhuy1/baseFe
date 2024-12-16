@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { FileContext } from "..";
-import { Col, Row } from "antd";
+import { Col, Row, Tag } from "antd";
 import { Field, Form, Formik } from "formik";
 import Input from "components/CustomField/InputField/inputPro";
 import { ButtonCreate, ButtonDelete } from "components/Button";
@@ -9,7 +9,8 @@ import useUpdateSector from "hooks/HooksForAdmin/Product/Update";
 import useCreateSector from "hooks/HooksForAdmin/Product/Create";
 import { validation } from "../helper/validation";
 import { initialValuesData } from "../helper/initialValues";
-import UploadImage from "components/CustomUpload/UploadFile";
+import AppUpload from "components/UploadFile";
+import Select from "components/CustomSelect";
 
 function DataForm() {
   const {
@@ -39,6 +40,10 @@ function DataForm() {
   const { createSector } = useCreateSector();
   const { updateSector } = useUpdateSector();
   const [path, setPath] = useState<string>("");
+  const optionSlug = [
+    { label: "Slide", value: "slide" },
+    { label: "Banner", value: "banner" },
+  ];
 
   return (
     <Formik
@@ -47,9 +52,11 @@ function DataForm() {
           createSector(
             {
               ...values,
-              slide: path,
+              slide: [path],
               image: path,
-              meta: path,
+              meta: { path },
+              options: [path],
+              tags: ["tạm fix cứng", "tag2"],
             },
             refreshData,
             setActions,
@@ -102,42 +109,43 @@ function DataForm() {
           <Col span={12}>
             <Field
               component={Input}
-              name="originalPrice"
-              placeholder="Nhập originalPrice"
+              name="price"
+              placeholder="Nhập giá ban đầu"
               disabled={actions["create"] || actions["update"] ? false : true}
             />
           </Col>
           <Col span={12}>
             <Field
               component={Input}
-              name="price"
-              placeholder="Nhập price"
+              name="originalPrice"
+              placeholder="Nhập giá sau khi giảm"
               disabled={actions["create"] || actions["update"] ? false : true}
             />
           </Col>
-
           <Col span={24}>
             <Field
               component={Input}
               name="name"
-              placeholder="Nhập name"
+              placeholder="Nhập tên sản phẩm"
               disabled={actions["create"] || actions["update"] ? false : true}
             />
           </Col>
           <Col span={24}>
             <Field
-              component={Input}
+              component={Select}
               name="slug"
-              placeholder="Nhập slug"
+              options={optionSlug}
+              placeholder="Chọn loại"
               disabled={actions["create"] || actions["update"] ? false : true}
             />
           </Col>
           <Col span={24}>
             <Field
-              component={UploadImage}
+              component={AppUpload}
               name="pathImage"
               placeholder="Nhập name"
               setPath={setPath}
+              disabled={actions["create"] || actions["update"] ? false : true}
             />
           </Col>
         </Row>

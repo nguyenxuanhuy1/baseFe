@@ -1,6 +1,7 @@
 import { Upload, Button, Image, message } from "antd";
 import { DeleteOutlined, UploadOutlined } from "@ant-design/icons";
 import React, { useEffect, useState } from "react";
+import httpMethod from "services/httpMethod";
 
 interface AppUploadProps {
   value?: string | null; // Giá trị là link ảnh
@@ -11,6 +12,7 @@ interface AppUploadProps {
   disabled?: boolean;
   field?: any;
   form?: any;
+  setPath?: any;
 }
 
 const AppUpload: React.FC<AppUploadProps> = ({
@@ -22,6 +24,7 @@ const AppUpload: React.FC<AppUploadProps> = ({
   disabled,
   field,
   form,
+  setPath,
 }) => {
   const [previewImage, setPreviewImage] = useState<string | null>(null);
 
@@ -42,7 +45,7 @@ const AppUpload: React.FC<AppUploadProps> = ({
 
     form.setFieldValue(field.name, file);
 
-    return false;
+    return true;
   };
 
   // Xóa ảnh
@@ -61,6 +64,26 @@ const AppUpload: React.FC<AppUploadProps> = ({
       setPreviewImage(null);
     }
   }, [value]);
+  const CustomRequest = async ({ file, onSuccess, onError }: any) => {
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      const response = await httpMethod.post(
+        `http://localhost:3001/api/files/upload`,
+        formData
+      );
+      if (response.status === 201) {
+        setPath(`http://localhost:3001${response.data?.path}`);
+      } else {
+        onError(new Error("Upload thất bại"));
+      }
+    } catch (error) {
+      console.error("Upload error:", error);
+      onError(error);
+      message.error("Có lỗi xảy ra khi upload");
+    }
+  };
 
   return (
     <div
@@ -85,6 +108,7 @@ const AppUpload: React.FC<AppUploadProps> = ({
           beforeUpload={beforeUpload}
           showUploadList={false}
           className="upload_antd_customs"
+          customRequest={CustomRequest}
         >
           <Button disabled={disabled} icon={<UploadOutlined />}>
             Chọn ảnh{" "}

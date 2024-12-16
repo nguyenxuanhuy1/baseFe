@@ -20,7 +20,7 @@ const useLogin = () => {
       }
     } catch (err: any) {
       if (err.response) {
-        showError(err.response.data.message[0] || "Đã xảy ra lỗi!");
+        showError(err.response.data.message || "Đã xảy ra lỗi!");
       } else {
         showError("Vui lòng thử lại sau.");
       }

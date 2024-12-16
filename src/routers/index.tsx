@@ -77,6 +77,15 @@ const routes: IRoute[] = [
         isPrivateRoute: true,
         routeChild: [],
       },
+      {
+        name: "Xem lịch sử các đơn hàng",
+        key: "history",
+        path: BaseUrl.manageBanner,
+        layout: DefaultLayout,
+        component: QuanLyBanner,
+        isPrivateRoute: true,
+        routeChild: [],
+      },
     ],
   },
   {
