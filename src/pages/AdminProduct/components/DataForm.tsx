@@ -43,6 +43,7 @@ function DataForm() {
   const optionSlug = [
     { label: "Slide", value: "slide" },
     { label: "Banner", value: "banner" },
+    { label: "Học tập", value: "học-tap" },
   ];
 
   return (

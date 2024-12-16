@@ -9,6 +9,7 @@ export const Body = {
   MENU: `${BASE_URL}/api/header/menu`,
   SLIDE: `${BASE_URL}/api/home/slide`,
   BANNER: `${BASE_URL}/api/home/banners`,
+  // BANNER: `${BASE_URL_DEV}/products/home/banner`,
 
   TRENDING: `${BASE_URL}/api/product/list?slug=trending`,
   TRENDING1: `${BASE_URL}/api/product/listpage=2?slug=trending`,

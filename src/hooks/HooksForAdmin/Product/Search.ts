@@ -28,7 +28,7 @@ const useSearchProducts = (props: IProps) => {
         );
         if (response.status === 200) {
           setData(response.data.items);
-          setMeta(response.data.total);
+          setMeta(response.data.meta.total);
         }
       } catch (error: any) {
         if (error.response && error.response.status === 400) {

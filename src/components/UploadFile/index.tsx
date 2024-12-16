@@ -29,10 +29,10 @@ const AppUpload: React.FC<AppUploadProps> = ({
   const [previewImage, setPreviewImage] = useState<string | null>(null);
 
   const beforeUpload = (file: File) => {
-    const isLt50KB = file.size / 1024 < 50;
+    const isLt50KB = file.size / 1024 < 1024;
 
     if (!isLt50KB) {
-      message.error("Ảnh phải nhỏ hơn 50KB!");
+      message.error("Ảnh phải nhỏ hơn 1MB!");
       return false;
     }
 

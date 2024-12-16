@@ -14,9 +14,9 @@ const useBanner = () => {
     // if (!data) {
     try {
       const response = await httpMethod.get(`${Body.BANNER}`, {
-        headers: {
-          "If-None-Match": etag,
-        },
+        // headers: {
+        //   "If-None-Match": etag,
+        // },
       });
       if (response.status === 200) {
         setData(response.data.list);
