@@ -4,6 +4,7 @@ import { Formik } from "formik";
 import { Table, Tooltip } from "antd";
 import TableWrapper from "components/Table/TableWrapper";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
+import { renderStatus } from "../helper/renderTag";
 
 function TableForm() {
   const {
@@ -30,34 +31,68 @@ function TableForm() {
       width: 60,
     },
     {
-      title: "Name",
+      title: "Tên sản phẩm",
       dataIndex: "name",
       align: "center" as "center",
       key: "name",
+      width: 200,
     },
     {
-      title: "status",
+      title: "Trạng thái",
       dataIndex: "status",
       align: "center" as "center",
       key: "status",
+      render: (status: string) => renderStatus(status),
+      width: 120,
     },
     {
-      title: "Price",
+      title: "Giá gốc",
       dataIndex: "price",
       align: "center" as "center",
       key: "price",
+      width: 120,
     },
     {
-      title: "originalPrice",
+      title: "Giá sau khi giảm",
       dataIndex: "originalPrice",
       align: "center" as "center",
       key: "originalPrice",
+      width: 140,
     },
     {
-      title: "slug",
+      title: "Thuộc loại",
       dataIndex: "slug",
       align: "center" as "center",
       key: "slug",
+      width: 120,
+    },
+    {
+      title: "Ảnh",
+      dataIndex: "image",
+      align: "center" as "center",
+      key: "slug",
+      width: 90,
+      render: (imageUrl: string) => (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100%",
+            height: "100%",
+          }}
+        >
+          <img
+            src={imageUrl}
+            alt="Ảnh"
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+            }}
+          />
+        </div>
+      ),
     },
 
     {

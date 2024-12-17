@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Body } from "constants/api";
+import { BASE_URL_DEV, Body } from "constants/api";
 import httpMethod from "services/httpMethod";
 import { showError } from "helpers/toast";
 
@@ -8,12 +8,13 @@ const useSlide = () => {
   const [data, setData] = useState<any[]>([]);
   const getSlide = async () => {
     try {
-      const response = await httpMethod.get(`${Body.SLIDE}`);
+      const response = await httpMethod.get(
+        `${BASE_URL_DEV}/products?&slide&page=1&size=10`
+      );
       if (response.status === 200) {
-        setData(response.data.list);
+        setData(response.data.items);
       }
     } catch (error: any) {
-      // showError("Gọi api Slide lỗi rồi");
       console.log("Gọi api Slide lỗi rồi");
     }
   };

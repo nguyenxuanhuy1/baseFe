@@ -31,7 +31,7 @@ class Services {
       function (error: any) {
         if (error?.response?.status === 401) {
           window.localStorage.clear();
-          window.location.href = BaseUrl.Pageuser;
+          // window.location.href = BaseUrl.Pageuser;
         } else {
           return Promise.reject(error);
         }

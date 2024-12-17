@@ -6,7 +6,6 @@ import {
   useState,
 } from "react";
 import { UserInfo } from "interfaces/user";
-import { showError } from "helpers/toast";
 import httpMethod from "services/httpMethod";
 
 interface AuthenticationContextI {
@@ -20,7 +19,6 @@ const AuthenticationContext = createContext<AuthenticationContextI>({
   loading: false,
   isLogged: false,
   user: {} as any,
-  // login: () => {},
   logout: () => {},
 });
 
@@ -45,7 +43,6 @@ const AuthenticationProvider = ({ children }: { children: any }) => {
       isLogged: !!user && !!token,
       user,
       logout,
-      // login,
     };
   }, [logout, user, token, isLogging]);
 

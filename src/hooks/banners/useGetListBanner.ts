@@ -15,23 +15,17 @@ const useGetListBanner = (props: IProps) => {
   const { paramsPage, searchForm, setParamsPage, isClick } = props;
   const [data, setData] = useState<any[]>([]);
   const [meta, setMeta] = useState<number>(0);
-  const { setLoading } = useContext(AppContext);
 
   //! function
   const getSearch = async () => {
     if (searchForm) {
       try {
-        const payload = {
-          ...searchForm,
-          page: paramsPage.page,
-          pageSize: paramsPage.pageSize,
-        };
         const response = await httpMethod.post(
           `http://localhost:3001/banners/search`,
-          payload
+          {}
         );
         if (response.status === 200) {
-          setData(response.data.list);
+          setData(response.data.items);
           setMeta(response.data.totalItems);
         }
       } catch (error: any) {

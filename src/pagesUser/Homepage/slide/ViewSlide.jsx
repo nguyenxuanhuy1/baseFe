@@ -4,6 +4,7 @@ import { Carousel } from "antd";
 
 const SlideComponent = () => {
   const { slide } = useContext(SyncDataContext);
+  console.log("slide", slide);
 
   return (
     <div>
@@ -19,7 +20,7 @@ const SlideComponent = () => {
             <div key={index}>
               <img
                 loading="lazy"
-                src={`https://divineshop.vn${item.image}`}
+                src={item.image}
                 className="h-auto max-h-[474px] lg:max-h-[312px] rounded-[6px] min-w-[100%]"
               />
             </div>
