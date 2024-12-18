@@ -11,10 +11,10 @@ const useBanner = () => {
   const getBanner = async () => {
     try {
       const response = await httpMethod.get(
-        `${BASE_URL_DEV}/products?&banner&page=1&size=10`
+        `${BASE_URL_DEV}/products?&slug=banner&page=1&size=10`
       );
       if (response.status === 200) {
-        setData(response.data.list);
+        setData(response.data.items);
       }
     } catch (error: any) {
       showError("call api banner có vấn đề rồi");

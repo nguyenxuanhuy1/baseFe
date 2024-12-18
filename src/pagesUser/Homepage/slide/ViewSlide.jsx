@@ -4,8 +4,6 @@ import { Carousel } from "antd";
 
 const SlideComponent = () => {
   const { slide } = useContext(SyncDataContext);
-  console.log("slide", slide);
-
   return (
     <div>
       <div className="relative w-full h-full">

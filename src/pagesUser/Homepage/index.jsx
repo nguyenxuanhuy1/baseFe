@@ -32,6 +32,9 @@ const PageUser = () => {
   const { data: steam, loadMoreSteam } = useSteam();
   const { data: newproduct, loadMoreNewProduct } = useNewProduct();
   const { data: study, loadMoreStudy } = useStudy();
+
+  console.log("banner", banner);
+
   return (
     <SyncDataContext.Provider
       value={{
@@ -65,7 +68,7 @@ const PageUser = () => {
                 <div key={index}>
                   <img
                     loading="lazy"
-                    src={`https://divineshop.vn${item.image}`}
+                    src={item.image}
                     className="image"
                     alt={item.text}
                   />

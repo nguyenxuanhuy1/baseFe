@@ -9,7 +9,7 @@ const useSlide = () => {
   const getSlide = async () => {
     try {
       const response = await httpMethod.get(
-        `${BASE_URL_DEV}/products?&slide&page=1&size=10`
+        `${BASE_URL_DEV}/products?slug=slide&page=1&size=10`
       );
       if (response.status === 200) {
         setData(response.data.items);

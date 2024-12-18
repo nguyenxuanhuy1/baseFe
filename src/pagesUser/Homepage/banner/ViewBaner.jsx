@@ -11,7 +11,7 @@ const ShowBanner = () => {
           <div key={index} className="flex justify-center">
             <img
               loading="lazy"
-              src={`https://divineshop.vn${item.image}`}
+              src={item.image}
               className="h-auto max-h-[145px] w-full max-w-[288px] lg:max-w-[310px] rounded-[6px]"
               alt={item.text}
               onClick={() => {
