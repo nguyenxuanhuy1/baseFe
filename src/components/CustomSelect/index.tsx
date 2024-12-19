@@ -29,6 +29,7 @@ const Select: FunctionComponent<FieldSelectPropsRoot> = ({
   close,
   name,
   setState,
+  allowClear,
 }) => {
   const { errors, touched, setFieldValue = () => {} } = form ?? {};
 
@@ -66,6 +67,7 @@ const Select: FunctionComponent<FieldSelectPropsRoot> = ({
         placeholder={placeholder}
         showArrow={showArrow}
         // status={status}
+        allowClear={allowClear}
         onChange={inputOnChange}
         onSearch={onSearch}
         suffixIcon={

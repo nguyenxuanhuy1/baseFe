@@ -72,6 +72,7 @@ export interface FieldSelectPropsRoot {
   name?: string;
   close?: boolean;
   colSpan?: any;
+  allowClear?: boolean;
 }
 export default FieldSelectProps;
 

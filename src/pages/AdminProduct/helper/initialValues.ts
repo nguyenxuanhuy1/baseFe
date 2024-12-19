@@ -1,3 +1,5 @@
+import Meta from "antd/es/card/Meta";
+
 export const initialValues = {
   name: "",
 };
@@ -8,13 +10,10 @@ export const initialValuesData = {
   slide: [],
   name: null,
   slug: null,
-  meta: {
-    brand: null,
-    weight: null,
-  },
-  // options: [],
-  // tags: [],
   originalPrice: null,
   price: null,
   status: null,
+  meta: {
+    description: "",
+  },
 };

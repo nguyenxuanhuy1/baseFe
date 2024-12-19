@@ -51,6 +51,18 @@ function TableForm() {
       align: "center" as "center",
       key: "price",
       width: 120,
+      render: (value: number) => {
+        return (
+          <span>
+            {new Intl.NumberFormat("vi-VN").format(value)}
+            <sup
+              style={{ fontSize: "12px", position: "relative", top: "-8px" }}
+            >
+              VND
+            </sup>
+          </span>
+        );
+      },
     },
     {
       title: "Giá sau khi giảm",
@@ -58,6 +70,18 @@ function TableForm() {
       align: "center" as "center",
       key: "originalPrice",
       width: 140,
+      render: (value: number) => {
+        return (
+          <span>
+            {new Intl.NumberFormat("vi-VN").format(value)}
+            <sup
+              style={{ fontSize: "12px", position: "relative", top: "-8px" }}
+            >
+              VND
+            </sup>
+          </span>
+        );
+      },
     },
     {
       title: "Thuộc loại",

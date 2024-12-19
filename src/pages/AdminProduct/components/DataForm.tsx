@@ -11,6 +11,7 @@ import { validation } from "../helper/validation";
 import { initialValuesData } from "../helper/initialValues";
 import AppUpload from "components/UploadFile";
 import Select from "components/CustomSelect";
+import TextEditor from "components/TextEditor";
 
 function DataForm() {
   const {
@@ -50,14 +51,16 @@ function DataForm() {
     <Formik
       onSubmit={(values) => {
         if (actions["create"]) {
+          console.log("vaaaaaa", values);
+
           createSector(
             {
               ...values,
+              parentId: 1,
+              categoryId: 1,
               slide: [path],
               image: path,
-              meta: { path },
               options: [path],
-              tags: ["tạm fix cứng", "tag2"],
             },
             refreshData,
             setActions,
@@ -80,91 +83,121 @@ function DataForm() {
       validationSchema={validation}
       innerRef={formikRef}
     >
-      <Form>
-        <Row gutter={[5, 10]}>
-          <Col span={24}>
-            <div className="title-dataForm">
-              {actions["create"] && <strong>Thêm mới</strong>}
-              {actions["update"] && <strong>Cập nhật</strong>}
-              {!actions["create"] && !actions["update"] && (
-                <strong>Chi tiết</strong>
-              )}
-            </div>
-          </Col>
-          <Col span={12}>
-            <Field
-              component={Input}
-              name="parentId"
-              placeholder="Nhập parentId"
-              disabled={actions["create"] || actions["update"] ? false : true}
-            />
-          </Col>
-          <Col span={12}>
-            <Field
-              component={Input}
-              name="categoryId"
-              placeholder="Nhập categoryId"
-              disabled={actions["create"] || actions["update"] ? false : true}
-            />
-          </Col>
-          <Col span={12}>
-            <Field
-              component={Input}
-              name="price"
-              placeholder="Nhập giá ban đầu"
-              disabled={actions["create"] || actions["update"] ? false : true}
-            />
-          </Col>
-          <Col span={12}>
-            <Field
-              component={Input}
-              name="originalPrice"
-              placeholder="Nhập giá sau khi giảm"
-              disabled={actions["create"] || actions["update"] ? false : true}
-            />
-          </Col>
-          <Col span={24}>
-            <Field
-              component={Input}
-              name="name"
-              placeholder="Nhập tên sản phẩm"
-              disabled={actions["create"] || actions["update"] ? false : true}
-            />
-          </Col>
-          <Col span={24}>
-            <Field
-              component={Select}
-              name="slug"
-              options={optionSlug}
-              placeholder="Chọn loại"
-              disabled={actions["create"] || actions["update"] ? false : true}
-            />
-          </Col>
-          <Col span={24}>
-            <Field
-              component={AppUpload}
-              name="pathImage"
-              placeholder="Nhập name"
-              setPath={setPath}
-              disabled={actions["create"] || actions["update"] ? false : true}
-            />
-          </Col>
-        </Row>
-        {(actions["create"] || actions["update"]) && (
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <ButtonCreate title="Lưu" htmlType={ButtonHTMLTypes.Submit} />
-            <ButtonDelete
-              title="Huỷ"
-              htmlType={ButtonHTMLTypes.Submit}
-              onClick={() =>
-                setActions((prev: any) => {
-                  return { ...prev, create: false, update: false };
-                })
-              }
-            />
-          </div>
-        )}
-      </Form>
+      {(propsFormik: any) => {
+        return (
+          <Form>
+            <Row gutter={[5, 10]}>
+              <Col span={24}>
+                <div className="title-dataForm">
+                  {actions["create"] && <strong>Thêm mới</strong>}
+                  {actions["update"] && <strong>Cập nhật</strong>}
+                  {!actions["create"] && !actions["update"] && (
+                    <strong>Chi tiết</strong>
+                  )}
+                </div>
+              </Col>
+              <Col span={24}>
+                <Field
+                  component={Input}
+                  name="name"
+                  placeholder="Nhập tên sản phẩm"
+                  disabled={
+                    actions["create"] || actions["update"] ? false : true
+                  }
+                />
+              </Col>
+
+              <Col span={12}>
+                <Field
+                  component={Input}
+                  name="price"
+                  placeholder="Nhập giá ban đầu"
+                  disabled={
+                    actions["create"] || actions["update"] ? false : true
+                  }
+                />
+              </Col>
+              <Col span={12}>
+                <Field
+                  component={Input}
+                  name="originalPrice"
+                  placeholder="Nhập giá sau khi giảm"
+                  disabled={
+                    actions["create"] || actions["update"] ? false : true
+                  }
+                />
+              </Col>
+              <Col span={24}>
+                <Field
+                  component={Select}
+                  name="tags"
+                  mode="tags"
+                  options={optionSlug}
+                  placeholder="Chọn loại"
+                  disabled={
+                    actions["create"] || actions["update"] ? false : true
+                  }
+                  allowClear
+                />
+              </Col>
+              <Col span={24}>
+                <Field
+                  component={Select}
+                  name="slug"
+                  options={optionSlug}
+                  placeholder="Chọn slug"
+                  disabled={
+                    actions["create"] || actions["update"] ? false : true
+                  }
+                  allowClear
+                />
+              </Col>
+              <Col span={24}>
+                <Field
+                  component={AppUpload}
+                  name="pathImage"
+                  placeholder="Nhập name"
+                  setPath={setPath}
+                  disabled={
+                    actions["create"] || actions["update"] ? false : true
+                  }
+                />
+              </Col>
+              <Col span={24}>
+                <Field
+                  component={TextEditor}
+                  label="Mô tả chi tiết sản phẩm"
+                  name="meta.description"
+                  onChange={(value: string) => {
+                    if (value === "<p><br></p>") {
+                      propsFormik.setFieldValue("meta.description", "");
+                      return;
+                    }
+                    propsFormik.setFieldValue("meta.description", value);
+                  }}
+                  disabled={
+                    actions["create"] || actions["update"] ? false : true
+                  }
+                />
+              </Col>
+            </Row>
+            {(actions["create"] || actions["update"]) && (
+              <div style={{ display: "flex", justifyContent: "center" }}>
+                <ButtonCreate title="Lưu" htmlType={ButtonHTMLTypes.Submit} />
+                <ButtonDelete
+                  title="Huỷ"
+                  onClick={() => {
+                    propsFormik.resetForm();
+                    setActions((prev: any) => {
+                      return { ...prev, create: false, update: false };
+                    });
+                  }}
+                />
+              </div>
+            )}
+          </Form>
+        );
+      }}
     </Formik>
   );
 }
