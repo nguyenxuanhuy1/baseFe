@@ -1,19 +1,22 @@
-import { useContext, useEffect, useState } from "react";
-import { Body } from "constants/api";
+import { BASE_URL_DEV } from "constants/api";
+import { initParamPage } from "constants/categories/common";
+import { IParamsPage } from "interfaces/common";
+import { useEffect, useState } from "react";
 import httpMethod from "services/httpMethod";
-import { showError } from "helpers/toast";
+
 const useFeatured = () => {
-  //! state
+  const [paramsPage, setParamsPage] = useState<IParamsPage>(initParamPage);
   const [data, setData] = useState<any[]>([]);
-  const [currentPage, setCurrentPage] = useState(0);
-  const APIs = [`${Body.FEATURED}`, `${Body.FEATURED1}`, `${Body.FEATURED2}`];
-  const getFeatured = async (url: string) => {
-    // if (!data) {
+  console.log("dataaa", data);
+
+  const getFeatured = async () => {
     try {
-      const response = await httpMethod.get(url);
+      const response = await httpMethod.get(
+        `${BASE_URL_DEV}/products?&slug=banner&page=${paramsPage.page}&size=${paramsPage.pageSize}`
+      );
       if (response.status === 200) {
         setData((prevData) => {
-          const newData = response.data.list.filter(
+          const newData = response.data.items.filter(
             (item: any) =>
               !prevData.some((prevItem: any) => prevItem.id === item.id)
           );
@@ -21,18 +24,20 @@ const useFeatured = () => {
         });
       }
     } catch (error: any) {
-      // showError("call api featured có vấn đề rồi");
       console.log("call featured lỗi");
     }
-    // }
   };
 
-  const loadMorefeatured = () => {
-    setCurrentPage((prevPage) => (prevPage + 1) % APIs.length);
-  };
   useEffect(() => {
-    getFeatured(APIs[currentPage]);
-  }, [currentPage]);
+    getFeatured();
+  }, [paramsPage.pageSize]);
+
+  const loadMorefeatured = () => {
+    setParamsPage((prev) => ({
+      ...prev,
+      pageSize: prev.pageSize + 8,
+    }));
+  };
 
   return { data, loadMorefeatured };
 };
